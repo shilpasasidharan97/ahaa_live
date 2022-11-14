@@ -42,10 +42,10 @@ Default CSS
 :root {
   --fontSize: 14px;
   --transition: .5s;
-  --mainColor: #ED2775;
+  --mainColor: #f60015;
   --whiteColor: #ffffff;
   --blackColor: #262A37;
-  --gradientColor: linear-gradient(44.44deg, #ED2775 7.79%, #FF7448 94.18%);
+  --gradientColor: linear-gradient(44.44deg, #f60015 7.79%, #faa9aa 94.18%);
   --paragraphColor: #716c80;
   --fontFamily: 'Inter', sans-serif;
 }
