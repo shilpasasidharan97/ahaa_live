@@ -7645,7 +7645,8 @@ header .top-nav .navbar-top .web-logo img {
 
 @media (max-width: 767px) {
     header .top-nav .navbar-top .web-logo img {
-        margin: 0 auto
+        margin: 0 auto;
+        height: 50px !important;
     }
 }
 
