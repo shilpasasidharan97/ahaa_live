@@ -1,0 +1,374 @@
+{% extends 'official/partials/base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+<div class="page-header">
+    <div class="row align-items-center">
+        <div class="col">
+            <h3 class="page-title">Resturant List</h3>
+            <ul class="breadcrumb">
+                <li class=""><a href="{% url 'official:home' %}">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Resturant List</li>
+            </ul>
+        </div>
+        <div class="col-auto">
+            <a href="{% url 'official:create_user' %}" class="btn btn-primary me-1">
+                <i class="fas fa-plus"></i>
+            </a>
+            <a class="btn btn-primary filter-btn" href="javascript:void(0);" id="filter_search">
+                <i class="fas fa-filter"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div id="filter_inputs" class="card filter-card">
+    <div class="card-body pb-0">
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card card-table">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-center table-hover datatable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Place</th>
+                                <th>Registered On</th>
+                                <th>Status</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-02.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Brian Johnson <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="6705150e06090d080f0914080927021f060a170b024904080a">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>16 Nov 2020</td>
+                                <td><span class="badge badge-pill bg-success-light">Active</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-03.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Marie Canales <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="ee838f9c878b8d8f808f828b9dae8b968f839e828bc08d8183">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>8 Nov 2020</td>
+                                <td><span class="badge badge-pill bg-danger-light">Inactive</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-04.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Barbara Moore <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="0a686b78686b786b676565786f4a6f726b677a666f24696567">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>24 Oct 2020</td>
+                                <td><span class="badge badge-pill bg-success-light">Active</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-05.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Greg Lynch <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="3e594c5b595247505d567e5b465f534e525b105d5153">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>11 Oct 2020</td>
+                                <td><span class="badge badge-pill bg-danger-light">Inactive</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-06.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Karlene Chaidez
+                                            <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="bfd4decdd3dad1dadcd7ded6dbdac5ffdac7ded2cfd3da91dcd0d2">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>29 Sep 2020</td>
+                                <td><span class="badge badge-pill bg-danger-light">Inactive</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-07.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">John Blair <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="472d282f29252b262e3507223f262a372b226924282a">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>13 Aug 2020</td>
+                                <td><span class="badge badge-pill bg-success-light">Active</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-08.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Russell Copeland
+                                            <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="fe8c8b8d8d9b92929d918e9b929f909abe9b869f938e929bd09d9193">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>2 Jul 2020</td>
+                                <td><span class="badge badge-pill bg-danger-light">Inactive</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-09.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Leatha Bailey <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="472b2226332f2625262e2b223e07223f262a372b226924282a">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>20 Jun 2020</td>
+                                <td><span class="badge badge-pill bg-success-light">Active</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-10.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Joseph Collins
+                                            <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="355f5a4650455d565a59595c5b4675504d54584559501b565a58">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>9 May 2020</td>
+                                <td><span class="badge badge-pill bg-success-light">Active</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-11.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Jennifer Floyd
+                                            <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="6f050a010106090a1d090300160b2f0a170e021f030a410c0002">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>17 Apr 2020</td>
+                                <td><span class="badge badge-pill bg-success-light">Active</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-12.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Alex Campbell <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="87e6ebe2ffe4e6eaf7e5e2ebebc7e2ffe6eaf7ebe2a9e4e8ea">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>30 Mar 2020</td>
+                                <td><span class="badge badge-pill bg-success-light">Active</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 class="table-avatar">
+                                        <a href="" class="avatar avatar-sm me-2"><img
+                                                class="avatar-img rounded-circle"
+                                                src="{% static 'web/img/profiles/avatar-13.jpg' %}"
+                                                alt="User Image"></a>
+                                        <a href="">Wendell Ward <span>9876543210</span></a>
+                                    </h2>
+                                </td>
+                                <td><a href="https://kanakku.dreamguystech.com/cdn-cgi/l/email-protection"
+                                        class="__cf_email__"
+                                        data-cfemail="3443515a505158584355465074514c55594458511a575b59">[email&#160;protected]</a>
+                                </td>
+                                <td>9875585295</td>
+                                <td>calicut</td>
+                                <td>22 Feb 2020</td>
+                                <td><span class="badge badge-pill bg-success-light">Active</span></td>
+                                <td class="text-end">
+                                    <a href="edit-customer.html"
+                                        class="btn btn-sm btn-white text-primary me-2"><i
+                                            class="far fa-edit me-1"></i> View</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

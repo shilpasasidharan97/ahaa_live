@@ -1,0 +1,34 @@
+{% extends 'menucard/partials/base.html' %}
+{% block content %}
+{% load static %}
+
+
+    <!-- Breadcrumb Section Start -->
+    <section class="breadscrumb-section pt-0">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="breadscrumb-contain breadscrumb-order">
+                        <div class="order-box">
+                            <div class="order-image">
+                                <img src="{% static 'menucard/images/inner-page/order-success.png' %}" class="blur-up lazyload"
+                                    alt="">
+                            </div>
+
+                            <div class="order-contain">
+                                <h3 class="theme-color">Order Success</h3>
+                                <h5 class="text-content">Payment Is Successfully And Your Order Is On The Way</h5>
+                                <!-- <h6>Transaction ID: 1708031724431131</h6> -->
+                                <a href="{% url 'menucard:home' %}" >Go Home</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+
+
+{% endblock %}
