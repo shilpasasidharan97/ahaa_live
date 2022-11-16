@@ -5,678 +5,350 @@
 
 
 
-    <!-- Breadcrumb Section Start -->
-    <section class="breadscrumb-section pt-0">
-        <div class="container-fluid-lg">
-            <div class="row">
-                <div class="col-12">
-                    <div class="breadscrumb-contain">
-                        <h2>Fresh Juice</h2>
-                        <!-- <nav>
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item active" aria-current="page">Home </li>
-                                <li class="breadcrumb-item active" aria-current="page">Products</li>
-                            </ol>
-                        </nav> -->
+<!-- Home Section Start -->
+<section class="home-section pt-2">
+    <div class="container-fluid-lg">
+        <div class="row g-4">
+            <div class="col-xl-12 col-lg-12 col-12">
+                <a href="">
+                    <div class="home-contain h-100">
+                        <img src="{% static 'menucard/images/banner/Banner.jpg' %}" class="" alt="" width="100%">
                     </div>
-                </div>
+                </a>
             </div>
         </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+    </div>
+</section>
 
 
+<!-- Slug Product -->
+<section class="">
+    <div class="container">
 
-    <!-- Shop Section Start -->
-    <section class="section-b-space shop-section">
-        <div class="container-fluid-lg">
-            <div class="row">
-                <div class="col-xxl-12 col-lg-12">
-                    <div class="row g-sm-4 g-3   product-list-section">
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6">
-                            <div class="product-box-3 h-100 wow fadeInUp">
-                                <div class="product-header">
-                                    <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <img src="{% static 'menucard/images/cake/product/2.png' %}"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-
-                                        <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="product-footer">
-                                    <div class="product-detail">
-                                        <h5 class="name">Vegetable</h5>
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <span class="span-name">Fresh Bread and Pastry Flour 200 g</span>
-                                        </a>
-                                        <p class="text-content mt-1 mb-2 product-content">Cheesy feet cheesy grin brie.
-                                            Mascarpone cheese and wine hard cheese the big cheese everyone loves smelly
-                                            cheese macaroni cheese croque monsieur.</p>
-                                        <h6 class="unit">250 ml</h6>
-                                        <h5 class="price"><span class="theme-color">₹08.02</span> <del>₹15.15</del>
-                                        </h5>
-                                       <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">Add
-                                                <i class="fa-solid fa-plus bg-gray"></i></button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group bg-white">
-                                                    <button type="button" class="qty-left-minus bg-gray"
-                                                        data-type="minus" data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus bg-gray"
-                                                        data-type="plus" data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6">
-                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
-                                <div class="product-header">
-                                    <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <img src="{% static 'menucard/images/cake/product/3.png' %}"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-
-                                        <!-- <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-                                        </ul> -->
-                                    </div>
-                                </div>
-
-                                <div class="product-footer">
-                                    <div class="product-detail">
-                                        <span class="name">Vegetable</span>
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <h5 class="span-name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                        </a>
-                                        <p class="text-content mt-1 mb-2 product-content">Feta taleggio croque monsieur
-                                            swiss manchego cheesecake dolcelatte jarlsberg. Hard cheese danish fontina
-                                            boursin melted cheese fondue.</p>
-                                        <h6 class="unit">350 G</h6>
-                                        <h5 class="price"><span class="theme-color">₹04.33</span> <del>₹10.36</del>
-                                        </h5>
-                                       <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">Add
-                                                <i class="fa-solid fa-plus bg-gray"></i></button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group bg-white">
-                                                    <button type="button" class="qty-left-minus bg-gray"
-                                                        data-type="minus" data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus bg-gray"
-                                                        data-type="plus" data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6">
-                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="product-header">
-                                    <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <img src="{% static 'menucard/images/cake/product/4.png' %}"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-
-                                        <!-- <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-                                        </ul> -->
-                                    </div>
-                                </div>
-
-                                <div class="product-footer">
-                                    <div class="product-detail">
-                                        <span class="name">Snacks</span>
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <h5 class="span-name">SnackAmor Combo Pack of Jowar Stick and Jowar Chips</h5>
-                                        </a>
-                                        <p class="text-content mt-1 mb-2 product-content">Lancashire hard cheese
-                                            parmesan. Danish fontina mozzarella cream cheese smelly cheese cheese and
-                                            wine cheesecake dolcelatte stilton. Cream cheese parmesan who moved my
-                                            cheese when the cheese comes out everybody's happy cream cheese red
-                                            leicester ricotta edam.</p>
-                                        <h6 class="unit">570 G</h6>
-                                        <h5 class="price"><span class="theme-color">₹12.52</span> <del>₹13.62</del>
-                                        </h5>
-                                       <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">Add
-                                                <i class="fa-solid fa-plus bg-gray"></i></button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group bg-white">
-                                                    <button type="button" class="qty-left-minus bg-gray"
-                                                        data-type="minus" data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus bg-gray"
-                                                        data-type="plus" data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6">
-                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.15s">
-                                <div class="product-header">
-                                    <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <img src="{% static 'menucard/images/cake/product/5.png' %}"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-
-                                        <!-- <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-                                        </ul> -->
-                                    </div>
-                                </div>
-
-                                <div class="product-footer">
-                                    <div class="product-detail">
-                                        <span class="name">Snacks</span>
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <h5 class="span-name">Yumitos Chilli Sprinkled Potato Chips 100 g</h5>
-                                        </a>
-                                        <p class="text-content mt-1 mb-2 product-content">Cheddar cheddar pecorino hard
-                                            cheese hard cheese cheese and biscuits bocconcini babybel. Cow goat paneer
-                                            cream cheese fromage cottage cheese cauliflower cheese jarlsberg.</p>
-                                        <h6 class="unit">100 G</h6>
-                                        <h5 class="price"><span class="theme-color">₹10.25</span> <del>₹12.36</del>
-                                        </h5>
-                                       <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">Add
-                                                <i class="fa-solid fa-plus bg-gray"></i></button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group bg-white">
-                                                    <button type="button" class="qty-left-minus bg-gray"
-                                                        data-type="minus" data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus bg-gray"
-                                                        data-type="plus" data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6">
-                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="product-header">
-                                    <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <img src="{% static 'menucard/images/cake/product/6.png' %}"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-
-                                        <!-- <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-                                        </ul> -->
-                                    </div>
-                                </div>
-
-                                <div class="product-footer">
-                                    <div class="product-detail">
-                                        <span class="name">Vegetable</span>
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <h5 class="span-name">Fantasy Crunchy Choco Chip Cookies</h5>
-                                        </a>
-                                        <p class="text-content mt-1 mb-2 product-content">Bavarian bergkase smelly
-                                            cheese swiss cut the cheese lancashire who moved my cheese manchego melted
-                                            cheese. Red leicester paneer cow when the cheese comes out everybody's happy
-                                            croque monsieur goat melted cheese port-salut.</p>
-
-                                        <h6 class="unit">550 G</h6>
-
-                                        <h5 class="price"><span class="theme-color">₹14.25</span> <del>₹16.57</del>
-                                        </h5>
-                                       <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">Add
-                                                <i class="fa-solid fa-plus bg-gray"></i></button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group bg-white">
-                                                    <button type="button" class="qty-left-minus bg-gray"
-                                                        data-type="minus" data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus bg-gray"
-                                                        data-type="plus" data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6">
-                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.25s">
-                                <div class="product-header">
-                                    <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <img src="{% static 'menucard/images/cake/product/7.png' %}"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-
-                                        <!-- <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-                                        </ul> -->
-                                    </div>
-                                </div>
-
-                                <div class="product-footer">
-                                    <div class="product-detail">
-                                        <span class="name">Vegetable</span>
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <h5 class="span-name">Fresh Bread and Pastry Flour 200 g</h5>
-                                        </a>
-                                        <p class="text-content mt-1 mb-2 product-content">Melted cheese babybel chalk
-                                            and cheese. Port-salut port-salut cream cheese when the cheese comes out
-                                            everybody's happy cream cheese hard cheese cream cheese red leicester.</p>
-                                       
-
-                                        <h6 class="unit">1 Kg</h6>
-
-                                        <h5 class="price"><span class="theme-color">₹12.68</span> <del>₹14.69</del>
-                                        </h5>
-                                       <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">Add
-                                                <i class="fa-solid fa-plus bg-gray"></i></button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group bg-white">
-                                                    <button type="button" class="qty-left-minus bg-gray"
-                                                        data-type="minus" data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus bg-gray"
-                                                        data-type="plus" data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6">
-                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="product-header">
-                                    <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <img src="{% static 'menucard/images/cake/product/2.png' %}"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-
-                                        <!-- <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-                                        </ul> -->
-                                    </div>
-                                </div>
-                                <div class="product-footer">
-                                    <div class="product-detail">
-                                        <span class="name">Vegetable</span>
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <h5 class="span-name">Fresh Bread and Pastry Flour 200 g</h5>
-                                        </a>
-                                        <p class="text-content mt-1 mb-2 product-content">Squirty cheese cottage cheese
-                                            cheese strings. Red leicester paneer danish fontina queso lancashire when
-                                            the cheese comes out everybody's happy cottage cheese paneer.</p>
-                                        <h6 class="unit">250 ml</h6>
-                                        <h5 class="price"><span class="theme-color">₹08.02</span> <del>₹15.15</del>
-                                        </h5>
-                                       <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">Add
-                                                <i class="fa-solid fa-plus bg-gray"></i></button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group bg-white">
-                                                    <button type="button" class="qty-left-minus bg-gray"
-                                                        data-type="minus" data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus bg-gray"
-                                                        data-type="plus" data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6">
-                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.35s">
-                                <div class="product-header">
-                                    <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <img src="{% static 'menucard/images/cake/product/3.png' %}"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-
-                                        <!-- <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-                                        </ul> -->
-                                    </div>
-                                </div>
-
-                                <div class="product-footer">
-                                    <div class="product-detail">
-                                        <span class="name">Vegetable</span>
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <h5 class="span-name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                        </a>
-                                        <p class="text-content mt-1 mb-2 product-content">Swiss ricotta cauliflower
-                                            cheese squirty cheese cheesy grin camembert de normandie airedale edam.
-                                            Squirty cheese babybel cheesecake the big cheese cauliflower cheese hard
-                                            cheese cheese and biscuits cheese and wine.</p>
-                                        <h6 class="unit">350 G</h6>
-                                        <h5 class="price"><span class="theme-color">₹04.33</span> <del>₹10.36</del>
-                                        </h5>
-                                       <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">Add
-                                                <i class="fa-solid fa-plus bg-gray"></i></button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group bg-white">
-                                                    <button type="button" class="qty-left-minus bg-gray"
-                                                        data-type="minus" data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus bg-gray"
-                                                        data-type="plus" data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6">
-                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.4s">
-                                <div class="product-header">
-                                    <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <img src="{% static 'menucard/images/cake/product/4.png' %}"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-
-                                        <!-- <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-                                        </ul> -->
-                                    </div>
-                                </div>
-
-                                <div class="product-footer">
-                                    <div class="product-detail">
-                                        <span class="name">Snacks</span>
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <h5 class="span-name">SnackAmor Combo Pack of Jowar Stick and Jowar Chips</h5>
-                                        </a>
-                                        <p class="text-content mt-1 mb-2 product-content">Boursin the big cheese
-                                            cheeseburger. Jarlsberg smelly cheese chalk and cheese gouda blue castello
-                                            monterey jack swiss boursin. Halloumi cheesy feet mozzarella red leicester
-                                            paneer boursin who moved my cheese croque monsieur.</p>
-                                        <h6 class="unit">570 G</h6>
-                                        <h5 class="price"><span class="theme-color">₹12.52</span> <del>₹13.62</del>
-                                        </h5>
-                                       <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">Add
-                                                <i class="fa-solid fa-plus bg-gray"></i></button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group bg-white">
-                                                    <button type="button" class="qty-left-minus bg-gray"
-                                                        data-type="minus" data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus bg-gray"
-                                                        data-type="plus" data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6">
-                            <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.45s">
-                                <div class="product-header">
-                                    <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <img src="{% static 'menucard/images/cake/product/5.png' %}"
-                                                class="img-fluid blur-up lazyload" alt="">
-                                        </a>
-
-                                        <!-- <ul class="product-option">
-                                            <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
-                                                <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                    data-bs-target="#view">
-                                                    <i data-feather="eye"></i>
-                                                </a>
-                                            </li>
-                                        </ul> -->
-                                    </div>
-                                </div>
-
-                                <div class="product-footer">
-                                    <div class="product-detail">
-                                        <span class="name">Snacks</span>
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <h5 class="span-name">Yumitos Chilli Sprinkled Potato Chips 100 g</h5>
-                                        </a>
-                                        <p class="text-content mt-1 mb-2 product-content">Halloumi mozzarella monterey
-                                            jack smelly cheese emmental bocconcini when the cheese comes out everybody's
-                                            happy pecorino. Cut the cheese stilton danish fontina cheesy grin rubber
-                                            cheese smelly cheese roquefort paneer.</p>
-                                        <h6 class="unit">100 G</h6>
-                                        <h5 class="price"><span class="theme-color">₹10.25</span> <del>₹12.36</del>
-                                        </h5>
-                                       <div class="add-to-cart-box bg-white">
-                                            <button class="btn btn-add-cart addcart-button">Add
-                                                <i class="fa-solid fa-plus bg-gray"></i></button>
-                                            <div class="cart_qty qty-box">
-                                                <div class="input-group bg-white">
-                                                    <button type="button" class="qty-left-minus bg-gray"
-                                                        data-type="minus" data-field="">
-                                                        <i class="fa fa-minus" aria-hidden="true"></i>
-                                                    </button>
-                                                    <input class="form-control input-number qty-input" type="text"
-                                                        name="quantity" value="0">
-                                                    <button type="button" class="qty-right-plus bg-gray"
-                                                        data-type="plus" data-field="">
-                                                        <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- <nav class="custome-pagination">
-                        <ul class="pagination justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
-                                    <i class="fa-solid fa-angles-left"></i>
-                                </a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="javascript:void(0)">1</a>
-                            </li>
-                            <li class="page-item" aria-current="page">
-                                <a class="page-link" href="javascript:void(0)">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="javascript:void(0)">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="javascript:void(0)">
-                                    <i class="fa-solid fa-angles-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav> -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="filters">
+                    <ul class="">
+                        <li data-filter=".a1">Tea</li>
+                        <li data-filter=".a2">Coffee</li>
+                        <li data-filter=".a3">Milk</li>
+                        <li data-filter=".a5">Boost</li>
+                        <li data-filter=".a4">Hot chocolate</li>
+                        <li data-filter=".a6">Badam milk</li>
+                        <li class="is-checked" data-filter="*">All</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="mb-5"></div>
-    </section>
-    <!-- Shop Section End -->
+        <!-- </div> -->
 
 
+        <div class="col-lg-12">
+            <div class="rows grid data-isotope='{ " itemSelector": ".grid-item" , "masonry" : { "columnWidth" : 200 }
+                }'">
 
-    <!-- Quick View Modal Box Start -->
-    <div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
-            <div class="modal-content">
-                <div class="modal-header p-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row g-sm-4 g-2">
-                        <div class="col-lg-6">
-                            <div class="slider-image">
-                                <img src="{% static 'menucard/images/product/category/1.jpg' %}" class="img-fluid blur-up lazyload"
-                                    alt="">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="right-sidebar-modal">
-                                <h4 class="title-name">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
-                                <h4 class="price">₹36.99</h4>
-                                <div class="product-rating">
-                                    <ul class="rating">
-                                        <li>
-                                            <i data-feather="star" class="fill"></i>
-                                        </li>
-                                        <li>
-                                            <i data-feather="star" class="fill"></i>
-                                        </li>
-                                        <li>
-                                            <i data-feather="star" class="fill"></i>
-                                        </li>
-                                        <li>
-                                            <i data-feather="star" class="fill"></i>
-                                        </li>
-                                        <li>
-                                            <i data-feather="star"></i>
-                                        </li>
-                                    </ul>
-                                    <span class="ms-2">8 Reviews</span>
-                                    <span class="ms-2 text-danger">6 sold in last 16 hours</span>
+                <div class="row g-sm-4 g-3 product-list-section">
+                    <div class="col-lg-2 col-md-3 co-sm-6 col-6  grid-item a1" data-category="websites">
+                        <div class="product-box-3 h-100 wow fadeInUp">
+                            <div class="product-header">
+                                <div class="product-image">
+                                    <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <img src="{% static 'menucard/images/cake/product/2.png' %}"
+                                            class="img-fluid blur-up lazyload" alt="">
+                                    </a>
                                 </div>
-
+                            </div>
+                            <div class="product-footer">
                                 <div class="product-detail">
-                                    <h4>Product Details :</h4>
-                                    <p>Candy canes sugar plum tart cotton candy chupa chups sugar plum chocolate I love.
-                                        Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
-                                        Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear claw. Bonbon
-                                        muffin I love carrot cake sugar plum dessert bonbon.</p>
+                                    <h5 class="name">Vegetable</h5>
+                                    <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <span class="span-name">Fresh Bread and Pastry Flour 200 g</span>
+                                    </a>
+                                    <p class="text-content mt-1 mb-2 product-content">Cheesy feet cheesy grin brie.
+                                        Mascarpone cheese and wine hard cheese the big cheese everyone loves smelly
+                                        cheese macaroni cheese croque monsieur.</p>
+                                    <h6 class="unit">250 ml</h6>
+                                    <h5 class="price"><span class="theme-color">₹08.02</span> <del>₹15.15</del>
+                                    </h5>
+                                    <div class="add-to-cart-box bg-white">
+                                        <button class="btn btn-add-cart addcart-button">Add
+                                            <i class="fa-solid fa-plus bg-gray"></i></button>
+                                        <div class="cart_qty qty-box">
+                                            <div class="input-group bg-white">
+                                                <button type="button" class="qty-left-minus bg-gray" data-type="minus"
+                                                    data-field="">
+                                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                                <input class="form-control input-number qty-input" type="text"
+                                                    name="quantity" value="0">
+                                                <button type="button" class="qty-right-plus bg-gray" data-type="plus"
+                                                    data-field="">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 co-sm-6 col-6 grid-item a2 a1" data-category="websites">
+                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
+                            <div class="product-header">
+                                <div class="product-image">
+                                    <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <img src="{% static 'menucard/images/cake/product/3.png' %}"
+                                            class="img-fluid blur-up lazyload" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="product-footer">
+                                <div class="product-detail">
+                                    <span class="name">Vegetable</span>
+                                    <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <h5 class="span-name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
+                                    </a>
+                                    <p class="text-content mt-1 mb-2 product-content">Feta taleggio croque monsieur
+                                        swiss manchego cheesecake dolcelatte jarlsberg. Hard cheese danish fontina
+                                        boursin melted cheese fondue.</p>
+                                    <h6 class="unit">350 G</h6>
+                                    <h5 class="price"><span class="theme-color">₹04.33</span> <del>₹10.36</del>
+                                    </h5>
+                                    <div class="add-to-cart-box bg-white">
+                                        <button class="btn btn-add-cart addcart-button">Add
+                                            <i class="fa-solid fa-plus bg-gray"></i></button>
+                                        <div class="cart_qty qty-box">
+                                            <div class="input-group bg-white">
+                                                <button type="button" class="qty-left-minus bg-gray" data-type="minus"
+                                                    data-field="">
+                                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                                <input class="form-control input-number qty-input" type="text"
+                                                    name="quantity" value="0">
+                                                <button type="button" class="qty-right-plus bg-gray" data-type="plus"
+                                                    data-field="">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 co-sm-6 col-6 grid-item a2 a1" data-category="websites">
+                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
+                            <div class="product-header">
+                                <div class="product-image">
+                                    <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <img src="{% static 'menucard/images/cake/product/3.png' %}"
+                                            class="img-fluid blur-up lazyload" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="product-footer">
+                                <div class="product-detail">
+                                    <span class="name">Vegetable</span>
+                                    <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <h5 class="span-name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
+                                    </a>
+                                    <p class="text-content mt-1 mb-2 product-content">Feta taleggio croque monsieur
+                                        swiss manchego cheesecake dolcelatte jarlsberg. Hard cheese danish fontina
+                                        boursin melted cheese fondue.</p>
+                                    <h6 class="unit">350 G</h6>
+                                    <h5 class="price"><span class="theme-color">₹04.33</span> <del>₹10.36</del>
+                                    </h5>
+                                    <div class="add-to-cart-box bg-white">
+                                        <button class="btn btn-add-cart addcart-button">Add
+                                            <i class="fa-solid fa-plus bg-gray"></i></button>
+                                        <div class="cart_qty qty-box">
+                                            <div class="input-group bg-white">
+                                                <button type="button" class="qty-left-minus bg-gray" data-type="minus"
+                                                    data-field="">
+                                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                                <input class="form-control input-number qty-input" type="text"
+                                                    name="quantity" value="0">
+                                                <button type="button" class="qty-right-plus bg-gray" data-type="plus"
+                                                    data-field="">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 co-sm-6 col-6 grid-item a2 a3" data-category="websites">
+                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
+                            <div class="product-header">
+                                <div class="product-image">
+                                    <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <img src="{% static 'menucard/images/cake/product/3.png' %}"
+                                            class="img-fluid blur-up lazyload" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="product-footer">
+                                <div class="product-detail">
+                                    <span class="name">Vegetable</span>
+                                    <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <h5 class="span-name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
+                                    </a>
+                                    <p class="text-content mt-1 mb-2 product-content">Feta taleggio croque monsieur
+                                        swiss manchego cheesecake dolcelatte jarlsberg. Hard cheese danish fontina
+                                        boursin melted cheese fondue.</p>
+                                    <h6 class="unit">350 G</h6>
+                                    <h5 class="price"><span class="theme-color">₹04.33</span> <del>₹10.36</del>
+                                    </h5>
+                                    <div class="add-to-cart-box bg-white">
+                                        <button class="btn btn-add-cart addcart-button">Add
+                                            <i class="fa-solid fa-plus bg-gray"></i></button>
+                                        <div class="cart_qty qty-box">
+                                            <div class="input-group bg-white">
+                                                <button type="button" class="qty-left-minus bg-gray" data-type="minus"
+                                                    data-field="">
+                                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                                <input class="form-control input-number qty-input" type="text"
+                                                    name="quantity" value="0">
+                                                <button type="button" class="qty-right-plus bg-gray" data-type="plus"
+                                                    data-field="">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 co-sm-6 col-6 grid-item a4" data-category="websites">
+                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
+                            <div class="product-header">
+                                <div class="product-image">
+                                    <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <img src="{% static 'menucard/images/cake/product/3.png' %}"
+                                            class="img-fluid blur-up lazyload" alt="">
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="product-footer">
+                                <div class="product-detail">
+                                    <span class="name">Vegetable</span>
+                                    <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <h5 class="span-name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
+                                    </a>
+                                    <p class="text-content mt-1 mb-2 product-content">Feta taleggio croque monsieur
+                                        swiss manchego cheesecake dolcelatte jarlsberg. Hard cheese danish fontina
+                                        boursin melted cheese fondue.</p>
+                                    <h6 class="unit">350 G</h6>
+                                    <h5 class="price"><span class="theme-color">₹04.33</span> <del>₹10.36</del>
+                                    </h5>
+                                    <div class="add-to-cart-box bg-white">
+                                        <button class="btn btn-add-cart addcart-button">Add
+                                            <i class="fa-solid fa-plus bg-gray"></i></button>
+                                        <div class="cart_qty qty-box">
+                                            <div class="input-group bg-white">
+                                                <button type="button" class="qty-left-minus bg-gray" data-type="minus"
+                                                    data-field="">
+                                                    <i class="fa fa-minus" aria-hidden="true"></i>
+                                                </button>
+                                                <input class="form-control input-number qty-input" type="text"
+                                                    name="quantity" value="0">
+                                                <button type="button" class="qty-right-plus bg-gray" data-type="plus"
+                                                    data-field="">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- footer -->
+<section class="pb-5 mb-5">
+    <div class="container-fluid-lg">
+        <div class="row g-4">
+            <div class="col-xl-12 col-lg-12 col-12">
+                <a href="">
+                    <div class="home-contain h-100">
+                        <img src="{% static 'menucard/images/banner/Banner.jpg' %}" class="" alt="" width="100%">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- Quick View Modal Box Start -->
+<div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+        <div class="modal-content">
+            <div class="modal-header p-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-sm-4 g-2">
+                    <div class="col-lg-6">
+                        <div class="slider-image">
+                            <img src="{% static 'menucard/images/product/category/1.jpg' %}"
+                                class="img-fluid blur-up lazyload" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="right-sidebar-modal">
+                            <h4 class="title-name">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
+                            <h4 class="price">₹36.99</h4>
+                            <div class="product-rating">
+                                <ul class="rating">
+                                    <li>
+                                        <i data-feather="star" class="fill"></i>
+                                    </li>
+                                    <li>
+                                        <i data-feather="star" class="fill"></i>
+                                    </li>
+                                    <li>
+                                        <i data-feather="star" class="fill"></i>
+                                    </li>
+                                    <li>
+                                        <i data-feather="star" class="fill"></i>
+                                    </li>
+                                    <li>
+                                        <i data-feather="star"></i>
+                                    </li>
+                                </ul>
+                                <span class="ms-2">8 Reviews</span>
+                                <span class="ms-2 text-danger">6 sold in last 16 hours</span>
+                            </div>
+
+                            <div class="product-detail">
+                                <h4>Product Details :</h4>
+                                <p>Candy canes sugar plum tart cotton candy chupa chups sugar plum chocolate I love.
+                                    Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
+                                    Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear claw. Bonbon
+                                    muffin I love carrot cake sugar plum dessert bonbon.</p>
                             </div>
                         </div>
                     </div>
@@ -684,28 +356,93 @@
             </div>
         </div>
     </div>
-    <!-- Quick View Modal Box End -->
-
- 
-
-
-    <!-- Add to cart Modal Start -->
-    <!-- <div class="add-cart-box">
-        <div class="add-iamge">
-            <img src="{% static 'menucard/images/cake/pro/1.jpg' %}" class="img-fluid blur-up lazyload" alt="">
-        </div>
-
-        <div class="add-contain">
-            <h6>Added to Cart</h6>
-        </div>
-    </div> -->
-    <!-- Add to cart Modal End -->
+</div>
+<!-- Quick View Modal Box End -->
 
 
 
 
-    <!-- Price Range Js -->
-    <!--  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<style>
+    .filters ul {
+        /* display: flex; */
+        justify-content: center;
+        list-style: none;
+        /* border-bottom: 2px solid #D9D9D9; */
+        /* margin: 30px 15px */
+    }
+
+    .filters ul li {
+        display: inlnie-block;
+        text-align: center;
+        /* margin-right: 12px; */
+        padding: 4px 10px 4px 10px;
+        font-weight: 500;
+        font-size: 13px;
+        cursor: pointer;
+        position: relative;
+        margin-bottom: 6px;
+        color: rgb(71, 71, 71);
+        transition: 0.3s;
+        text-transform: capitalize;
+        border: 1px solid #777;
+        border-radius: 5px;
+    }
+
+    .filters ul li:hover {
+        color: #EB2D3A;
+    }
+
+    .filters ul li.is-checked {
+        background-color: #3797d7;
+        color: var(--bs-white);
+        border: 0px;
+    }
+
+    .filters ul li:last-child {
+        margin-right: 0;
+    }
+
+
+    .grid .grid-item h1 {
+        background: #EEEEEE;
+        height: 150px;
+        line-height: 150px;
+        color: white;
+        font-size: 3em;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+<script>
+    var $grid = $('.grid').isotope({
+        // options
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows',
+    });
+
+    // change is-checked class on buttons
+    var $buttonGroup = $('.filters');
+    $buttonGroup.on('click', 'li', function (event) {
+        $buttonGroup.find('.is-checked').removeClass('is-checked');
+        var $button = $(event.currentTarget);
+        $button.addClass('is-checked');
+        var filterValue = $button.attr('data-filter');
+        $grid.isotope({ filter: filterValue });
+    });
+</script>
+
+
 
 {% endblock %}
