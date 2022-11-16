@@ -2,7 +2,7 @@
 Main Banner Area CSS
 =================================================*/
 .main-banner {
-  background: linear-gradient(42.99deg, #388ccc 10.19%, #2b82c9 50.48%, #69a7d8 94.28%);
+  background: linear-gradient(42.99deg, #388ccca8 10.19%, #2b82c991 50.48%, #69a7d8ad 94.28%);
   padding-top: 160px;
   position: relative;
   z-index: 1;

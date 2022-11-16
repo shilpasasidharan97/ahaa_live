@@ -5608,7 +5608,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 	30. sticky-sidebarbar
 -----------------------*/
 
-.sticky-sidebar {
+/* .sticky-sidebar {
     position: fixed;
     border: 3px solid #555a64;
     top: 50%;
@@ -5623,7 +5623,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-}
+} */
 .sticky-sidebar.show-sidebar {
 	right:0px;
 	transition: ease all 0.8s;
@@ -5633,7 +5633,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 .sidebar-icons {
 	padding: 7px 0px;
 }
-.sticky-sidebar > li > a {
+/* .sticky-sidebar > li > a {
     height: 30px;
     width: 30px;
     align-items: center;
@@ -5641,8 +5641,8 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
     color: #fff;
     position: relative;
     display: flex;
-}
-.sticky-sidebar > li > a.feather-five {
+} */
+/* .sticky-sidebar > li > a.feather-five {
 	align-items: center;
     color: #fff;
     height: 28px;
@@ -5652,8 +5652,8 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
     transition: ease all 0.8s;
     -webkit-transition: ease all 0.8s;
     -ms-transition: ease all 0.8s;
-}
-.sticky-sidebar > li > a:hover {
+} */
+/* .sticky-sidebar > li > a:hover {
     left: 0px;
     transition: 0.3s;
     top: 0px;
@@ -5663,15 +5663,15 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
     transition: ease all 0.8s;
     -webkit-transition: ease all 0.8s;
     -ms-transition: ease all 0.8s;
-}
+} */
 .tooltip-five {
     position: relative;
     text-align: center;
     margin: auto;
 }
-.sticky-sidebar > li > a:hover .feather-five {
+/* .sticky-sidebar > li > a:hover .feather-five {
     filter: invert(1) brightness(100);
-}
+} */
 .tooltip-five  .tooltiptext {
 	visibility: hidden;
     width: 126px;
@@ -8451,11 +8451,11 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 	.page-header .invoices-breadcrumb {
 		display: inline-block;
 	}
-	.sticky-sidebar li a {
+	/* .sticky-sidebar li a {
 	    font-size: 20px;
 	    height: 44px;
 	    width: 44px;
-	}
+	} */
 	.white-logo.show-logo {
 		display: none;
 	}

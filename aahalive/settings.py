@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'menucard',
     'website',
     'web',
+    'official',
 ]
 
 MIDDLEWARE = [
