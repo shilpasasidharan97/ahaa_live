@@ -1,9 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 
 # Create your views here.
 
 
 def loginPage(request):
+    if request.method == 'POST':
+        phone = request.POST['phone']
+        password = request.POST['password']
+        user = authenticate(request,phone=phone, password=password)
+        print(user)
+        if user is not None:
+            login(request, user)
+            return redirect('web:home')
+        else:
+            return redirect('official:loginPage')
     return render(request, 'official/login.html')
 
 
@@ -26,3 +38,8 @@ def creatUsers(request):
         "is_users":True,
     }
     return render(request, 'official/create_user.html',context)
+
+
+def logout_resto(request):
+    logout(request)
+    return redirect('official:loginPage')

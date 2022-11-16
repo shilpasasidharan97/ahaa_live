@@ -43,116 +43,18 @@
             <p>Top Categories Of The Week</p>
         </div>
         <div class="row mt-1">
+            {% for cat in categories %}
             <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
                 <div>
                     <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp">
                         <div>
-                            <img src="{% static 'menucard/svg/1/vegetable.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>Salads</h5>
+                            <img src="{{cat.icon.url}}" class="blur-up lazyload" alt="">
+                            <h5>{{cat.name}}</h5>
                         </div>
                     </a>
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
-                <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp" data-wow-delay="0.05s">
-                        <div>
-                            <img src="{% static 'menucard/svg/1/cup.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>Biriyani</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
-                <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp" data-wow-delay="0.1s">
-                        <div>
-                            <img src="{% static 'menucard/svg/1/meats.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>Burger</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
-                <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp">
-                        <div>
-                            <img src="{% static 'menucard/svg/1/vegetable.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>Ice cream & desert</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
-                <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp" data-wow-delay="0.05s">
-                        <div>
-                            <img src="{% static 'menucard/svg/1/cup.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>Tea & Coffe</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
-                <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp">
-                        <div>
-                            <img src="{% static 'menucard/svg/1/vegetable.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>Pasta</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
-                <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp" data-wow-delay="0.15s">
-                        <div>
-                            <img src="{% static 'menucard/svg/1/breakfast.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>pastry</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
-                <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp" data-wow-delay="0.2s">
-                        <div>
-                            <img src="{% static 'menucard/svg/1/frozen.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>Sandwich</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
-                <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp" data-wow-delay="0.25s">
-                        <div>
-                            <img src="{% static 'menucard/svg/1/milk.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>Lessy</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
-                <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp" data-wow-delay="0.3s">
-                        <div>
-                            <img src="{% static 'menucard/svg/1/pet.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>Fish</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
-                <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp" data-wow-delay="0.3s">
-                        <div>
-                            <img src="{% static 'menucard/svg/1/pet.svg' %}" class="blur-up lazyload" alt="">
-                            <h5>Chicken</h5>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
     <div class="pb-3"></div>
