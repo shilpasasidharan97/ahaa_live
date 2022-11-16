@@ -10,13 +10,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadscrumb-contain">
-                        <h2>Cart</h2>
-                        <nav>
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item active" aria-current="page">Home </li>
-                                <li class="breadcrumb-item active" aria-current="page">Cart</li>
-                            </ol>
-                        </nav>
+                        <h2>My List</h2>
                     </div>
                 </div>
             </div>
@@ -36,14 +30,14 @@
                                     <tr class="product-box-contain">
                                         <td class="product-detail">
                                             <div class="product border-0">
-                                                <a href="" class="product-image">
+                                                <div href="" class="product-image">
                                                     <img src="{% static 'menucard/images/vegetable/product/1.png' %}"
                                                         class="img-fluid blur-up lazyload" alt="">
-                                                </a>
+                                                </div>
                                                 <div class="product-detail">
                                                     <ul>
                                                         <li class="name">
-                                                            <a href="">Bell pepper</a>
+                                                            <p>Bell pepper</p>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -75,14 +69,14 @@
                                     <tr class="product-box-contain">
                                         <td class="product-detail">
                                             <div class="product border-0">
-                                                <a href="" class="product-image">
+                                                <div class="product-image">
                                                     <img src="{% static 'menucard/images/vegetable/product/2.png' %}"
                                                         class="img-fluid blur-up lazyload" alt="">
-                                                </a>
+                                                </div>
                                                 <div class="product-detail">
                                                     <ul>
                                                         <li class="name">
-                                                            <a href="">Eggplant</a>
+                                                            <p>Eggplant</p>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -114,14 +108,14 @@
                                     <tr class="product-box-contain">
                                         <td class="product-detail">
                                             <div class="product border-0">
-                                                <a href="" class="product-image">
+                                                <div class="product-image">
                                                     <img src="{% static 'menucard/images/vegetable/product/3.png' %}"
                                                         class="img-fluid blur-up lazyload" alt="">
-                                                </a>
+                                                </div>
                                                 <div class="product-detail">
                                                     <ul>
                                                         <li class="name">
-                                                            <a href="">Onion</a>
+                                                            <p>Onion</p>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -193,7 +187,7 @@
                         <div class="button-group cart-button">
                             <ul>
                                 <li>
-                                    <a href="{% url 'menucard:ordersuccess' %}" class="btn btn-animation proceed-btn fw-bold">Process To Checkout</a>
+                                    <a href="{% url 'menucard:ordersuccess' %}" class="btn btn-animation proceed-btn fw-bold">Send List</a>
                                 </li>
                             </ul>
                         </div>

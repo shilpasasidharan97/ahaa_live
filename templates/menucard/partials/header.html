@@ -1,6 +1,6 @@
 {% load static %}
 <!-- Header Start -->
-<header class="pb-md-4 pb-0">
+<header class="pb-md-4 pb-3">
     <div class="header-top">
         <div class="container-fluid-lg">
             <div class="row">
@@ -47,11 +47,11 @@
                         <button class="navbar-toggler d-xl-none d-inline navbar-menu-button" type="button"
                             data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
                             <span class="navbar-toggler-icon">
-                                <i class="fa-solid fa-bars"></i>
+                                <!-- <i class="fa-solid fa-bars"></i> -->
                             </span>
                         </button>
-                        <a href="" class="web-logo nav-logo">
-                            <img src="{% static 'menucard/images/logo/aaha.png' %}" class="img-fluid blur-up lazyload" alt="">
+                        <a href="{% url 'menucard:home' %}" class="web-logo nav-logo">
+                            <img src="{% static 'menucard/images/logo/Untitled-2 [Recovered].svg' %}" class="img-fluid blur-up lazyload" alt="">
                         </a>
 
                         <div class="middle-box">
@@ -80,7 +80,7 @@
                                     </div>
                                 </li>
                                 <li class="right-side">
-                                    <a href="contact-us.html" class="delivery-login-box">
+                                    <a href="" class="delivery-login-box">
                                         <div class="delivery-icon">
                                             <i data-feather="phone-call"></i>
                                         </div>
@@ -182,7 +182,7 @@
                                 <li class="onhover-category-list">
                                     <a href="javascript:void(0)" class="category-name">
                                         <img src="{% static 'menucard/svg/1/vegetable.svg' %}" alt="">
-                                        <h6>Vegetables & Fruit</h6>
+                                        <h6>Salads</h6>
                                         <i class="fa-solid fa-angle-right"></i>
                                     </a>
 
@@ -193,10 +193,10 @@
                                             </div>
                                             <ul>
                                                 <li>
-                                                    <a href="javascript:void(0)">Potato & Tomato</a>
+                                                    <a href="javascript:void(0)">Caesar Salad Supreme.</a>
                                                 </li>
                                                 <li>
-                                                    <a href="javascript:void(0)">Cucumber & Capsicum</a>
+                                                    <a href="javascript:void(0)">Strawberry Spinach Salad.</a>
                                                 </li>
                                                 <li>
                                                     <a href="javascript:void(0)">Leafy Vegetables</a>
@@ -570,7 +570,7 @@
                         </div>
                     </div>
 
-                    <div class="header-nav-middle">
+                    <!-- <div class="header-nav-middle">
                         <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
                             <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
                                 <div class="offcanvas-header navbar-shadow">
@@ -580,7 +580,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

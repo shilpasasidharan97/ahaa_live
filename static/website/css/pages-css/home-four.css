@@ -2,7 +2,7 @@
 Main Banner Area CSS
 =================================================*/
 .main-banner {
-  background: linear-gradient(42.99deg, #3F75FF 10.19%, #44A6FF 50.48%, #4ADEFF 94.28%);
+  background: linear-gradient(42.99deg, #388ccca8 10.19%, #2b82c991 50.48%, #69a7d8ad 94.28%);
   padding-top: 160px;
   position: relative;
   z-index: 1;
@@ -244,7 +244,7 @@ Software Integrations Area CSS
   z-index: -1;
   content: '';
   position: absolute;
-  background: linear-gradient(279.99deg, #9F5FF1 -1.19%, #FF54B0 50.99%, #FF9F5A 100%);
+  background: linear-gradient(279.99deg, #2677c4 -1.19%, #4b95ce 50.99%, #b6def3 100%) !important;
   -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
           transform: matrix(-1, 0, 0, 1, 0, 0);
 }
@@ -293,7 +293,7 @@ Feedback Area CSS
   position: absolute;
   -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
           transform: matrix(-1, 0, 0, 1, 0, 0);
-  background: linear-gradient(279.99deg, #9F5FF1 -1.19%, #FF54B0 50.99%, #FF9F5A 100%);
+  background: linear-gradient(279.99deg, #2677c4 -1.19%, #6cafde 50.99%, #a8d3ed 100%);
 }
 
 .feedback-slides-two.owl-theme .single-feedback-box {
@@ -343,7 +343,7 @@ Feedback Area CSS
   transition: var(--transition);
   -webkit-transform: matrix(-1, 0, 0, 1, 0, 0);
           transform: matrix(-1, 0, 0, 1, 0, 0);
-  background: linear-gradient(279.99deg, #9F5FF1 -1.19%, #FF54B0 50.99%, #FF9F5A 100%);
+  background: linear-gradient(279.99deg, #0a090a -1.19%, #060606 50.99%, #040404 100%);
 }
 
 .feedback-slides-two.owl-theme .owl-dots .owl-dot:hover span::before, .feedback-slides-two.owl-theme .owl-dots .owl-dot.active span::before {

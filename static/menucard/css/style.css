@@ -7185,7 +7185,7 @@ footer .sub-footer ul li {
     margin-left: 13px
 }
 
-header.active .sticky-header {
+/* header.active .sticky-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -7196,7 +7196,7 @@ header.active .sticky-header {
     box-shadow: 0 8px 10px rgba(34, 34, 34, 0.05);
     z-index: 9;
     padding: calc(15px + (24 - 15) * ((100vw - 320px) / (1920 - 320))) 0
-}
+} */
 
 header.active .sticky-header-2 {
     background-color: var(--theme-color);
@@ -7645,7 +7645,8 @@ header .top-nav .navbar-top .web-logo img {
 
 @media (max-width: 767px) {
     header .top-nav .navbar-top .web-logo img {
-        margin: 0 auto
+        margin: 0 auto;
+        height: 50px !important;
     }
 }
 
