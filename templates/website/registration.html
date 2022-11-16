@@ -32,7 +32,8 @@
     <div class="contact-area ptb-100">
         <div class="container">
             <div class="contact-form">
-                <form id="contactForm">
+                <form id="" method="POST">
+                    {% csrf_token %}
                     <div class="row">
 
                         <div class="col-lg-6 col-md-6 col-sm-6">
@@ -78,6 +79,22 @@
                             <div class="form-group">
                                 <input type="text" name="state" class="form-control" id="state"
                                     placeholder="Enter your state" required data-error="Please enter your state">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <input type="text" name="password" class="form-control" id="password"
+                                    placeholder="Enter your password" required data-error="Please enter your password">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <input type="text" name="c_password" class="form-control" id="c_password"
+                                    placeholder="Repeat your password" required data-error="Please enter correct password">
                                 <div class="help-block with-errors"></div>
                             </div>
                         </div>

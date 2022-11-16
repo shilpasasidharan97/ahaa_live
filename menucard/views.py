@@ -1,9 +1,16 @@
 from django.shortcuts import render
 
+from website.models import Restaurant, Category
+
 # Create your views here.
 
-def home(request):
-    return render(request, 'menucard/home.html')
+def home(request,id):
+    resto = Restaurant.objects.get(id=id)
+    categories = Category.objects.filter(restaurent=resto)
+    context = {
+        "categories":categories,
+    }
+    return render(request, 'menucard/home.html',context)
 
 
 def products(request):
