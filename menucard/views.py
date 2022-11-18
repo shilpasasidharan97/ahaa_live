@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from website.models import Restaurant, Category
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -15,6 +16,8 @@ def home(request,id):
 
 def products(request):
     return render(request, 'menucard/product.html')
+
+
 
 
 def cart(request):

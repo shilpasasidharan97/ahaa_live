@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from website.models import RestaurantQrcode, Restaurant
+from website.models import Category, RestaurantQrcode, Restaurant
+from django.http import JsonResponse
+
 
 # Create your views here.
 
@@ -28,10 +30,35 @@ def category(request):
 
 @login_required
 def product(request):
+    if request.method == 'POST':
+        category_name = request.POST['cat-name']
+        category_image = request.POST['cat-image']
+        new_category = Category(name=category_name, icon=category_image, restaurent=request.user.restaurant)
+        new_category.save()
+        print(new_category, '%'*19)
+    else:   
+        print('%'*1)
+        pass
     context = {
         "is_product":True
     }
     return render(request, 'web/product.html', context)
+
+
+def categoryNameValidation(request):
+    category = request.GET['cat_name']
+    print(category)
+    if Category.objects.filter(name=category).exists():
+        data = {
+            'msg':'Category alerdy exists'
+        }
+        return JsonResponse(data)
+    else:
+        data ={
+            'sss':'sss'
+        }
+        return JsonResponse(data)
+
 
 
 @login_required
