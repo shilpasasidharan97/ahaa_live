@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from website.models import Restaurant, Category
+from website.models import Product, Restaurant, Category, SubCategory
 from django.http import JsonResponse
 
 # Create your views here.
@@ -14,8 +14,16 @@ def home(request,id):
     return render(request, 'menucard/home.html',context)
 
 
-def products(request):
-    return render(request, 'menucard/product.html')
+def products(request,id):
+    subcategories = SubCategory.objects.filter(is_active=True,Category=id)
+    print(subcategories,'@'*10)
+    products = Product.objects.filter(subcategory__Category__id=id)
+    print(products)
+    context = {
+        "subcategories":subcategories,
+        "products":products,
+    }
+    return render(request, 'menucard/product.html',context)
 
 
 

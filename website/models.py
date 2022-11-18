@@ -6,6 +6,11 @@ from PIL import Image, ImageDraw
 from io import BytesIO
 from django.core.files import File
 import random
+from django.template.defaultfilters import slugify
+# from unidecode import unidecode
+from django.utils.text import slugify
+
+
 
 class UserManager(BaseUserManager):
     def create_user(self,phone,password=None,**extra_fields):
@@ -93,6 +98,7 @@ class RestaurantQrcode(models.Model):
 class SubCategory(models.Model):
     Category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=30,null=True)
+    is_active = models.BooleanField(default=True, blank=True)
 
     def __str__(self):
         return str(self.name)
@@ -105,6 +111,7 @@ class Product(models.Model):
     ingrediants = models.CharField(max_length=500, null=True, blank = True)
     description = models.CharField(max_length=1000, null=True, blank=True)
     image = models.FileField(upload_to='products', null=True, blank=True)
+    slug = models.SlugField(unique=True,  null=True,  blank=True)
 
     def __str__(self):
         return str(self.name)
