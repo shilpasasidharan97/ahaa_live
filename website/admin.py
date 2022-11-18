@@ -19,6 +19,18 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields=('name',)
 admin.site.register(Category,CategoryAdmin)
 
+
+class SubCategoryAdmin(admin.ModelAdmin):
+    list_display = ('Category','name',)
+    search_fields=('name',)
+admin.site.register(SubCategory,SubCategoryAdmin)
+
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('subcategory','name',)
+    search_fields=('name',)
+admin.site.register(Product,ProductAdmin)
+
 # class RestaurantQrcodeAdmin(admin.ModelAdmin):
 #     list_display = ('restaurent','image',)
 #     search_fields=('restaurent',)

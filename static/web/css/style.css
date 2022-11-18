@@ -1667,7 +1667,7 @@ button.bg-danger:hover {
 }
 .images {
 	width: 100%;
-	height: 10.5rem;
+	/* height: 10.5rem; */
 }
 .avatar-sm .border {
 	border-width: 3px !important;
@@ -3346,7 +3346,7 @@ html.menu-opened body {
 }
 .action-icon {
     color: #333;
-    font-size: 18px;
+    font-size: 13px;
     display: inline-block;
 }
 .table-inbox input[type="radio"],
@@ -6765,7 +6765,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 	color: #1B2559;
 }
 .invoices-grid-card .card-header {
-	padding: 20px;
+	padding: 15px 15px 8px 15px;
 	border: 0;
 }
 .invoices-grid-card .card-header .dropdown-action {
@@ -6810,7 +6810,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
     color: #7638FF;
 }
 .invoices-grid-card .card-footer {
-	padding: 20px;
+	padding: 10px;
 	border: 0;
 }
 .invoices-grid-card .card-footer .badge {
