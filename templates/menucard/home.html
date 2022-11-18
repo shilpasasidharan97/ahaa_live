@@ -1,0 +1,90 @@
+{% extends 'menucard/partials/base.html' %}
+{% block content %}
+{% load static %}
+
+<!-- Home Section Start -->
+<section class="home-section pt-2">
+    <div class="container-fluid-lg">
+        <div class="row g-4">
+            <div class="col-xl-12 col-lg-12 col-12">
+                <a href="">
+                    <div class="home-contain h-100">
+                        <img src="{% static 'menucard/images/banner/Banner.jpg' %}" class="" alt="" width="100%">
+                        <!-- <img src="{% static 'menucard/images/veg-2/banner/1.jpg' %}" class="bg-img blur-up lazyload" alt=""> -->
+                        <!-- <div class="home-detail p-center-left w-75 position-relative mend-auto">
+                            <div>
+                                <h6>Exclusive offer <span>30% Off</span></h6>
+                                <h1 class="w-75 text-uppercase poster-1">Stay home & delivered your <span
+                                        class="daily">Daily Needs</span></h1>
+                                <p class="w-58 d-none d-sm-block">Many organizations have issued official
+                                    statements encouraging people to reduce their intake of sugary drinks.</p>
+                                <button class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i
+                                        class="fa-solid fa-right-long ms-2 icon"></i></button>
+                            </div>
+                        </div> -->
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Category Section Start -->
+<section class="mb-1 ">
+    <div class="container-fluid-lg mb-5">
+        <div class="title">
+            <h2>Browse by Categories</h2>
+            <span class="title-leaf">
+                <svg class="icon-width">
+                    <use xlink:href="{% static 'menucard/svg/leaf.svg#leaf' %}"></use>
+                </svg>
+            </span>
+            <p>Top Categories Of The Week</p>
+        </div>
+        <div class="row mt-1">
+            {% for cat in categories %}
+            <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
+                <div>
+                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp">
+                        <div>
+                            <img src="{{cat.icon.url}}" class="blur-up lazyload" alt="">
+                            <h5>{{cat.name}}</h5>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer Banner -->
+<section class="home-section pt-2 pb-5 mb-5" >
+    <div class="container-fluid-lg">
+        <div class="row g-4">
+            <div class="col-xl-12 col-lg-12 col-12">
+                <a href="">
+                    <div class="home-contain h-100">
+                        <img src="{% static 'menucard/images/cake/banner/8.jpg' %}" class="bg-img blur-up lazyload" alt="">
+                        <div class="home-detail p-center-left w-75 position-relative mend-auto">
+                            <div>
+                                <h6>Exclusive offer <span>30% Off</span></h6>
+                                <h1 class="w-75 text-uppercase poster-1">Stay home & delivered your <span
+                                        class="daily">Daily Needs</span></h1>
+                                <p class="w-58 d-none d-sm-block">Many organizations have issued official
+                                    statements encouraging people to reduce their intake of sugary drinks.</p>
+                                <button class="btn btn-animation mt-xxl-4 mt-2 home-button mend-auto">Shop Now <i
+                                        class="fa-solid fa-right-long ms-2 icon"></i></button>
+                            </div>
+                        </div> -->
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
