@@ -87,3 +87,24 @@ class RestaurantQrcode(models.Model):
 
     def __str__(self):
         return str(self.restaurant)
+
+
+
+class SubCategory(models.Model):
+    Category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
+    name = models.CharField(max_length=30,null=True)
+
+    def __str__(self):
+        return str(self.name)
+
+    
+class Product(models.Model):
+    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE,null=True)
+    name = models.CharField(max_length=30,null=True)
+    price = models.FloatField(null=True, blank=True)
+    ingrediants = models.CharField(max_length=500, null=True, blank = True)
+    description = models.CharField(max_length=1000, null=True, blank=True)
+    image = models.FileField(upload_to='products', null=True, blank=True)
+
+    def __str__(self):
+        return str(self.name)
