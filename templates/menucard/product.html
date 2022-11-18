@@ -29,12 +29,9 @@
             <div class="col-md-12">
                 <div class="filters">
                     <ul class="">
-                        <li data-filter=".a1">Tea</li>
-                        <li data-filter=".a2">Coffee</li>
-                        <li data-filter=".a3">Milk</li>
-                        <li data-filter=".a5">Boost</li>
-                        <li data-filter=".a4">Hot chocolate</li>
-                        <li data-filter=".a6">Badam milk</li>
+                        {% for sub in subcategories %}
+                        <li data-filter=".{{sub.name|slugify}}">{{sub.name|capfirst}}</li>
+                        {% endfor %}
                         <li class="is-checked" data-filter="*">All</li>
                     </ul>
                 </div>
@@ -47,27 +44,27 @@
                 }'">
 
                 <div class="row g-sm-4 g-3 product-list-section">
-                    <div class="col-lg-2 col-md-3 co-sm-6 col-6  grid-item a1" data-category="websites">
+                    {% for product in products %}
+                    <div class="col-lg-2 col-md-3 co-sm-6 col-6  grid-item wrapper {{product.subcategory.name|slugify}" data-category="websites">
                         <div class="product-box-3 h-100 wow fadeInUp">
                             <div class="product-header">
                                 <div class="product-image">
                                     <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <img src="{% static 'menucard/images/cake/product/2.png' %}"
+                                        <img src="{{product.image.url}}"
                                             class="img-fluid blur-up lazyload" alt="">
                                     </a>
                                 </div>
                             </div>
                             <div class="product-footer">
                                 <div class="product-detail">
-                                    <h5 class="name">Vegetable</h5>
+                                    <h5 class="name">{{product.name|capfirst}}</h5>
                                     <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <span class="span-name">Fresh Bread and Pastry Flour 200 g</span>
+                                        <span class="span-name"></span>
                                     </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Cheesy feet cheesy grin brie.
-                                        Mascarpone cheese and wine hard cheese the big cheese everyone loves smelly
-                                        cheese macaroni cheese croque monsieur.</p>
-                                    <h6 class="unit">250 ml</h6>
-                                    <h5 class="price"><span class="theme-color">₹08.02</span> <del>₹15.15</del>
+                                    <p class="text-content mt-1 mb-2 product-content">
+                                        {{product.ingrediants}}
+                                    </p>
+                                    <h5 class="price"><span class="theme-color">{{product.price}}</span> <del>₹15.15</del>
                                     </h5>
                                     <div class="add-to-cart-box bg-white">
                                         <button class="btn btn-add-cart addcart-button">Add
@@ -91,187 +88,8 @@
                             </div>
                         </div>
                     </div>
+                    {% endfor %}
 
-                    <div class="col-lg-2 col-md-3 co-sm-6 col-6 grid-item a2 a1" data-category="websites">
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <img src="{% static 'menucard/images/cake/product/3.png' %}"
-                                            class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="name">Vegetable</span>
-                                    <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <h5 class="span-name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Feta taleggio croque monsieur
-                                        swiss manchego cheesecake dolcelatte jarlsberg. Hard cheese danish fontina
-                                        boursin melted cheese fondue.</p>
-                                    <h6 class="unit">350 G</h6>
-                                    <h5 class="price"><span class="theme-color">₹04.33</span> <del>₹10.36</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <i class="fa-solid fa-plus bg-gray"></i></button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group bg-white">
-                                                <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                    data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                    name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                    data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 co-sm-6 col-6 grid-item a2 a1" data-category="websites">
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <img src="{% static 'menucard/images/cake/product/3.png' %}"
-                                            class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="name">Vegetable</span>
-                                    <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <h5 class="span-name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Feta taleggio croque monsieur
-                                        swiss manchego cheesecake dolcelatte jarlsberg. Hard cheese danish fontina
-                                        boursin melted cheese fondue.</p>
-                                    <h6 class="unit">350 G</h6>
-                                    <h5 class="price"><span class="theme-color">₹04.33</span> <del>₹10.36</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <i class="fa-solid fa-plus bg-gray"></i></button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group bg-white">
-                                                <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                    data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                    name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                    data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 co-sm-6 col-6 grid-item a2 a3" data-category="websites">
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <img src="{% static 'menucard/images/cake/product/3.png' %}"
-                                            class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="name">Vegetable</span>
-                                    <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <h5 class="span-name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Feta taleggio croque monsieur
-                                        swiss manchego cheesecake dolcelatte jarlsberg. Hard cheese danish fontina
-                                        boursin melted cheese fondue.</p>
-                                    <h6 class="unit">350 G</h6>
-                                    <h5 class="price"><span class="theme-color">₹04.33</span> <del>₹10.36</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <i class="fa-solid fa-plus bg-gray"></i></button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group bg-white">
-                                                <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                    data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                    name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                    data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 co-sm-6 col-6 grid-item a4" data-category="websites">
-                        <div class="product-box-3 h-100 wow fadeInUp" data-wow-delay="0.05s">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <img src="{% static 'menucard/images/cake/product/3.png' %}"
-                                            class="img-fluid blur-up lazyload" alt="">
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="product-footer">
-                                <div class="product-detail">
-                                    <span class="name">Vegetable</span>
-                                    <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <h5 class="span-name">Peanut Butter Bite Premium Butter Cookies 600 g</h5>
-                                    </a>
-                                    <p class="text-content mt-1 mb-2 product-content">Feta taleggio croque monsieur
-                                        swiss manchego cheesecake dolcelatte jarlsberg. Hard cheese danish fontina
-                                        boursin melted cheese fondue.</p>
-                                    <h6 class="unit">350 G</h6>
-                                    <h5 class="price"><span class="theme-color">₹04.33</span> <del>₹10.36</del>
-                                    </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <i class="fa-solid fa-plus bg-gray"></i></button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group bg-white">
-                                                <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                    data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                    name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                    data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

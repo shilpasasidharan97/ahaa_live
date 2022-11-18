@@ -45,7 +45,7 @@
             {% for cat in categories %}
             <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
                 <div>
-                    <a href="{% url 'menucard:product' %}" class="category-box wow fadeInUp">
+                    <a href="{% url 'menucard:product' cat.id %}" class="category-box wow fadeInUp">
                         <div>
                             <img src="{{cat.icon.url}}" class="blur-up lazyload" alt="">
                             <h5>{{cat.name}}</h5>
