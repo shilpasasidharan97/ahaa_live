@@ -11,7 +11,6 @@ from django.http import JsonResponse
 @login_required
 def home(request):
     user = request.user
-    print(user,'%'*20)
     qr_code = RestaurantQrcode.objects.get(restaurant=user.restaurant)
     context = {
         "is_home":True,
@@ -23,7 +22,6 @@ def home(request):
 @login_required
 def category(request):
     categories = Category.objects.filter(restaurent=request.user.restaurant)
-    print(categories)
     if request.method == 'POST':
         category_name = request.POST['cat-name']
         category_image = request.POST['cat-image']
@@ -52,6 +50,35 @@ def categoryNameValidation(request):
         return JsonResponse(data)
 
 
+def getCategory(request,id):
+    print(id,"#"*20)
+    category = Category.objects.get(id=id)
+    print(category)
+    data = {
+        'name':category.name,
+        'image':category.icon.url,
+    }
+    print(data)
+    return JsonResponse(data)
+
+
+def editCategory(request):
+    cname = request.POST['name']
+    image = request.FILES.get("photo", "Photo Not Uploded")
+    id=request.POST['fid']
+
+    cat = Category.objects.get(id=id)
+    cat.name = cname
+    cat.save()
+    if image != "Photo Not Uploded":
+        cat.icon=image
+        cat.save()
+    else:
+        pass
+    return JsonResponse({'data':'sss'})
+
+
+
 def subCategory(request,id):
     subcategories = SubCategory.objects.filter(Category__restaurent=request.user.restaurant, Category=id)
     category = Category.objects.get(id=id)
@@ -66,10 +93,20 @@ def subCategory(request,id):
     return render(request, 'web/subcategory.html', context)
 
 
+def getSubcategory(request,id):
+    subcategory =SubCategory.objects.get(id=id)
+    print(subcategory)
+    data = {
+        'name':subcategory.name
+    }
+    print(data)
+    return JsonResponse(data)
+
+
 @login_required
 def product(request,id):
     products = Product.objects.filter(subcategory__Category__restaurent=request.user.restaurant,subcategory=id)
-    print(products)
+    # print(products)
     subCategory = SubCategory.objects.get(id=id)
     if request.method == 'POST':
         product_name = request.POST['p_name']
@@ -80,7 +117,8 @@ def product(request,id):
         new_product = Product(name=product_name, price=product_price,ingrediants=product_ingrediants, description=product_description, image=product_image,subcategory=subCategory)
         new_product.save()
     context = {
-        "is_product":True
+        "is_product":True,
+        "products":products,
     }
     return render(request, 'web/product.html', context)
 
