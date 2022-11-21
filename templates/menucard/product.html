@@ -56,30 +56,15 @@
                                 </div>
                             </div>
                             <div class="product-footer">
-                                <div class="product-detail">
+                                <div class="product-detail mt-3">
                                     <h5 class="name">{{product.name}}</h5>
                                     <a data-bs-toggle="modal" data-bs-target="#view">
                                         <span class="span-name">{{product.ingrediants}}</span>
                                     </a>
                                     <h5 class="price"><span class="theme-color">₹{{product.price}}</span> <del>₹15.15</del>
                                     </h5>
-                                    <div class="add-to-cart-box bg-white">
-                                        <button class="btn btn-add-cart addcart-button">Add
-                                            <i class="fa-solid fa-plus bg-gray"></i></button>
-                                        <div class="cart_qty qty-box">
-                                            <div class="input-group bg-white">
-                                                <button type="button" class="qty-left-minus bg-gray" data-type="minus"
-                                                    data-field="">
-                                                    <i class="fa fa-minus" aria-hidden="true"></i>
-                                                </button>
-                                                <input class="form-control input-number qty-input" type="text"
-                                                    name="quantity" value="0">
-                                                <button type="button" class="qty-right-plus bg-gray" data-type="plus"
-                                                    data-field="">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                </button>
-                                            </div>
-                                        </div>
+                                    <div class="add-to-cart-box text-center bg-white">
+                                        <a href="{% url 'menucard:addtocart' product.id %}" class="btn btn-sm text-center mt-3">Add to cart</a>
                                     </div>
                                 </div>
                             </div>

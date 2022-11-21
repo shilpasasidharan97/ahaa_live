@@ -127,7 +127,8 @@ class Cart(models.Model):
 class CartItems(models.Model):
     cart = models.ForeignKey(Cart,on_delete=models.CASCADE,null=True)
     product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
-    quantity = models.IntegerField(default=0,null=True)
+    quantity = models.IntegerField(default=1,null=True)
+    total = models.FloatField(null=True,blank=True)
 
     def __str__(self):
         return str(self.cart)
