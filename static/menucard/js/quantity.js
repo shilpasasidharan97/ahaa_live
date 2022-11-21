@@ -2,7 +2,7 @@
      Quantity js
 ==========================**/
  $('.qty-right-plus').click(function () {
-     if ($(this).prev().val() < 9) {
+     if ($(this).prev().val() < 250) {
          $(this).prev().val(+$(this).prev().val() + 1);
      }
  });

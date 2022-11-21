@@ -115,3 +115,19 @@ class Product(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+
+class Cart(models.Model):
+    cart_id = models.CharField(max_length=200,null=True)
+
+    def __str__(self):
+        return str(self.cart_id)
+
+
+class CartItems(models.Model):
+    cart = models.ForeignKey(Cart,on_delete=models.CASCADE,null=True)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
+    quantity = models.IntegerField(default=0,null=True)
+
+    def __str__(self):
+        return str(self.cart)
