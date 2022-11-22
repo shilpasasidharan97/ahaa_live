@@ -98,17 +98,19 @@
                             <h3>Cart Total</h3>
                         </div>
 
-                        <form  method="POST">
-                            {% csrf_token %}
+                        
                             <div class="summery-contain">
+                                <form  method="POST">
+                                    {% csrf_token %}
                                 <div class="coupon-cart">
                                     <h6 class="text-content mb-2"> Table Number</h6>
                                     <div class="mb-3 coupon-box input-group">
                                         <input type="number" class="form-control" id="tablenumber" name="tablenumber"
                                             placeholder="Enter Your Table Number Here...">
-                                        <button class="btn-apply">Apply</button>
+                                        <button type="submit" class="btn-apply">Apply</button>
                                     </div>
                                 </div>
+                            </form>
                                 <ul class="summery-total">
                                     <li>
                                         <h4 class="list-total border-top-0">Total</h4>
@@ -131,14 +133,16 @@
     
                             <div class="button-group cart-button">
                                 <ul>
+                                    <form action="" method="POST"></form>
                                     <li>
-                                        <button type="submit" class="btn btn-animation proceed-btn fw-bold">Send List</button>
+                                        <a href="{{link}}" class="btn btn-animation proceed-btn fw-bold">Send List</a>
 
                                         <!-- <a href="{% url 'menucard:ordersuccess' %}" class="btn btn-animation proceed-btn fw-bold">Send List</a> -->
                                     </li>
+                                </form>
                                 </ul>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
