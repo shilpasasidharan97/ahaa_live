@@ -9,6 +9,7 @@ urlpatterns = [
     path('addtocart/<int:pid>',views.AddToCart, name='addtocart'),
     path('addquantity/', views.addQuantity, name='addquantity'),
     path('lessquantity/', views.lessQuantity, name='lessquantity'),
+    path('tablenumber/', views.tableNumber, name='tablenumber'),
     path('cart',views.cart, name='cart'),
     path('ordersuccess',views.orderSuccess, name='ordersuccess'),
 ]

@@ -12,9 +12,15 @@ from django.http import JsonResponse
 def home(request):
     user = request.user
     qr_code = RestaurantQrcode.objects.get(restaurant=user.restaurant)
+    category_count = Category.objects.filter(restaurent=user.restaurant).count()
+    product_count = Product.objects.filter(subcategory__Category__restaurent=user.restaurant).count()
+    all_product = Product.objects.filter(subcategory__Category__restaurent=user.restaurant)[:5]
     context = {
         "is_home":True,
         "qr_code":qr_code,
+        "category_count":category_count,
+        "product_count":product_count,
+        "all_product":all_product,
     }
     return render(request, 'web/home.html', context)
 
@@ -119,6 +125,7 @@ def product(request,id):
     context = {
         "is_product":True,
         "products":products,
+        "id":subCategory.Category.id,
     }
     return render(request, 'web/product.html', context)
 

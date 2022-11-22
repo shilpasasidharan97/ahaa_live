@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from website.models import Cart, CartItems, Product, Restaurant, Category, SubCategory
 from django.http import JsonResponse
 from django.db.models import Sum
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -90,49 +91,56 @@ def lessQuantity(request):
     }
     return JsonResponse(data)
 
+@csrf_exempt
+def tableNumber(request):
+    table_name = request.POST['tablenumber']
+    messagestring = ''
+    grandtotal=0
+    cart_obj = Cart.objects.get(cart_id=_cart_id(request))
+    cart_items = CartItems.objects.filter(cart=cart_obj)
+    sub_total = CartItems.objects.filter(cart__cart_id=_cart_id(request)).aggregate(Sum('total'))
+    print(cart_items,"|%"*20)
+    data = []
+    try:
+        messagestring = 'https://wa.me/7510661741?text=Table Name :'+table_name+\
+                "%0a------Order Details------"
+        print(messagestring)
+        for i in cart_items:
+            data1 = {
+                # 'id':i['id'],
+                'name':i.product.name,
+                'quantity':i.quantity,
+                'price':i.product.price,
+                'sub_total': i.total,           
+            }
+            data.append(data1)
+            # grandtotal+=int(cart['quantity']) * int(cart['product_price'])   
+        for i in data:
+            messagestring +="%0aProduct-Name:"+str(i['name'])+"%0aQuantity:"+str(i['quantity'])+"%0aUnit-Price:"+str(i['price'])+"%0aTotal :"+str(i['sub_total'])+"%0a-----------------------------"
+            messagestring+="%0a-----------------------------"
+        messagestring+="%0a-----------------------------\
+        Grand Total :"+str(sub_total)+"%0a-----------------------------"
+        # data = {
+        #     "link":messagestring,
+        # }
+        # return JsonResponse(data)
+    except Exception as e:
+        pass
+    data = {
+        "link":messagestring,
+    }
+    return JsonResponse(data)
+
+
 def cart(request):
     # cart = Cart.objects.filter(cart_id=_cart_id(request))
     cart_items = CartItems.objects.filter(cart__cart_id=_cart_id(request))
     sub_total = CartItems.objects.filter(cart__cart_id=_cart_id(request)).aggregate(Sum('total'))
-    messagestring = ''
-    grandtotal=0
-    data = []
-    if request.method == 'POST':
-        print('post')
-        table_name = request.POST['tablenumber']
-        cart_obj = Cart.objects.get(cart_id=_cart_id(request))
-        cart_items = CartItems.objects.filter(cart=cart_obj)
-        sub_total = CartItems.objects.filter(cart__cart_id=_cart_id(request)).aggregate(Sum('total'))
-        print(cart_items,"|%"*20)
-        data = []
-        try:
-            messagestring = 'https://wa.me/7510661741?text=Table Name :'+table_name+\
-                    "%0a-----Order Details------"
-            print(messagestring)
-            for i in cart_items:
-                data1 = {
-                    # 'id':i['id'],
-                    'name':i.product.name,
-                    'quantity':i.quantity,
-                    'price':i.product.price,
-                    'sub_total': i.total,           
-                }
-                data.append(data1)
-                # grandtotal+=int(cart['quantity']) * int(cart['product_price'])   
-            for i in data:
-                messagestring +="%0aProduct-Id:"+str(i['name'])+"%0aName:"+str(i['quantity'])+"%0aQty:"+str(i['price'])+"%0aPrice:"+str(i['price'])+"%0aTotal :"+str(i['sub_total'])+"%0a-----------------------------"
-                messagestring+="%0a-------------------------------------------------------------"
-            messagestring+="%0a-----------------------------%0a\
-            Grand Total :"+str(sub_total)+"%0a--------------------------------"
-        except Exception as e:
-            pass
-
-
-
+    
     context = {
         'cartitems':cart_items,
         "sub_total":sub_total,
-        "link":messagestring
+        # "link":messagestring
     }
     return render(request, 'menucard/cart.html', context)
 

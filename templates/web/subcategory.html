@@ -3,15 +3,29 @@
 {% block content %}
 
 
-<div class="card invoices-tabs-card">
-    <div class="card-body card-body pt-0 pb-0">
-        <div class="invoices-main-tabs border-0 pb-0">
-            <div class="row align-items-center">
-                <div class="col-lg-12 col-md-12">
-                    <div class="invoices-settings-btn invoices-settings-btn-one">
-                        <a href="" class="btn" data-bs-toggle="modal" data-bs-target="#add_subcategory">
-                            <i data-feather="plus-circle"></i> New Subcategory
-                        </a>
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-6">
+            <h3 class="page-title">Category List</h3>
+            <ul class="breadcrumb">
+                <li class="{% url 'web:home' %}"><a href="">Dashboard / </a></li>
+                <li class=""><a href="{% url 'web:category' %}">&nbsp; Category / </a></li>
+                <li class="breadcrumb-item active">&nbsp; SubCategory</li>
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <div class="card invoices-tabs-card">
+                <div class="card-body card-body pt-0 pb-0">
+                    <div class="invoices-main-tabs border-0 pb-0">
+                        <div class="row align-items-center">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="invoices-settings-btn invoices-settings-btn-one">
+                                    <a href="" class="btn" data-bs-toggle="modal" data-bs-target="#add_subcategory">
+                                        <i class="fa fa-plus-circle"></i>&nbsp; New Subcategory
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -19,40 +33,43 @@
     </div>
 </div>
 
+
+
 <div class="row">
     {% for subcategory in subcategories %}
-        <div class="col-sm-6 col-lg-2 col-xl-2 col-2 d-flex">
-            <div class="card invoices-grid-card w-100">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <a href="" class="invoice-grid-link"></a>
-                    <div class="dropdown dropdown-action">
-                        <a href="#" class="action-icon dropdown-toggle sm" data-bs-toggle="dropdown"
-                            aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" href="" onclick="DataGets({{subcategory.id}})"  data-bs-toggle="modal" data-bs-target="#edit_subcategory"><i
-                                    class="far fa-edit me-2"></i>Edit</a>
-                            <a class="dropdown-item" href="javascript:void(0);"  data-bs-toggle="modal" data-bs-target="#delete_category"><i
-                                    class="far fa-trash-alt me-2"></i>Delete</a>
-                        </div>
+    <div class="col-sm-6 col-lg-2 col-xl-2 col-2 d-flex">
+        <div class="card invoices-grid-card w-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <a href="" class="invoice-grid-link"></a>
+                <div class="dropdown dropdown-action">
+                    <a href="#" class="action-icon dropdown-toggle sm" data-bs-toggle="dropdown"
+                        aria-expanded="false"><i class="fas fa-ellipsis-v"></i></a>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="" onclick="DataGets({{subcategory.id}})" data-bs-toggle="modal"
+                            data-bs-target="#edit_subcategory"><i class="far fa-edit me-2"></i>Edit</a>
+                        <a class="dropdown-item" href="javascript:void(0);" data-bs-toggle="modal"
+                            data-bs-target="#delete_category"><i class="far fa-trash-alt me-2"></i>Delete</a>
                     </div>
                 </div>
-                <div class="card-middle text-center">
-                    <h2 class="card-middle-avatar text-center">
-                        <a href="">
-                            <p>{{subcategory.name}}</p>
-                        </a>
-                    </h2>
-                </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <a href="{% url 'web:product' subcategory.id %}" type="button" class="btn btn-sm btn-block btn-outline-primary">Product</a>
+            </div>
+            <div class="card-middle text-center">
+                <h2 class="card-middle-avatar text-center">
+                    <a href="">
+                        <p>{{subcategory.name}}</p>
+                    </a>
+                </h2>
+            </div>
+            <div class="card-footer">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <a href="{% url 'web:product' subcategory.id %}" type="button"
+                            class="btn btn-sm btn-block btn-outline-primary">Product</a>
 
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     {% endfor %}
 </div>
 
@@ -73,7 +90,8 @@
                                     <div class="form-group row">
                                         <label class="col-form-label col-md-4">SubCategory Name</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" name="subcat-name" id="cat_name" onchange="catageoryName()">
+                                            <input type="text" class="form-control" name="subcat-name" id="cat_name"
+                                                onchange="catageoryName()">
                                             <span id="catogry"></span>
                                         </div>
                                     </div>
@@ -108,7 +126,8 @@
                                         <label class="col-form-label col-md-4">Product Name</label>
                                         <div class="col-md-8">
                                             <input type="text" id="fid" name="fid" hidden>
-                                            <input type="text" class="form-control" value="butter shake" id="scname" name="scname">
+                                            <input type="text" class="form-control" value="butter shake" id="scname"
+                                                name="scname">
                                         </div>
                                     </div>
                                     <div class="text-end mt-4">
@@ -153,10 +172,10 @@
 
 
 <script>
-        function DataGets(id) {
+    function DataGets(id) {
         alert(id)
         $.ajax({
-            url: "/web/getsubcategory/" +id,
+            url: "/web/getsubcategory/" + id,
             type: 'GET',
 
             success: function (responce) {
@@ -168,7 +187,7 @@
         })
 
     }
-    
+
 </script>
 
 

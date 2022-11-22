@@ -81,7 +81,7 @@ class RestaurantQrcode(models.Model):
 
     def save(self,*args,**kwargs):
       qrcode_img=qrcode.make(self.resto_url)
-      canvas=Image.new("RGB", (800,800),"white")
+      canvas=Image.new("RGB", (380,380),"white")
     #   draw=ImageDraw.Draw(canvas)
       canvas.paste(qrcode_img)
       buffer=BytesIO()
