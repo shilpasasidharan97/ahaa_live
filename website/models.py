@@ -130,5 +130,4 @@ class CartItems(models.Model):
     quantity = models.IntegerField(default=1,null=True)
     total = models.FloatField(null=True,blank=True)
 
-    def __str__(self):
-        return str(self.cart)
+

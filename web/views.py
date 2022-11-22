@@ -24,7 +24,7 @@ def category(request):
     categories = Category.objects.filter(restaurent=request.user.restaurant)
     if request.method == 'POST':
         category_name = request.POST['cat-name']
-        category_image = request.POST['cat-image']
+        category_image = request.FILES['cat-image']
         new_category = Category(name=category_name, icon=category_image, restaurent=request.user.restaurant)
         new_category.save()
     else:
@@ -69,7 +69,7 @@ def editCategory(request):
 
     cat = Category.objects.get(id=id)
     cat.name = cname
-    cat.save()
+    Category.objects.filter(id=id).update()
     if image != "Photo Not Uploded":
         cat.icon=image
         cat.save()
