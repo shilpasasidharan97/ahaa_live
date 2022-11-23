@@ -82,7 +82,7 @@
                                         <td class="save-remove">
                                             <h4 class="table-title text-content">Action</h4>
                                             <!-- <a class="save notifi-wishlist" href="javascript:void(0)">Save for later</a> -->
-                                            <a class="remove close_button" href="javascript:void(0)">Remove</a>
+                                            <a class="remove close_button" href="{% url 'menucard:deletecart' cartitem.id %}">Remove</a>
                                         </td>
                                     </tr>
                                     {% endfor %}

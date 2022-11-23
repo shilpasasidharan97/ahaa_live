@@ -9,5 +9,6 @@ urlpatterns = [
     path('',views.home, name='home'),
     path('resturant_list',views.resturantList, name='resturant_list'), 
     path('create_user',views.creatUsers, name='create_user'), 
-    path('banneradding',views.bannerPage, name='banneradding'), 
+    path('banneradding',views.bannerPage, name='banneradding'),
+    path('product-banner', views.productBanner, name='productbanner') 
 ]

@@ -89,7 +89,7 @@ def deleteCategory(request,id):
     return redirect("web:category")
 
 
-@auth_resturant
+
 def subCategory(request,id):
     subcategories = SubCategory.objects.filter(Category__restaurent=request.user.restaurant, Category=id)
     category = Category.objects.get(id=id)
@@ -120,8 +120,7 @@ def deleteSubCategory(request,id):
     return redirect("/web/subcategory/"+str(catagory.Category.id))
 
 
-@login_required
-@auth_resturant
+
 def product(request,id):
     products = Product.objects.filter(subcategory__Category__restaurent=request.user.restaurant,subcategory=id)
     # print(products)
