@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from website.models import Cart, CartItems, Product, Restaurant, Category, SubCategory
+from website.models import Cart, CartItems, FrontBanner, Product, Restaurant, Category, SubCategory
 from django.http import JsonResponse
 from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
@@ -10,8 +10,12 @@ from django.views.decorators.csrf import csrf_exempt
 def home(request,id):
     resto = Restaurant.objects.get(id=id)
     categories = Category.objects.filter(restaurent=resto)
+    # products =  Product.objects.filter(subcategory__Category__restaurent=resto)
+    print(products)
+    home_banner = FrontBanner.objects.all()[:2]
     context = {
         "categories":categories,
+        "products":products,
     }
     return render(request, 'menucard/home.html',context)
 
@@ -147,3 +151,8 @@ def cart(request):
 
 def orderSuccess(request):
     return render(request, 'menucard/order-success.html')
+
+
+def deleteCart(request,id):
+    CartItems.objects.get(id=id).delete()
+    return redirect('menucard:cart')

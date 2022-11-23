@@ -61,7 +61,8 @@
                                     <a data-bs-toggle="modal" data-bs-target="#view">
                                         <span class="span-name">{{product.ingrediants}}</span>
                                     </a>
-                                    <h5 class="price"><span class="theme-color">₹{{product.price}}</span> <del>₹15.15</del>
+                                    <h5 class="price"><span class="theme-color">₹{{product.price}}</span> 
+                                        <!-- <del>₹15.15</del> -->
                                     </h5>
                                     <div class="add-to-cart-box text-center bg-white">
                                         <a href="{% url 'menucard:addtocart' product.id %}" class="btn btn-sm text-center mt-3">Add to cart</a>

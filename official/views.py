@@ -68,20 +68,10 @@ def creatUsers(request):
 
 def bannerPage(request):
     if request.method == 'POST':
-        print('post')
-        if 'pbanner' in request.POST:
-            print('front-image')
-            front_image = request.FILES['front-image']
-            front_banner = FrontBanner(image=front_image)
-            front_banner.save()
-        elif 'fbanner' in request.POST:
-            print('product-image')
-            product_image = request.FILES['product-image']
-            product_banner = ProductPageBanner(image=product_image)
-            product_banner.save()
-    else:
-        print('else')
-        pass
+        print('front-image')
+        front_image = request.FILES['front-image']
+        front_banner = FrontBanner(image=front_image)
+        front_banner.save()
     all_front_banner = FrontBanner.objects.all()
     all_product_banner = ProductPageBanner.objects.all()
     context = {
@@ -89,6 +79,13 @@ def bannerPage(request):
         "all_product_banner":all_product_banner,
     }
     return render(request, 'official/banneradding.html',context)
+
+def productBanner(request):
+    if request.method == 'POST':
+        product_image = request.FILES['product-image']
+        product_banner = ProductPageBanner(image=product_image)
+        product_banner.save()
+    return redirect('official:banneradding')
 
 
 def logout_resto(request):

@@ -16,7 +16,7 @@
 
         <div class="profile-cover">
             <div class="profile-cover-wrap">
-                <img class="profile-cover-img" src="{% static 'web/img/profiles/avatar-02.jpg' %}"
+                <img class="profile-cover-img" src="{% static 'web/img/default.jpg' %}"
                     alt="Profile Cover">
 
                 <div class="cover-content">
@@ -33,23 +33,23 @@
         </div>
         <div class="text-center mb-5">
             <label class="avatar avatar-xxl profile-cover-avatar" for="avatar_upload">
-                <img class="avatar-img" src="{% static 'web/img/profiles/avatar-02.jpg' %}" alt="Profile Image">
+                <img class="avatar-img" src="{% static 'web/img/pro pic.png' %}" alt="Profile Image">
                 <input type="file" id="avatar_upload">
                 <span class="avatar-edit">
                     <i data-feather="edit-2" class="avatar-uploader-icon shadow-soft"></i>
                 </span>
             </label>
-            <h2>Hotel Name <i class="fas fa-certificate text-primary small" data-toggle="tooltip"
+            <h2>{{profile_data.restaurant_name}} <i class="fas fa-certificate text-primary small" data-toggle="tooltip"
                     data-placement="top" title="" data-original-title="Verified"></i></h2>
             <ul class="list-inline">
                 <li class="list-inline-item">
-                    <i class="far fa-building"></i> <span>District</span>
+                    <i class="far fa-building"></i> <span>{{profile_data.district}}</span>
                 </li>
                 <li class="list-inline-item">
-                    <i class="fas fa-map-marker-alt"></i> State
+                    <i class="fas fa-map-marker-alt"></i> {{profile_data.state}}
                 </li>
                 <li class="list-inline-item">
-                    <i class="fa fa-phone"></i> <span>8523697415</span>
+                    <i class="fa fa-phone"></i> <span>{{profile_data.phone}}</span>
                 </li>
             </ul>
         </div>
@@ -61,7 +61,7 @@
                     <div class="card-header">
                         <h5 class="card-title d-flex justify-content-between">
                             <span>Profile</span>
-                            <a class="btn btn-sm btn-white" href="settings.html">Edit</a>
+                            <!-- <a class="btn btn-sm btn-white" href="settings.html">Edit</a> -->
                         </h5>
                     </div>
                     <div class="card-body">
@@ -74,33 +74,29 @@
                             </li>
 
                             <li>
-                                name : Charles Hafner
+                                name : {{profile_data.restaurant_name}}
                             </li>
                             <li>
-                               place :  Hafner Pvt Ltd.
+                               place :  {{profile_data.district}}
                             </li>
                             <li>
-                                sate :  Hafner Pvt Ltd.
+                                sate :  {{profile_data.state}}
                              </li>
                             <li class="pt-2 pb-0">
                                 <small class="text-dark">Contacts</small><hr>
                             </li>
 
                             <li>
-                                email : <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                    data-cfemail="71121910031d14021910171f1403311409101c011d145f121e1c">[email&#160;protected]</a>
+                                email : <a href="">{{profile_data.email}}</a>
                             </li>
                             <li>
-                                phone : +1 (304) 499-13-66
+                                phone : {{profile_data.phone}}
                             </li>
                             <li class="pt-2 pb-0">
                                 <small class="text-dark">Address</small><hr>
                             </li>
                             <li>
-                                4663 Agriculture Lane,<br>
-                                Miami,<br>
-                                Florida - 33165,<br>
-                                United States.
+                                {{profile_data.address}}
                             </li>
                         </ul>
                     </div>

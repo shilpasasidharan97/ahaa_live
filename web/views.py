@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 # from aahalive.decorators import auth_resturant
-from website.models import Category, Product, RestaurantQrcode, Restaurant, SubCategory
+from website.models import Category, Product, RestaurantQrcode, Restaurant, SubCategory, User
 # from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
@@ -89,7 +89,7 @@ def deleteCategory(request,id):
     return redirect("web:category")
 
 
-@auth_resturant
+
 def subCategory(request,id):
     subcategories = SubCategory.objects.filter(Category__restaurent=request.user.restaurant, Category=id)
     category = Category.objects.get(id=id)
@@ -120,8 +120,7 @@ def deleteSubCategory(request,id):
     return redirect("/web/subcategory/"+str(catagory.Category.id))
 
 
-@login_required
-@auth_resturant
+
 def product(request,id):
     products = Product.objects.filter(subcategory__Category__restaurent=request.user.restaurant,subcategory=id)
     # print(products)
@@ -177,8 +176,11 @@ def productshow(request,id):
 
 
 def profile(request):
+    profile_data = Restaurant.objects.get(id=request.user.restaurant.id)
+    print(profile_data)
     context = {
-        "is_profile":True
+        "is_profile":True,
+        "profile_data":profile_data
     }
     return render(request, 'web/profile.html', context)
 
