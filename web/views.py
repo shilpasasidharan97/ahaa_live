@@ -1,15 +1,14 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from aahalive.decorators import auth_resturant
+from django.contrib.auth.decorators import login_required
 from website.models import Category, Product, RestaurantQrcode, Restaurant, SubCategory, User
-# from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
 
 
 # Create your views here.
 
-# @auth_resturant
+
 @login_required(login_url='/official/login-page')
 def home(request):
     user = request.user
@@ -27,7 +26,7 @@ def home(request):
     return render(request, 'web/home.html', context)
 
 
-# @auth_resturant
+
 @login_required(login_url='/official/login-page')
 def category(request):
     categories = Category.objects.filter(restaurent=request.user.restaurant)
@@ -94,7 +93,7 @@ def deleteCategory(request,id):
     return redirect("web:category")
 
 
-# @auth_resturant
+
 @login_required(login_url='/official/login-page')
 def subCategory(request,id):
     subcategories = SubCategory.objects.filter(Category__restaurent=request.user.restaurant, Category=id)
@@ -127,7 +126,7 @@ def deleteSubCategory(request,id):
 
 
 
-# @auth_resturant
+
 @login_required(login_url='/official/login-page')
 def product(request,id):
     products = Product.objects.filter(subcategory__Category__restaurent=request.user.restaurant,subcategory=id)
@@ -182,7 +181,7 @@ def productshow(request,id):
 
 
 
-# @auth_resturant
+
 @login_required(login_url='/official/login-page')
 def profile(request):
     profile_data = Restaurant.objects.get(id=request.user.restaurant.id)
@@ -194,23 +193,26 @@ def profile(request):
     return render(request, 'web/profile.html', context)
 
 
-# @auth_resturant
+
 @login_required(login_url='/official/login-page')
 def settings(request):
-    # resto_data = Restaurant.objects.get(id=request.user.restaurant.id)
-    # if request.method == 'POST':
-    #     cname = request.POST['name']
-    #     email = request.POST['email']
-    #     phone = request.POST['phone']
-    #     location = request.POST['location']
-    #     state = request.POST['state']
-    #     address = request.POST['address']
-    #     password = request.POST['password']
-    #     Restaurant.objects.filter(id=request.user.restaurant.id).update(restaurant_name=cname,email=email,phone=phone,district=location,state=state,address=address,password=password)
-    #     get_user_model().objects.filter(id=request.user.restaurant.id).update(email=email,phone=phone)
-        
+    resto_data = Restaurant.objects.get(id=request.user.restaurant.id)
+    if request.method == 'POST':
+        cname = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        location = request.POST['location']
+        state = request.POST['state']
+        address = request.POST['address']
+        password = request.POST['password']
+        Restaurant.objects.filter(id=request.user.restaurant.id).update(restaurant_name=cname,email=email,phone=phone,district=location,state=state,address=address,password=password)
+        # get_user_model().objects.filter(id=request.user.restaurant.id).update(email=email,phone=phone)
+        user = User.objects.get(restaurant=request.user.restaurant)
+        user.set_password(password)
+        user.save()
+        get_user_model().objects.filter(id=request.user.id).update(email=email,phone=phone)
     context = {
         "is_settings":True,
-        # "resto_data":resto_data,
+        "resto_data":resto_data,
     }
     return render(request, 'web/settings.html', context)

@@ -22,15 +22,15 @@
                             </div>
 
                             <ul class="category-list">
-                                <!-- {% for cate in categories %}
+                                 {% for cate in prd %}
                                 <li class="onhover-category-list">
-                                    <a href="javascript:void(0)" class="category-name">
-                                        <img src="{{cate.icon.url}}" alt="">
-                                        <h6>{{cate.name}}</h6>
+                                    <a href="" class="category-name">
+                                        <img src="{{cate.subcategory.Category.icon.url}}" alt="">
+                                        <h6>{{cate.subcategory.Category.name}}</h6>
                                         <i class="fa-solid fa-angle-right"></i>
-                                    </a> -->
+                                    </a> 
 
-                                    <!-- <div class="onhover-category-box">
+                                    <div class="onhover-category-box">
                                         <div class="list-1">
                                             <div class="category-title-box">
                                                 <h5>Organic Vegetables</h5>
@@ -89,9 +89,9 @@
                                             </ul>
                                         </div>
                                     </div> -->
-                                <!-- </li>
+                                </li>
                                 {% endfor %}
-                            </ul> -->
+                            </ul> 
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
 
 <!-- Slug Product -->
 <section class="">
-    <div class="container">
+    <div class="container-fluid-lg">
 
         <div class="row">
             <div class="col-md-12">
@@ -132,45 +132,45 @@
                     </ul>
                 </div>
             </div>
-        <!-- </div> -->
+        
 
 
-        <div class="col-lg-12">
-            <div class="rows grid data-isotope='{ " itemSelector": ".grid-item" , "masonry" : { "columnWidth" : 200 }
-                }'">
+            <div class="col-lg-12">
+                <div class="rows grid data-isotope='{ " itemSelector": ".grid-item" , "masonry" : { "columnWidth" : 200 }
+                    }'">
 
-                <div class="row g-sm-4 g-3 product-list-section mt-3">
-                    {% for product in products %}
-                    <div class="col-lg-2 col-md-3 co-sm-6 col-6  grid-item {{product.subcategory.name|slugify}}" data-category="{{product.subcategory.name|slugify}}">
-                        <div class="product-box-3 h-100 wow fadeInUp">
-                            <div class="product-header">
-                                <div class="product-image">
-                                    <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <img src="{{product.image.url}}"
-                                            class="img-fluid blur-up lazyload" alt="">
-                                    </a>
+                    <div class="row g-sm-4 g-3 product-list-section mt-3">
+                        {% for product in products %}
+                        <div class="col-lg-2 col-md-3 co-sm-6 col-6  grid-item {{product.subcategory.name|slugify}}" data-category="{{product.subcategory.name|slugify}}">
+                            <div class="product-box-3 h-100 wow fadeInUp">
+                                <div class="product-header">
+                                    <div class="product-image">
+                                        <a data-bs-toggle="modal" data-bs-target="#view">
+                                            <img src="{{product.image.url}}"
+                                                class="img-fluid blur-up lazyload" alt="">
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-footer">
-                                <div class="product-detail mt-3">
-                                    <h5 class="name">{{product.name}}</h5>
-                                    <a data-bs-toggle="modal" data-bs-target="#view">
-                                        <span class="span-name">{{product.ingrediants}}</span>
-                                    </a>
-                                    <h5 class="price"><span class="theme-color">₹{{product.price}}</span> 
-                                        <!-- <del>₹15.15</del> -->
-                                    </h5>
-                                    <div class="add-to-cart-box text-center bg-white">
-                                        <a href="{% url 'menucard:addtocart' product.id %}" class="btn btn-sm text-center mt-3">Add to cart</a>
+                                <div class="product-footer">
+                                    <div class="product-detail mt-3">
+                                        <h5 class="name">{{product.name}}</h5>
+                                        <a data-bs-toggle="modal" data-bs-target="#view">
+                                            <span class="span-name">{{product.ingrediants}}</span>
+                                        </a>
+                                        <h5 class="price"><span class="theme-color">₹{{product.price}}</span> 
+                                            <!-- <del>₹15.15</del> -->
+                                        </h5>
+                                        <div class="add-to-cart-box text-center bg-white">
+                                            <a href="{% url 'menucard:addtocart' product.id %}" class="btn btn-sm text-center mt-3">Add to cart</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
                 </div>
             </div>
-        </div>
 
     </div>
 </section>
