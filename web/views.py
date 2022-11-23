@@ -1,13 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+from aahalive.decorators import auth_resturant
 from website.models import Category, Product, RestaurantQrcode, Restaurant, SubCategory
+from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
 
 # Create your views here.
 
-
+@auth_resturant
 @login_required
 def home(request):
     user = request.user
@@ -24,7 +25,7 @@ def home(request):
     }
     return render(request, 'web/home.html', context)
 
-
+@auth_resturant
 @login_required
 def category(request):
     categories = Category.objects.filter(restaurent=request.user.restaurant)
@@ -57,21 +58,21 @@ def categoryNameValidation(request):
 
 
 def getCategory(request,id):
-    print(id,"#"*20)
     category = Category.objects.get(id=id)
-    print(category)
     data = {
         'name':category.name,
         'image':category.icon.url,
     }
-    print(data)
     return JsonResponse(data)
 
 
 def editCategory(request):
     cname = request.POST['name']
+    print(cname,'name'*10)
     image = request.FILES.get("photo", "Photo Not Uploded")
+    print(image,'image'*20)
     id=request.POST['fid']
+    print(id,'id'*20)
 
     cat = Category.objects.get(id=id)
     cat.name = cname
@@ -84,7 +85,7 @@ def editCategory(request):
     return JsonResponse({'data':'sss'})
 
 
-
+@auth_resturant
 def subCategory(request,id):
     subcategories = SubCategory.objects.filter(Category__restaurent=request.user.restaurant, Category=id)
     category = Category.objects.get(id=id)
@@ -110,6 +111,7 @@ def getSubcategory(request,id):
 
 
 @login_required
+@auth_resturant
 def product(request,id):
     products = Product.objects.filter(subcategory__Category__restaurent=request.user.restaurant,subcategory=id)
     # print(products)
@@ -132,9 +134,8 @@ def product(request,id):
 
 
 
-
-
 @login_required
+@auth_resturant
 def profile(request):
     context = {
         "is_profile":True
@@ -142,7 +143,8 @@ def profile(request):
     return render(request, 'web/profile.html', context)
 
 
-@login_required
+@login_required(login_url='/official/loginpage')
+@auth_resturant
 def settings(request):
     context = {
         "is_settings":True
