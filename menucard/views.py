@@ -18,7 +18,7 @@ def home(request,id):
 
 def products(request,id):
     subcategories = SubCategory.objects.filter(is_active=True,Category=id)
-    products = Product.objects.filter(subcategory__Category__id=id)
+    products = Product.objects.filter(subcategory__Category__id=id,is_available=True)
     context = {
         "subcategories":subcategories,
         "products":products,
