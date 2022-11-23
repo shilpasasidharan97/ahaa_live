@@ -5,9 +5,15 @@ from .models import *
 
 admin.site.register(User)
 
+admin.site.register(Cart)
+
 admin.site.register(DefaultCats)
 
 admin.site.register(RestaurantQrcode)
+
+admin.site.register(FrontBanner)
+
+admin.site.register(ProductPageBanner)
 
 class RestaurantAdmin(admin.ModelAdmin):
     list_display = ('restaurant_name','creator_name','email','phone')
@@ -35,6 +41,11 @@ admin.site.register(Product,ProductAdmin)
 #     list_display = ('restaurent','image',)
 #     search_fields=('restaurent',)
 # admin.site.register(RestaurantQrcode,RestaurantQrcodeAdmin)
+class CartItemsAdmin(admin.ModelAdmin):
+    list_display = ('product','quantity', 'total')
+    search_fields=('product','quantity', 'total')
+admin.site.register(CartItems,CartItemsAdmin)
+
 
 
 

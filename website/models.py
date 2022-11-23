@@ -81,7 +81,7 @@ class RestaurantQrcode(models.Model):
 
     def save(self,*args,**kwargs):
       qrcode_img=qrcode.make(self.resto_url)
-      canvas=Image.new("RGB", (800,800),"white")
+      canvas=Image.new("RGB", (380,380),"white")
     #   draw=ImageDraw.Draw(canvas)
       canvas.paste(qrcode_img)
       buffer=BytesIO()
@@ -112,6 +112,30 @@ class Product(models.Model):
     description = models.CharField(max_length=1000, null=True, blank=True)
     image = models.FileField(upload_to='products', null=True, blank=True)
     slug = models.SlugField(unique=True,  null=True,  blank=True)
+    is_available = models.BooleanField(default=True)
 
     def __str__(self):
         return str(self.name)
+
+
+class Cart(models.Model):
+    cart_id = models.CharField(max_length=200,null=True)
+
+    def __str__(self):
+        return str(self.cart_id)
+
+
+class CartItems(models.Model):
+    cart = models.ForeignKey(Cart,on_delete=models.CASCADE,null=True)
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
+    quantity = models.IntegerField(default=1,null=True)
+    total = models.FloatField(null=True,blank=True)
+
+
+class FrontBanner(models.Model):
+    image = models.FileField(upload_to='front-banner', null=True, blank=True)
+
+
+class ProductPageBanner(models.Model):
+    image = models.FileField(upload_to='Product-banner', null=True, blank=True)
+

@@ -51,7 +51,7 @@
                             </span>
                         </button>
 
-                        <a href="#" class="web-logo nav-logo">
+                        <a href="" class="web-logo nav-logo">
                             <img src="{% static 'menucard/images/logo/aaha_logo.svg' %}" class="img-fluid blur-up lazyload" alt="">
 
                         </a>
@@ -94,64 +94,19 @@
                                 </li>
                                 <li class="right-side">
                                     <div class="onhover-dropdown header-badge">
-                                        <button type="button" class="btn p-0 position-relative header-wishlist">
+                                        <a href="{% url 'menucard:cart' %}" type="button" class="btn p-0 position-relative header-wishlist">
                                             <i data-feather="shopping-cart"></i>
-                                            <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                            <span class="position-absolute top-0 start-100 translate-middle badge">{{cart_items_count}}
                                                 <span class="visually-hidden">unread messages</span>
                                             </span>
-                                        </button>
+                                        </a>
 
-                                        <div class="onhover-div">
-                                            <ul class="cart-list">
-                                                <li class="product-box-contain">
-                                                    <div class="drop-cart">
-                                                        <a href="" class="drop-image">
-                                                            <img src="{% static 'menucard/images/vegetable/product/1.png' %}"
-                                                                class="blur-up lazyload" alt="">
-                                                        </a>
-
-                                                        <div class="drop-contain">
-                                                            <a href="">
-                                                                <h5>Fantasy Crunchy Choco Chip Cookies</h5>
-                                                            </a>
-                                                            <h6><span>1 x</span> $80.58</h6>
-                                                            <button class="close-button close_button">
-                                                                <i class="fa-solid fa-xmark"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </li>
-
-                                                <li class="product-box-contain">
-                                                    <div class="drop-cart">
-                                                        <a href="" class="drop-image">
-                                                            <img src="{% static 'menucard/images/vegetable/product/2.png' %}"
-                                                                class="blur-up lazyload" alt="">
-                                                        </a>
-
-                                                        <div class="drop-contain">
-                                                            <a href="">
-                                                                <h5>Peanut Butter Bite Premium Butter Cookies 600 g
-                                                                </h5>
-                                                            </a>
-                                                            <h6><span>1 x</span> $25.68</h6>
-                                                            <button class="close-button close_button">
-                                                                <i class="fa-solid fa-xmark"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-
-                                            <div class="price-box">
-                                                <h5>Total :</h5>
-                                                <h4 class="theme-color fw-bold">$106.58</h4>
-                                            </div>
+                                        <!-- <div class="onhover-div">
 
                                             <div class="button-group">
-                                                <a href="{% url 'menucard:cart' %}" class="btn btn-sm cart-button">View Cart</a>
+                                                < class="btn btn-sm cart-button">View Cart</a>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </li>
                             </ul>
@@ -162,7 +117,7 @@
         </div>
     </div>
 
-    <div class="container-fluid-lg">
+    <!-- <div class="container-fluid-lg">
         <div class="row">
             <div class="col-12">
                 <div class="header-nav">
@@ -572,21 +527,11 @@
                         </div>
                     </div>
 
-                    <!-- <div class="header-nav-middle">
-                        <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
-                            <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
-                                <div class="offcanvas-header navbar-shadow">
-                                    <h5>Menu</h5>
-                                    <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
-                                        aria-label="Close"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+                    
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </header>
 <!-- Header End -->
 
@@ -601,7 +546,7 @@
         </li>
 
         <li class="mobile-category">
-            <a href="javascript:void(0)">
+            <a href="">
                 <i class="iconly-Category icli js-link"></i>
                 <span>Category</span>
             </a>
