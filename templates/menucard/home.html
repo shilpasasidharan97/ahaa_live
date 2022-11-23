@@ -30,65 +30,6 @@
                                         <i class="fa-solid fa-angle-right"></i>
                                     </a>
 
-                                    <!-- <div class="onhover-category-box">
-                                        <div class="list-1">
-                                            <div class="category-title-box">
-                                                <h5>Organic Vegetables</h5>
-                                            </div>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">Caesar Salad Supreme.</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Strawberry Spinach Salad.</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Leafy Vegetables</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Root Vegetables</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Beans & Okra</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Cabbage & Cauliflower</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Gourd & Drumstick</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Specialty</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-                                        <div class="list-2">
-                                            <div class="category-title-box">
-                                                <h5>Fresh Fruit</h5>
-                                            </div>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">Banana & Papaya</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Kiwi, Citrus Fruit</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Apples & Pomegranate</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Seasonal Fruits</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Mangoes</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Fruit Baskets</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div> -->
                                 </li>
                                 {% endfor %}
                             </ul>
@@ -109,7 +50,7 @@
             <div class="col-xl-12 col-lg-12 col-12">
                 <a href="">
                     <div class="home-contain h-100">
-                        <img src="{% static 'menucard/images/banner/Banner.jpg' %}" class="" alt="" width="100%">
+                        <img src="{{first.image.url}}" class="" alt="" height="283px" width="100%">
                         <!-- <img src="{% static 'menucard/images/veg-2/banner/1.jpg' %}" class="bg-img blur-up lazyload" alt=""> -->
                         <!-- <div class="home-detail p-center-left w-75 position-relative mend-auto">
                             <div>
@@ -166,7 +107,7 @@
             <div class="col-xl-12 col-lg-12 col-12">
                 <a href="">
                     <div class="home-contain h-100">
-                        <img src="{% static 'menucard/images/cake/banner/8.jpg' %}" class="bg-img blur-up lazyload" alt="">
+                        <img src="{{footer_banner.image.url}}" height="283px" width="100%" class="bg-img blur-up lazyload" alt="">
                         <div class="home-detail p-center-left w-75 position-relative mend-auto">
                             <div>
                                 <h6>Exclusive offer <span>30% Off</span></h6>
