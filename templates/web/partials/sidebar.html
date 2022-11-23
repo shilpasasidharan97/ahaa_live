@@ -13,11 +13,11 @@
                 <li {% if is_product %} class="active" {% endif %}>
                     <a href="{% url 'web:category' %}"><i class="fa fa-bowl-food"></i> <span>Products</span></a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href=""><i class="fa fa-percent"></i> Hot Deals</a>
-                </li>
+                </li> -->
                 <li {% if is_profile %} class="active" {% endif %}>
-                    <a href=""><i class="fa fa-user"></i> <span>Profile reset</span></a>
+                    <a href="{% url 'web:profile' %}"><i class="fa fa-user"></i> <span>Profile </span></a>
                 </li>
                 <li {% if is_settings %} class="active" {% endif %}>
                     <a href="{% url 'web:settings' %}"><i class="fa fa-gear"></i> <span>Settings</span></a>

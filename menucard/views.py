@@ -42,7 +42,12 @@ def products(request,id):
         "products":products,
         "fist_banner":fist_banner,
         "second_banner":second_banner,
-
+    # resto = Restaurant.objects.get(id=id)
+    # categories = Category.objects.filter(restaurent=resto)
+    context = {
+        "subcategories":subcategories,
+        "products":products,
+        # "categories":categories
     }
     return render(request, 'menucard/product.html',context)
 
