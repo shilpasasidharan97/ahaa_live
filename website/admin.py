@@ -11,6 +11,10 @@ admin.site.register(DefaultCats)
 
 admin.site.register(RestaurantQrcode)
 
+admin.site.register(FrontBanner)
+
+admin.site.register(ProductPageBanner)
+
 class RestaurantAdmin(admin.ModelAdmin):
     list_display = ('restaurant_name','creator_name','email','phone')
     search_fields=('phone',)

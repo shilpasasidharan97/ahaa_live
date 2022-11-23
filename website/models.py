@@ -132,3 +132,10 @@ class CartItems(models.Model):
     total = models.FloatField(null=True,blank=True)
 
 
+class FrontBanner(models.Model):
+    image = models.FileField(upload_to='front-banner', null=True, blank=True)
+
+
+class ProductPageBanner(models.Model):
+    image = models.FileField(upload_to='Product-banner', null=True, blank=True)
+

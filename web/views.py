@@ -1,15 +1,14 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from aahalive.decorators import auth_resturant
+# from aahalive.decorators import auth_resturant
 from website.models import Category, Product, RestaurantQrcode, Restaurant, SubCategory
-from django.views.decorators.csrf import csrf_exempt
+# from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
 
 # Create your views here.
 
-@auth_resturant
-@login_required
+
 def home(request):
     user = request.user
     qr_code = RestaurantQrcode.objects.get(restaurant=user.restaurant)
@@ -25,8 +24,7 @@ def home(request):
     }
     return render(request, 'web/home.html', context)
 
-@auth_resturant
-@login_required
+
 def category(request):
     categories = Category.objects.filter(restaurent=request.user.restaurant)
     if request.method == 'POST':
@@ -177,8 +175,7 @@ def productshow(request,id):
 
 
 
-@login_required
-@auth_resturant
+
 def profile(request):
     context = {
         "is_profile":True
@@ -186,8 +183,7 @@ def profile(request):
     return render(request, 'web/profile.html', context)
 
 
-@login_required(login_url='/official/loginpage')
-@auth_resturant
+
 def settings(request):
     context = {
         "is_settings":True
