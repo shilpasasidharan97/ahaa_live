@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from website.models import Cart, CartItems, FrontBanner, Product, Restaurant, Category, SubCategory
+from website.models import Cart, CartItems, FrontBanner, Product, ProductPageBanner, Restaurant, Category, SubCategory
 from django.http import JsonResponse
 from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
@@ -10,12 +10,18 @@ from django.views.decorators.csrf import csrf_exempt
 def home(request,id):
     resto = Restaurant.objects.get(id=id)
     categories = Category.objects.filter(restaurent=resto)
-    # products =  Product.objects.filter(subcategory__Category__restaurent=resto)
-    print(products)
-    home_banner = FrontBanner.objects.all()[:2]
+    main_banner = FrontBanner.objects.all().order_by('-image')
+    # print(len(main_banner),"$"*10)
+    if len(main_banner) >= 2:
+        fist_banner = main_banner[0]
+        footer_banner = main_banner[1]
+    elif len(main_banner) >=1:
+        fist_banner = main_banner[0]
+        footer_banner = main_banner[0]
     context = {
         "categories":categories,
-        "products":products,
+        "first":fist_banner,
+        "footer_banner":footer_banner,
     }
     return render(request, 'menucard/home.html',context)
 
@@ -23,6 +29,19 @@ def home(request,id):
 def products(request,id):
     subcategories = SubCategory.objects.filter(is_active=True,Category=id)
     products = Product.objects.filter(subcategory__Category__id=id,is_available=True)
+    product_banner = ProductPageBanner.objects.all().order_by('-image')
+    if len(products) <= 10:
+        if len(product_banner) >= 2:
+            fist_banner = product_banner[0]
+            second_banner = product_banner[1]
+        elif len(product_banner) >= 1:
+            fist_banner = product_banner[0]
+            second_banner = product_banner[0]
+    context = {
+        "subcategories":subcategories,
+        "products":products,
+        "fist_banner":fist_banner,
+        "second_banner":second_banner,
     # resto = Restaurant.objects.get(id=id)
     # categories = Category.objects.filter(restaurent=resto)
     context = {
