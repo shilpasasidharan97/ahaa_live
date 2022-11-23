@@ -23,12 +23,12 @@ def home(request,id):
 def products(request,id):
     subcategories = SubCategory.objects.filter(is_active=True,Category=id)
     products = Product.objects.filter(subcategory__Category__id=id,is_available=True)
-    resto = Restaurant.objects.get(id=id)
-    categories = Category.objects.filter(restaurent=resto)
+    # resto = Restaurant.objects.get(id=id)
+    # categories = Category.objects.filter(restaurent=resto)
     context = {
         "subcategories":subcategories,
         "products":products,
-        "categories":categories
+        # "categories":categories
     }
     return render(request, 'menucard/product.html',context)
 
