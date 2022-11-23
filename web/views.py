@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from aahalive.decorators import auth_resturant
 from website.models import Category, Product, RestaurantQrcode, Restaurant, SubCategory
@@ -85,6 +85,12 @@ def editCategory(request):
     return JsonResponse({'data':'sss'})
 
 
+def deleteCategory(request,id):
+    catagory = Category.objects.get(id=id)
+    catagory.delete()
+    return redirect("web:category")
+
+
 @auth_resturant
 def subCategory(request,id):
     subcategories = SubCategory.objects.filter(Category__restaurent=request.user.restaurant, Category=id)
@@ -110,6 +116,12 @@ def getSubcategory(request,id):
     return JsonResponse(data)
 
 
+def deleteSubCategory(request,id):
+    catagory = SubCategory.objects.get(id=id)
+    catagory.delete()
+    return redirect("/web/subcategory/"+str(catagory.Category.id))
+
+
 @login_required
 @auth_resturant
 def product(request,id):
@@ -131,6 +143,37 @@ def product(request,id):
     }
     return render(request, 'web/product.html', context)
 
+
+def productNotavailable(request,id):
+    product = Product.objects.get(id=id)
+    cat = product.subcategory.id  
+    Product.objects.filter(id=id).update(is_available=False)
+    return redirect("/web/product/"+str(cat))
+
+def productavailable(request,id):
+    product = Product.objects.get(id=id)
+    cat = product.subcategory.id  
+    Product.objects.filter(id=id).update(is_available=True)
+    return redirect("/web/product/"+str(cat))
+
+def deleteProduct(request,id):
+    product = Product.objects.get(id=id)
+    product.delete()
+    return redirect("/web/product/"+str(product.subcategory.id))
+
+
+# product show modal 
+
+def productshow(request,id):
+    product = Product.objects.get(id=id)
+    data = {
+        "name":product.name,
+        "price":product.price,
+        "ingrediants":product.ingrediants,
+        "description":product.description,
+        "image":product.image.url,
+    }
+    return JsonResponse(data)
 
 
 
