@@ -81,7 +81,7 @@ class RestaurantQrcode(models.Model):
 
     def save(self,*args,**kwargs):
       qrcode_img=qrcode.make(self.resto_url)
-      canvas=Image.new("RGB", (800,800),"white")
+      canvas=Image.new("RGB", (380,380),"white")
     #   draw=ImageDraw.Draw(canvas)
       canvas.paste(qrcode_img)
       buffer=BytesIO()
@@ -127,7 +127,7 @@ class Cart(models.Model):
 class CartItems(models.Model):
     cart = models.ForeignKey(Cart,on_delete=models.CASCADE,null=True)
     product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
-    quantity = models.IntegerField(default=0,null=True)
+    quantity = models.IntegerField(default=1,null=True)
+    total = models.FloatField(null=True,blank=True)
 
-    def __str__(self):
-        return str(self.cart)
+
