@@ -10,9 +10,12 @@ from django.views.decorators.csrf import csrf_exempt
 def home(request,id):
     resto = Restaurant.objects.get(id=id)
     categories = Category.objects.filter(restaurent=resto)
+    # products =  Product.objects.filter(subcategory__Category__restaurent=resto)
+    print(products)
     home_banner = FrontBanner.objects.all()[:2]
     context = {
         "categories":categories,
+        "products":products,
     }
     return render(request, 'menucard/home.html',context)
 

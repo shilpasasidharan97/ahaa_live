@@ -96,7 +96,7 @@
                                     <div class="onhover-dropdown header-badge">
                                         <a href="{% url 'menucard:cart' %}" type="button" class="btn p-0 position-relative header-wishlist">
                                             <i data-feather="shopping-cart"></i>
-                                            <span class="position-absolute top-0 start-100 translate-middle badge">2
+                                            <span class="position-absolute top-0 start-100 translate-middle badge">{{cart_items_count}}
                                                 <span class="visually-hidden">unread messages</span>
                                             </span>
                                         </a>
@@ -117,7 +117,7 @@
         </div>
     </div>
 
-    <div class="container-fluid-lg">
+    <!-- <div class="container-fluid-lg">
         <div class="row">
             <div class="col-12">
                 <div class="header-nav">
@@ -527,21 +527,11 @@
                         </div>
                     </div>
 
-                    <!-- <div class="header-nav-middle">
-                        <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
-                            <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
-                                <div class="offcanvas-header navbar-shadow">
-                                    <h5>Menu</h5>
-                                    <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
-                                        aria-label="Close"></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
+                    
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </header>
 <!-- Header End -->
 
@@ -556,7 +546,7 @@
         </li>
 
         <li class="mobile-category">
-            <a href="javascript:void(0)">
+            <a href="">
                 <i class="iconly-Category icli js-link"></i>
                 <span>Category</span>
             </a>

@@ -5,7 +5,7 @@ def main_context(request):
         cart_items = CartItems.objects.filter(cart__cart_id = request.session.session_key).count()
         return {
             "domain": request.META["HTTP_HOST"],
-            "cart_items":cart_items,
+            "cart_items_count":cart_items,
         }
     else:
         return {
