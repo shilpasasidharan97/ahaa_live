@@ -88,7 +88,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div> -->
+                                    </div> 
                                 </li>
                                 {% endfor %}
                             </ul> 
@@ -145,7 +145,7 @@
                             <div class="product-box-3 h-100 wow fadeInUp">
                                 <div class="product-header">
                                     <div class="product-image">
-                                        <a data-bs-toggle="modal" data-bs-target="#view">
+                                        <a data-bs-toggle="modal" data-bs-target="#view" onclick="productData({{product.id}})">
                                             <img src="{{product.image.url}}"
                                                 class="img-fluid blur-up lazyload" alt="">
                                         </a>
@@ -208,40 +208,26 @@
                 <div class="row g-sm-4 g-2">
                     <div class="col-lg-6">
                         <div class="slider-image">
-                            <img src="{% static 'menucard/images/product/category/1.jpg' %}"
+                            <img src="{% static 'menucard/images/product/category/1.jpg' %}" id="pimage"
                                 class="img-fluid blur-up lazyload" alt="">
                         </div>
                     </div>
 
                     <div class="col-lg-6">
                         <div class="right-sidebar-modal">
-                            <h4 class="title-name">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
-                            <h4 class="price">₹36.99</h4>
-                            <div class="product-rating">
-                                <ul class="rating">
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star" class="fill"></i>
-                                    </li>
-                                    <li>
-                                        <i data-feather="star"></i>
-                                    </li>
-                                </ul>
-                                <span class="ms-2">8 Reviews</span>
-                                <span class="ms-2 text-danger">6 sold in last 16 hours</span>
-                            </div>
+                            <h4 class="title-name" id="pname">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
+                            <h4 class="price" >₹ <span id="pprice"></span ></h4>
 
                             <div class="product-detail">
                                 <h4>Product Details :</h4>
-                                <p>Candy canes sugar plum tart cotton candy chupa chups sugar plum chocolate I love.
+                                <p id="pdescription">Candy canes sugar plum tart cotton candy chupa chups sugar plum chocolate I love.
+                                    Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
+                                    Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear claw. Bonbon
+                                    muffin I love carrot cake sugar plum dessert bonbon.</p>
+                            </div>
+                            <div class="product-detail">
+                                <h4>Product Ingrediants :</h4>
+                                <p id="pingrediants">Candy canes sugar plum tart cotton candy chupa chups sugar plum chocolate I love.
                                     Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
                                     Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear claw. Bonbon
                                     muffin I love carrot cake sugar plum dessert bonbon.</p>
@@ -318,7 +304,7 @@
         margin-bottom: 30px;
     }
 </style>
-
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
 <script>
@@ -337,6 +323,28 @@
         var filterValue = $button.attr('data-filter');
         $grid.isotope({ filter: filterValue });
     });
+
+
+
+    
+
+    function productData(id) {
+        $.ajax({
+            url: "/menucard/productdata/" +id,
+            type: 'GET',
+
+            success: function (responce) {
+                $('#pimage').attr('src',responce.image)
+                $('#pname').html(responce.name)
+                $('#pprice').html(responce.price)
+                $('#pdescription').html(responce.ingrediants)
+                $('#pingrediants').html(responce.description)
+
+            }
+
+        })
+
+    }
 </script>
 
 

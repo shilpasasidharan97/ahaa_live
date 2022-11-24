@@ -51,6 +51,19 @@ def products(request,id):
     return render(request, 'menucard/product.html',context)
 
 
+def productData(request,id):
+    products_data = Product.objects.get(id=id)
+    data = {
+        'name':products_data.name,
+        'price':products_data.price,
+        'ingrediants':products_data.ingrediants,
+        'description':products_data.description,
+        'image':products_data.image.url,
+    }
+    return JsonResponse(data)
+
+
+
 def _cart_id(request):
     cart = request.session.session_key
     if not cart:

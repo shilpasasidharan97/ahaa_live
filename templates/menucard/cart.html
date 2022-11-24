@@ -29,8 +29,9 @@
                         <div class="table-responsive-xl">
                             <table class="table">
                                 <tbody>
+                                    {% for cartitem in cartitems %}
                                     <tr class="product-box-contain">
-                                        {% for cartitem in cartitems %}
+                                        
                                         <td class="product-detail">
                                             <div class="product border-0">
                                                 <div href="" class="product-image">
@@ -105,8 +106,9 @@
                                     <h6 class="text-content mb-2"> Table Number</h6>
                                     <div class="mb-3 coupon-box input-group">
                                         <input type="number" class="form-control" id="tablenumber" name="tablenumber"
-                                            placeholder="Enter Your Table Number Here...">
-                                        <button class="btn-apply">Apply</button>
+                                            placeholder="Enter Your Table Number Here..." required >
+                                        <!-- <button class="btn-apply">Apply</button> -->
+                                        <span id="message" style="color: red;"></span>
                                     </div>
                                 </div>
                                 <ul class="summery-total">
@@ -132,7 +134,7 @@
                             <div class="button-group cart-button">
                                 <ul>
                                     <li>
-                                        <button type="submit" onclick="TableNumber()" class="btn btn-animation proceed-btn fw-bold">Send List</button>
+                                        <button type="submit" onclick="TableNumber()" class="btn btn-animation proceed-btn fw-bold" id="sendbutton" >Send List</button>
 
                                         <!-- <a href="{% url 'menucard:ordersuccess' %}" class="btn btn-animation proceed-btn fw-bold">Send List</a> -->
                                     </li>
@@ -209,6 +211,22 @@
             }
         })
     }
+
+    $(document).ready(function(){
+        $("#sendbutton").addClass("disabled");
+        $('#tablenumber').keyup(function(){
+        var tablenumber = $('#tablenumber').val()
+            if ( tablenumber == '' ){
+                $('#message').html('Please add your table number')
+                $("#sendbutton").addClass("disabled");
+            }
+            else{
+                $('#message').hide()
+                $("#sendbutton").removeClass("disabled");
+            }
+    
+        })
+    })
 </script>
 
 {% endblock %}
