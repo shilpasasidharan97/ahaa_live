@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from website.models import FrontBanner, ProductPageBanner, Restaurant
+from aahalive.decorators import auth_official
 # Create your views here.
 
 
@@ -11,16 +13,23 @@ def loginPage(request):
         phone = request.POST['phone']
         password = request.POST['password']
         user = authenticate(request,phone=phone, password=password)
-        print(user)
+        # print(user)
         if user is not None:
-            login(request, user)
-            return redirect('web:home')
+            if user.restaurant:
+                login(request, user)
+                return redirect('web:home')
+            elif user.is_superuser == True:
+                login(request, user)
+                return redirect('official:home')
+            else:
+                return redirect('official:loginPage')
         else:
             return redirect('official:loginPage')
     return render(request, 'official/login.html')
 
 
-
+@auth_official
+@login_required(login_url='/official/login-page')
 def home(request): 
     resto_count = Restaurant.objects.all().count() 
     all_resto = Restaurant.objects.all()[:5] 
@@ -32,7 +41,8 @@ def home(request):
     return render(request, 'official/home.html',context)
 
 
-
+@auth_official
+@login_required(login_url='/official/login-page')
 def resturantList(request):
     all_resturants = Restaurant.objects.all().order_by('restaurant_name')
     print(all_resturants)
@@ -43,6 +53,8 @@ def resturantList(request):
     return render(request, 'official/resturant_list.html',context)
 
 
+@auth_official
+@login_required(login_url='/official/login-page')
 def resturantDetails(request,id):
     resto_details = Restaurant.objects.get(id=id)
     data = {
@@ -57,7 +69,8 @@ def resturantDetails(request,id):
     return JsonResponse(data)
 
 
-
+@auth_official
+@login_required(login_url='/official/login-page')
 def creatUsers(request):
     if request.method == 'POST':
         cname = request.POST['cname']
@@ -81,7 +94,8 @@ def creatUsers(request):
     }
     return render(request, 'official/create_user.html',context)
 
-
+@auth_official
+@login_required(login_url='/official/login-page')
 def bannerPage(request):
     if request.method == 'POST':
         print('front-image')
@@ -97,6 +111,9 @@ def bannerPage(request):
     }
     return render(request, 'official/banneradding.html',context)
 
+
+@auth_official
+@login_required(login_url='/official/login-page')
 def productBanner(request):
     if request.method == 'POST':
         product_image = request.FILES['product-image']
