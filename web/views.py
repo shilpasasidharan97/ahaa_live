@@ -1,14 +1,14 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.decorators import login_required
 from website.models import Category, Product, RestaurantQrcode, Restaurant, SubCategory, User
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
+from aahalive.decorators import auth_restaurant
 
 
 # Create your views here.
 
-
+@auth_restaurant
 @login_required(login_url='/official/login-page')
 def home(request):
     user = request.user
@@ -26,7 +26,7 @@ def home(request):
     return render(request, 'web/home.html', context)
 
 
-
+@auth_restaurant
 @login_required(login_url='/official/login-page')
 def category(request):
     categories = Category.objects.filter(restaurent=request.user.restaurant)
@@ -56,6 +56,7 @@ def categoryNameValidation(request):
             'sss':'sss'
         }
         return JsonResponse(data)
+
 
 
 def getCategory(request,id):
@@ -93,7 +94,7 @@ def deleteCategory(request,id):
     return redirect("web:category")
 
 
-
+@auth_restaurant
 @login_required(login_url='/official/login-page')
 def subCategory(request,id):
     subcategories = SubCategory.objects.filter(Category__restaurent=request.user.restaurant, Category=id)
@@ -126,7 +127,7 @@ def deleteSubCategory(request,id):
 
 
 
-
+@auth_restaurant
 @login_required(login_url='/official/login-page')
 def product(request,id):
     products = Product.objects.filter(subcategory__Category__restaurent=request.user.restaurant,subcategory=id)
@@ -181,7 +182,7 @@ def productshow(request,id):
 
 
 
-
+@auth_restaurant
 @login_required(login_url='/official/login-page')
 def profile(request):
     profile_data = Restaurant.objects.get(id=request.user.restaurant.id)
@@ -193,7 +194,7 @@ def profile(request):
     return render(request, 'web/profile.html', context)
 
 
-
+@auth_restaurant
 @login_required(login_url='/official/login-page')
 def settings(request):
     resto_data = Restaurant.objects.get(id=request.user.restaurant.id)
