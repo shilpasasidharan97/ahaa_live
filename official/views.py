@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-# from django.contrib.auth.decorators import login_required
-# from aahalive.decorators import auth_official
+from django.http import JsonResponse
 from website.models import FrontBanner, ProductPageBanner, Restaurant
 # Create your views here.
 
@@ -22,10 +21,13 @@ def loginPage(request):
 
 
 
-def home(request):
-    
+def home(request): 
+    resto_count = Restaurant.objects.all().count() 
+    all_resto = Restaurant.objects.all()[:5] 
     context = {
         "is_home":True,
+        "resto_count":resto_count,
+        "all_resto":all_resto,
     }
     return render(request, 'official/home.html',context)
 
@@ -39,6 +41,20 @@ def resturantList(request):
         "all_resturants":all_resturants,
     }
     return render(request, 'official/resturant_list.html',context)
+
+
+def resturantDetails(request,id):
+    resto_details = Restaurant.objects.get(id=id)
+    data = {
+        'resto_name':resto_details.restaurant_name,
+        'creator_name':resto_details.creator_name,
+        'email':resto_details.email,
+        'phone':resto_details.phone,
+        'district':resto_details.district,
+        'state':resto_details.state,
+        'address':resto_details.address
+    }
+    return JsonResponse(data)
 
 
 
@@ -75,6 +91,7 @@ def bannerPage(request):
     all_front_banner = FrontBanner.objects.all()
     all_product_banner = ProductPageBanner.objects.all()
     context = {
+        "is_banner":True,
         "all_front_banner":all_front_banner,
         "all_product_banner":all_product_banner,
     }

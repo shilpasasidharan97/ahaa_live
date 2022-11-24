@@ -65,7 +65,7 @@
                                 <td>16 Nov 2020</td>
                                 <td><span class="badge badge-pill bg-success-light">Active</span></td>
                                 <td class="text-end">
-                                    <a href="edit-customer.html"
+                                    <a href="" onclick="FranchiseDetails({{resto.id}})"  data-bs-toggle="modal" data-bs-target="#view"
                                         class="btn btn-sm btn-white text-primary me-2"><i
                                             class="far fa-edit me-1"></i> View</a>
                                 </td>
@@ -79,6 +79,71 @@
     </div>
 </div>
 
+
+
+<!-- Quick View Modal Box Start -->
+<div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+        <div class="modal-content">
+            <div class="modal-header p-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-sm-4 g-2">
+                    <div class="col-lg-6">
+                        <div class="slider-image">
+                            <img src="{% static 'web/img/building.png' %}"
+                                class="img-fluid blur-up lazyload" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="right-sidebar-modal">
+                            <h4 class="title-name" id="resto_name">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
+                            <h4 class="price">Creator : <span id="c_name"></span></h4>
+                            <div class="product-detail">
+                                <h4>Resturant Details :</h4>
+                                <h6 > email : &nbsp; <span id="email"></span></h6>
+                                <h6> phone : &nbsp;<span id="phone"></span></h6>
+                                <h6> District : &nbsp;<span id="dist"></span></h6>
+                                <h6> State : &nbsp;<span id="state"></span></h6>
+                                <h6> Address : &nbsp;<span id="address"></span></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function FranchiseDetails(id) {
+        $.ajax({
+            url: "/official/resturant_details/" +id,
+            type: 'GET',
+
+            success: function (responce) {
+                $('#resto_name').html(responce.resto_name)
+                $('#c_name').html(responce.creator_name)
+                $('#email').html(responce.email)
+                $('#phone').html(responce.phone)
+                $('#dist').html(responce.district)
+                $('#state').html(responce.state)
+                $('#address').html(responce.address)
+
+            }
+
+        })
+
+    }
+
+</script>
 
 
 {% endblock %}

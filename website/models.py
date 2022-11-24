@@ -44,6 +44,9 @@ class Restaurant(models.Model):
     state = models.CharField(max_length=100,null=True)
     address = models.CharField(max_length=300,null=True)
 
+    class Meta:
+        verbose_name_plural = ("Restaurant")
+
     def __str__(self):
         return str(self.restaurant_name)
 
@@ -57,17 +60,25 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
     USERNAME_FIELD='phone'
 
+
 class DefaultCats(models.Model):
     no = models.CharField(max_length=15,null=True)
     image = models.FileField(upload_to="defaultcatagory", null=True)
 
+    class Meta:
+        verbose_name_plural = ("Default Categories")
+
     def __str__(self):
         return str(self.no)
+
 
 class Category(models.Model):
     restaurent = models.ForeignKey(Restaurant,on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=30,null=True)
     icon = models.FileField(upload_to="catagory", null=True)
+
+    class Meta:
+        verbose_name_plural = ("Categories")
 
     def __str__(self):
         return str(self.name)
@@ -90,6 +101,9 @@ class RestaurantQrcode(models.Model):
       canvas.close()
       super().save(*args,**kwargs)
 
+      class Meta:
+        verbose_name_plural = ("Restaurant Qrcode")
+
     def __str__(self):
         return str(self.restaurant)
 
@@ -99,6 +113,9 @@ class SubCategory(models.Model):
     Category = models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=30,null=True)
     is_active = models.BooleanField(default=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = ("SubCategory")
 
     def __str__(self):
         return str(self.name)
@@ -113,6 +130,9 @@ class Product(models.Model):
     image = models.FileField(upload_to='products', null=True, blank=True)
     slug = models.SlugField(unique=True,  null=True,  blank=True)
     is_available = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = ("Products")
 
     def __str__(self):
         return str(self.name)
@@ -130,6 +150,12 @@ class CartItems(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE,null=True)
     quantity = models.IntegerField(default=1,null=True)
     total = models.FloatField(null=True,blank=True)
+
+    class Meta:
+        verbose_name_plural = ("Cart Items")
+
+    def __str__(self):
+        return str(self.cart)
 
 
 class FrontBanner(models.Model):

@@ -30,24 +30,23 @@ def products(request,id):
     subcategories = SubCategory.objects.filter(is_active=True,Category=id)
     products = Product.objects.filter(subcategory__Category__id=id,is_available=True)
     product_banner = ProductPageBanner.objects.all().order_by('-image')
+    prd = Product.objects.filter(subcategory__Category__restaurent=request.user.restaurant)
+    print(prd)
     if len(products) <= 10:
         if len(product_banner) >= 2:
             fist_banner = product_banner[0]
             second_banner = product_banner[1]
+            print(fist_banner,'first if')
         elif len(product_banner) >= 1:
             fist_banner = product_banner[0]
             second_banner = product_banner[0]
+        
     context = {
         "subcategories":subcategories,
         "products":products,
         "fist_banner":fist_banner,
         "second_banner":second_banner,
-    # resto = Restaurant.objects.get(id=id)
-    # categories = Category.objects.filter(restaurent=resto)
-    context = {
-        "subcategories":subcategories,
-        "products":products,
-        # "categories":categories
+        "prd":prd,
     }
     return render(request, 'menucard/product.html',context)
 

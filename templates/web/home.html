@@ -95,6 +95,7 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>Product</th>
+                                <th>Category</th>
                                 <th>Amount</th>
                             </tr>
                         </thead>
@@ -109,6 +110,7 @@
                                                 alt="User Image">{{product.name}}</a>
                                     </h2>
                                 </td>
+                                <td>{{product.subcategory.Category.name}}</td>
                                 <td>₹118</td>
                             </tr>
                             {% endfor %}
