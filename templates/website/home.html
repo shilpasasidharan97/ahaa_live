@@ -12,76 +12,23 @@
     </style>
     
     
-    <!-- Start Navbar Area -->
-    <div class="navbar-area">
-        <div class="pakap-responsive-nav">
-            <div class="container">
-                <div class="pakap-responsive-menu">
-                    <div class="logo">
-                        <a href="{% url 'website:websitehome' %}">
-                            <script type="text/javascript" style="display:none">
-                                //<![CDATA[
-                                window.__mirage2 = { petok: "kGiKqT.Ffc35Qj0Ckqux6moSa80ooQ8Pph0hQx4YJpo-1800-0" };
-                                    //]]>
-                            </script>
-                            <script type="text/javascript"
-                                src="{% static 'website/mirage2.min.js' %}"></script>
-                            <img data-cfsrc="{% static 'menucard/images/logo/aaaahaaa.png' %}" alt="logo"><noscript><img
-                                    src="{% static 'menucard/images/logo/aaaahaaa.png' %}" alt="logo"></noscript>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="pakap-nav">
-            <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="{% url 'website:websitehome' %}"><img   data-cfsrc="{% static 'menucard/images/logo/aaha_logo.svg' %}"
-                            alt="logo" style="display:none;visibility:hidden;width: 100%;height: 70px;"><noscript><img
-                                src="{% static 'menucard/images/logo/aaha_logo.svg' %}" alt="logo" height="70px" width="100%"></noscript></a>
-                    <div class="collapse navbar-collapse mean-menu">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="#home" class="nav-link">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#about" class="nav-link">About Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#features" class="nav-link">Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#testimonial" class="nav-link">Testimonial</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-link">Contact</a>
-                            </li>
-                        </ul>
-                        <div class="others-option">
-                            <a href="{% url 'website:registration' %}" class="default-btn">Get Started</a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!-- End Navbar Area -->
+   
 
 
     <!-- Start Main Banner Area -->
-    <div class="main-banner" >
+    <div class="main-banner" id="home">
         <div class="container">
             <div class="content">
                 <span class="sub-title">Get your 14 days free trail</span>
                 <h1>The Revolutionary App That Makes Your Life Easier Than Others</h1>
-                <a href="{% url 'website:registration' %}" class="default-btn">Get Started</a>
+                <!-- <a href="{% url 'website:registration' %}" class="default-btn">Get Started</a> -->
                 <img data-cfsrc="{% static 'website/img/banner/banner-app3-1225.png' %}" alt="image"
                     style="display:none;visibility:hidden;"><noscript><img
                         src="{% static 'website/img/banner/banner-app3-1225.png' %}" alt="image"></noscript>
             </div>
         </div>
         <div class="divider"></div>
-        <div class="banner-shape3" id="home"><img data-cfsrc="{% static 'website/img/shape/shape2.png' %}" alt="image"
+        <!-- <div class="banner-shape3" id="home"><img data-cfsrc="{% static 'website/img/shape/shape2.png' %}" alt="image"
                 style="display:none;visibility:hidden;"><noscript><img src="{% static 'website/img/shape/shape2.png' %}"
                     alt="image"></noscript></div>
         <div class="banner-shape8"><img data-cfsrc="{% static 'website/img/shape/shape11.png' %}" alt="image"
@@ -89,12 +36,12 @@
                     src="{% static 'website/img/shape/shape11.png' %}" alt="image"></noscript></div>
         <div class="banner-shape7"><img data-cfsrc="{% static 'website/img/shape/shape11.png' %}" alt="image"
                 style="display:none;visibility:hidden;"><noscript><img
-                    src="{% static 'website/img/shape/shape11.png' %}" alt="image"></noscript></div>
+                    src="{% static 'website/img/shape/shape11.png' %}" alt="image"></noscript></div> -->
     </div>
     <!-- End Main Banner Area -->
 
     <!-- Start Partner Area -->
-    <div class="partner-area ptb-100" id="about">
+    <div class="partner-area ptb-100" >
         <div class="container">
             <div class="partner-title">
                 Registered Companies:
@@ -166,18 +113,18 @@
         <div class="container">
             <div class="video-box">
                 <img data-cfsrc="{% static 'website/img/banner/video.jpg' %}" alt="video-image"
-                    style="display:none;visibility:hidden;"><noscript><img
-                        src="{% static 'website/img/banner/video.jpg' %}" alt="video-image"></noscript>
+                    style="display:none;visibility:hidden;" width="100%"><noscript><img
+                        src="{% static 'website/img/banner/video.jpg' %}" alt="video-image" width="100%"></noscript>
                 <a href="https://www.youtube.com/watch?v=PWvPbGWVRrU" class="video-btn popup-video"><i
                         class="ri-play-line"></i></a>
-                <div class="shape">
+                <!-- <div class="shape">
                     <img class="shape1" data-cfsrc="{% static 'website/img/shape/shape1.png' %}" alt="shape1"
                         style="display:none;visibility:hidden;"><noscript><img class="shape1"
                             src="{% static 'website/img/shape/shape1.png' %}" alt="shape1"></noscript>
                     <img class="shape2" data-cfsrc="{% static 'website/img/shape/shape2.png' %}" alt="shape2"
                         style="display:none;visibility:hidden;"><noscript><img class="shape2"
                             src="{% static 'website/img/shape/shape2.png' %}" alt="shape2"></noscript>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
