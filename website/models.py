@@ -172,3 +172,10 @@ class FrontBanner(models.Model):
 class ProductPageBanner(models.Model):
     image = models.FileField(upload_to='Product-banner', null=True, blank=True)
 
+
+class RestoSave(models.Model):
+    user_session_id = models.CharField(max_length=200,null=True)
+    resto_pk = models.IntegerField(null=True)
+
+    def __str__(self):
+        return str(self.user_session_id)
