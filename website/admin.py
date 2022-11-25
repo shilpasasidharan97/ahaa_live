@@ -53,6 +53,8 @@ admin.site.register(FrontBanner)
 
 admin.site.register(ProductPageBanner)
 
+admin.site.register(RestoSave)
+
 
 
 

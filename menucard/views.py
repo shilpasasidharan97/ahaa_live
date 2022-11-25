@@ -1,16 +1,29 @@
 from django.shortcuts import render, redirect
 
-from website.models import Cart, CartItems, FrontBanner, Product, ProductPageBanner, Restaurant, Category, SubCategory
+from website.models import Cart, CartItems, FrontBanner, Product, ProductPageBanner, Restaurant, Category, RestoSave, SubCategory
 from django.http import JsonResponse
 from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
+def _rest_id(request):
+    cuser = request.session.session_key
+    if not cuser:
+        cuser = request.session.create()
+    return cuser
+
+
 def home(request,id):
     resto = Restaurant.objects.get(id=id)
     categories = Category.objects.filter(restaurent=resto)
     main_banner = FrontBanner.objects.all().order_by('-image')
+    try:
+        resto = RestoSave.objects.get(user_session_id=_rest_id(request),resto_pk=id)
+    except RestoSave.DoesNotExist:
+        resto = RestoSave.objects.create(user_session_id=_rest_id(request),resto_pk=id)
+    resto.save()
+    
     # print(len(main_banner),"$"*10)
     if len(main_banner) >= 2:
         fist_banner = main_banner[0]
@@ -33,7 +46,7 @@ def products(request,id):
     product_banner = ProductPageBanner.objects.all().order_by('-image')
     # prd = Product.objects.filter(subcategory__Category__restaurent=sub.Category.restaurent)
     catagories = Category.objects.filter(restaurent = catag.restaurent)
-    # print(prd)
+
     if len(products) <= 10:
         if len(product_banner) >= 2:
             fist_banner = product_banner[0]
@@ -42,7 +55,6 @@ def products(request,id):
         elif len(product_banner) >= 1:
             fist_banner = product_banner[0]
             second_banner = product_banner[0]
-        
     context = {
         "subcategories":subcategories,
         "products":products,
