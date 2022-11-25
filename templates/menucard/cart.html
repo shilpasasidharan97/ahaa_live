@@ -5,7 +5,61 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- <header class="pb-md-4 pb-3">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="header-nav">
+                        <div class="header-nav-left">
+                            <button class="dropdown-category">
+                                <i data-feather="align-left"></i>
+                                <span>All Categories</span>
+                            </button>
     
+                            <div class="category-dropdown">
+                                <div class="category-title">
+                                    <h5>Categories</h5>
+                                    <button type="button" class="btn p-0 close-button text-content">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </button>
+                                </div>
+    
+                                <ul class="category-list">
+                                    {% for cate in categories %}
+                                    <li class="onhover-category-list">
+                                        <a href="{% url 'menucard:product' cate.id %}" class="category-name">
+                                            <img src="{{cate.icon.url}}" alt="">
+                                            <h6>{{cate.name|capfirst}}</h6>
+                                            <i class="fa-solid fa-angle-right"></i>
+                                        </a>
+    
+                                        <div class="onhover-category-box">
+                                            {% for sub in cate.get_subcatgory %}
+                                            <div class="">
+                                                <div class="category-title-box">
+                                                    <h5>{{sub.name|capfirst}}</h5>
+                                                </div>
+                                                <ul>
+                                                    {% for prd in sub.get_product %}
+                                                    <li> 
+                                                        <h6>{{prd.name|capfirst}}</h6>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            {% endfor %}
+                                        </div> 
+                                    </li>
+                                    
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header> -->
     
 
     <!-- Breadcrumb Section Start -->

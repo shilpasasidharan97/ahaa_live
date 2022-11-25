@@ -180,7 +180,7 @@ def cart(request):
     # cart = Cart.objects.filter(cart_id=_cart_id(request))
     cart_items = CartItems.objects.filter(cart__cart_id=_cart_id(request))
     sub_total = CartItems.objects.filter(cart__cart_id=_cart_id(request)).aggregate(Sum('total'))
-    
+    # categories = CartItems.objects.filter(cart_items__product__subcategory__Category=resto)
     context = {
         'cartitems':cart_items,
         "sub_total":sub_total,
