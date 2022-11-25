@@ -1,7 +1,11 @@
 {% extends 'menucard/partials/base.html' %}
 {% block content %}
 {% load static %}
-
+<!-- <style>
+    .bb{
+        height: 283px;
+    }
+</style> -->
 <header class="pb-md-4 pb-3">
     <div class="container-fluid-lg">
         <div class="row">
@@ -24,13 +28,30 @@
                             <ul class="category-list">
                                 {% for cate in categories %}
                                 <li class="onhover-category-list">
-                                    <a href="javascript:void(0)" class="category-name">
+                                    <a href="{% url 'menucard:product' cate.id %}" class="category-name">
                                         <img src="{{cate.icon.url}}" alt="">
-                                        <h6>{{cate.name}}</h6>
+                                        <h6>{{cate.name|capfirst}}</h6>
                                         <i class="fa-solid fa-angle-right"></i>
                                     </a>
 
+                                    <div class="onhover-category-box">
+                                        {% for sub in cate.get_subcatgory %}
+                                        <div class="list-1">
+                                            <div class="category-title-box">
+                                                <h5>{{sub.name|capfirst}}</h5>
+                                            </div>
+                                            <ul>
+                                                {% for prd in sub.get_product %}
+                                                <li> 
+                                                    <h6>{{prd.name|capfirst}}</h6>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                        {% endfor %}
+                                    </div> 
                                 </li>
+                                
                                 {% endfor %}
                             </ul>
                         </div>
@@ -50,7 +71,7 @@
             <div class="col-xl-12 col-lg-12 col-12">
                 <a href="">
                     <div class="home-contain h-100">
-                        <img src="{{first.image.url}}" class="" alt="" height="283px" width="100%">
+                        <img src="{{first.image.url}}" class="bb" alt=""  width="100%">
                         <!-- <img src="{% static 'menucard/images/veg-2/banner/1.jpg' %}" class="bg-img blur-up lazyload" alt=""> -->
                         <!-- <div class="home-detail p-center-left w-75 position-relative mend-auto">
                             <div>

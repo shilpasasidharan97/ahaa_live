@@ -24,70 +24,27 @@
                             <ul class="category-list">
                                  {% for cate in prd %}
                                 <li class="onhover-category-list">
-                                    <a href="" class="category-name">
-                                        <img src="{{cate.subcategory.Category.icon.url}}" alt="">
-                                        <h6>{{cate.subcategory.Category.name}}</h6>
+                                    <a href="{% url 'menucard:product' cate.id %}" class="category-name">
+                                        <img src="{{cate.icon.url}}" alt="">
+                                        <h6>{{cate.name|capfirst}}</h6>
                                         <i class="fa-solid fa-angle-right"></i>
                                     </a> 
 
                                     <div class="onhover-category-box">
+                                        {% for sub in cate.get_subcatgory %}
                                         <div class="list-1">
                                             <div class="category-title-box">
-                                                <h5>Organic Vegetables</h5>
+                                                <h5>{{sub.name|capfirst}}</h5>
                                             </div>
                                             <ul>
+                                                {% for prd in sub.get_product %}
                                                 <li>
-                                                    <a href="javascript:void(0)">Caesar Salad Supreme.</a>
+                                                    <h6>{{prd.name|capfirst}}</h6>
                                                 </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Strawberry Spinach Salad.</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Leafy Vegetables</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Root Vegetables</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Beans & Okra</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Cabbage & Cauliflower</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Gourd & Drumstick</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Specialty</a>
-                                                </li>
+                                                {% endfor %}
                                             </ul>
                                         </div>
-
-                                        <div class="list-2">
-                                            <div class="category-title-box">
-                                                <h5>Fresh Fruit</h5>
-                                            </div>
-                                            <ul>
-                                                <li>
-                                                    <a href="javascript:void(0)">Banana & Papaya</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Kiwi, Citrus Fruit</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Apples & Pomegranate</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Seasonal Fruits</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Mangoes</a>
-                                                </li>
-                                                <li>
-                                                    <a href="javascript:void(0)">Fruit Baskets</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        {% endfor %}
                                     </div> 
                                 </li>
                                 {% endfor %}
@@ -108,7 +65,7 @@
             <div class="col-xl-12 col-lg-12 col-12">
                 <a href="">
                     <div class="home-contain h-100">
-                        <img src="{{fist_banner.image.url}}" height="283px" class="" alt="" width="100%">
+                        <img src="{{fist_banner.image.url}}" class="" alt="" width="100%">
                     </div>
                 </a>
             </div>
@@ -183,7 +140,7 @@
             <div class="col-xl-12 col-lg-12 col-12">
                 <a href="">
                     <div class="home-contain h-100">
-                        <img src="{{second_banner.image.url}}" height="300px" class="" alt="" width="100%">
+                        <img src="{{second_banner.image.url}}" class="" alt="" width="100%">
                     </div>
                 </a>
             </div>
