@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login
 # Create your views here.
 
 
-def home(request):
+def websitehome(request):
     return render(request,'website/home.html')
 
 
@@ -29,8 +29,8 @@ def registration(request):
                 User.objects.create_user(phone=phone_number, password=password,restaurant=new_resto)
                 user = authenticate(request,phone=phone_number,password=password)
                 default_cats = DefaultCats.objects.all()
-                # url = "https://aahamenu.geany.website/menucard/menucard/"+str(new_resto.id)
-                url = "http://127.0.0.1:8000/menucard/menucard"+str(new_resto.id)
+                url = "https://aahamenu.geany.website/menucard/menucard/"+str(new_resto.id)
+                # url = "http://127.0.0.1:8000/menucard/menucard"+str(new_resto.id)
                 RestaurantQrcode.objects.create(restaurant=new_resto,resto_url=url)
                 for i in default_cats:
                     category_obj = Category(restaurent=new_resto,name=i.no,icon=i.image)

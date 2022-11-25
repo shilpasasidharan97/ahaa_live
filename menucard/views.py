@@ -27,11 +27,13 @@ def home(request,id):
 
 
 def products(request,id):
+    catag = Category.objects.get(id=id)
     subcategories = SubCategory.objects.filter(is_active=True,Category=id)
     products = Product.objects.filter(subcategory__Category__id=id,is_available=True)
     product_banner = ProductPageBanner.objects.all().order_by('-image')
-    prd = Product.objects.filter(subcategory__Category__restaurent=request.user.restaurant)
-    print(prd)
+    # prd = Product.objects.filter(subcategory__Category__restaurent=sub.Category.restaurent)
+    catagories = Category.objects.filter(restaurent = catag.restaurent)
+    # print(prd)
     if len(products) <= 10:
         if len(product_banner) >= 2:
             fist_banner = product_banner[0]
@@ -46,7 +48,7 @@ def products(request,id):
         "products":products,
         "fist_banner":fist_banner,
         "second_banner":second_banner,
-        "prd":prd,
+        "prd":catagories,
     }
     return render(request, 'menucard/product.html',context)
 
@@ -136,11 +138,13 @@ def tableNumber(request):
     grandtotal=0
     cart_obj = Cart.objects.get(cart_id=_cart_id(request))
     cart_items = CartItems.objects.filter(cart=cart_obj)
+    tresto_number  = CartItems.objects.filter(cart=cart_obj).last()
+    phonenumber = tresto_number.product.subcategory.Category.restaurent.phone
     sub_total = CartItems.objects.filter(cart__cart_id=_cart_id(request)).aggregate(Sum('total'))
-    print(cart_items,"|%"*20)
+    # print(phonenumber,"|%"*20)
     data = []
     try:
-        messagestring = 'https://wa.me/7510661741?text=Table Name :'+table_name+\
+        messagestring = 'https://wa.me/+91'+phonenumber+'?text=Table Number :'+table_name+\
                 "%0a------Order Details------"
         print(messagestring)
         for i in cart_items:
