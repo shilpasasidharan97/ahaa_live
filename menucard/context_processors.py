@@ -1,4 +1,4 @@
-from website.models import RestoSave, User,CartItems
+from website.models import Category, RestoSave, User,CartItems
 
 # def main_context(request):
 #     if request.session.exists(request.session.session_key):
@@ -36,10 +36,12 @@ def main_context(request):
         cart_items = CartItems.objects.filter(cart__cart_id = request.session.session_key).count()
         try:
             resto = RestoSave.objects.get(user_session_id=request.session.session_key)
+            categories = categories = Category.objects.filter(restaurent__id=resto.resto_pk)
             return {
                 "domain": request.META["HTTP_HOST"],
                 "cart_items_count":cart_items,
                 "resto":resto,
+                "categories":categories,
             }
         except :
             return {
