@@ -43,7 +43,7 @@
 
                     <div class="row g-sm-4 g-3 product-list-section mt-3">
                         {% for product in products %}
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6  grid-item {{product.subcategory.name|slugify}}"
+                        <div class="col-lg-3 col-md-3 co-sm-6 col-6  grid-item {{product.subcategory.name|slugify}}"
                             data-category="{{product.subcategory.name|slugify}}">
                             <div class="product-box-3 h-100 wow fadeInUp">
                                 <div class="product-header">
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="product-footer">
                                     <div class="product-detail mt-3">
-                                        <h5 class="name">{{product.name}}</h5>
+                                        <h5 class="name">{{product.name|capfirst}}</h5>
                                         <a data-bs-toggle="modal" data-bs-target="#view">
                                             <span class="span-name">{{product.ingrediants}}</span>
                                         </a>

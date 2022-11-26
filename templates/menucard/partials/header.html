@@ -3,7 +3,7 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 <!-- Header Start -->
 <header class="pb-md-4 pb-3">
@@ -131,20 +131,26 @@
     <ul>
         <li class="active">
             <a href="{% url 'menucard:home' resto.resto_pk %}">
-                <i class="fa fa-grid"></i>
+                <span class="material-symbols-outlined"  style="color: #fff;">
+                    home
+                    </span>
                 <span>Home</span>
             </a>
         </li>
 
         <li class="mobile-category">
             <a>
-                <i class="fa fa-grid"></i>
+                <span class="material-symbols-outlined">
+                    restaurant_menu
+                    </span>
                 <span>Category</span>
             </a>
         </li>
         <li>
             <a href="{% url 'menucard:cart' %}">
-                <i class="fa fa-cart"></i>
+                <span class="material-symbols-outlined">
+                    shopping_cart
+                    </span>
                 <span>Cart</span>
             </a>
         </li>
@@ -172,20 +178,19 @@
                             </div>
 
                             <ul class="category-list">
-                                {% for cate in categories %}
+                                {% for cate in all_products %}
                                 <li class="onhover-category-list">
-                                    <a href="javascript:void(0)" class="category-name">
-                                        <img src="{{cate.icon.url}}" alt="">
-                                        <h6>{{cate.name|capfirst}}</h6>
+                                    <a href="{% url 'menucard:product' cate.subcategory__Category__id %}" class="category-name">
+                                        <img src="/media/{{cate.subcategory__Category__icon}}" alt="">
+                                        <h6>{{cate.subcategory__Category__name|capfirst}}</h6>
                                         <i class="fa-solid fa-angle-right"></i>
                                     </a>
-                                    <!-- href="{% url 'menucard:product' cate.id %}" -->
 
-                                    <div class="onhover-category-box">
+                                    {% comment %} <div class="onhover-category-box">
                                         {% for sub in cate.get_subcatgory %}
                                         <div class="list-1">
                                             <div class="category-title-box">
-                                                <a href="">
+                                                <a href="{% url 'menucard:product' sub.Category.id %}">
                                                     <h5>{{sub.name|capfirst}}</h5>
                                                 </a>
                                             </div>
@@ -200,7 +205,7 @@
 
                                         </div>
                                         {% endfor %}
-                                    </div>
+                                    </div> {% endcomment %}
                                 </li>
 
                                 {% endfor %}

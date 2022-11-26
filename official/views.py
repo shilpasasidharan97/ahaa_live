@@ -13,12 +13,15 @@ def loginPage(request):
         phone = request.POST['phone']
         password = request.POST['password']
         user = authenticate(request,phone=phone, password=password)
+        print(user)
         # print(user)
         if user is not None:
             if user.restaurant:
+                print(user.restaurant,'|#'*20)
                 login(request, user)
                 return redirect('web:home')
             elif user.is_superuser == True:
+                print(user.is_superuser)
                 login(request, user)
                 return redirect('official:home')
             else:

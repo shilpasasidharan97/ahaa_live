@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from website.models import Cart, CartItems, FrontBanner, Product, ProductPageBanner, Restaurant, Category, RestoSave, SubCategory
+from website.models import Cart, CartItems, FrontBanner, Product, ProductPageBanner, Restaurant, Category, RestoBanner, RestoSave, SubCategory
 from django.http import JsonResponse
 from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
@@ -15,26 +15,31 @@ def _rest_id(request):
 
 
 def home(request,id):
-    resto = Restaurant.objects.get(id=id)
-    categories = Category.objects.filter(restaurent=resto)
-    main_banner = FrontBanner.objects.all().order_by('-image')
+    rest= Restaurant.objects.get(id=id)
+    categories = Category.objects.filter(restaurent=rest)
+    main_banner = FrontBanner.objects.all().last()
+    resto_banner = RestoBanner.objects.all().last()
+    all_products = Product.objects.select_related('subcategory').filter(subcategory__Category__restaurent=rest).values('subcategory__Category__name','subcategory__Category__icon','subcategory__Category__id').distinct()
+    # print(all_products)
+    # print(resto_banner)
     try:
-        resto = RestoSave.objects.get(user_session_id=_rest_id(request),resto_pk=id)
+        resto_save = RestoSave.objects.get(user_session_id=_rest_id(request),resto_pk=id)
     except RestoSave.DoesNotExist:
-        resto = RestoSave.objects.create(user_session_id=_rest_id(request),resto_pk=id)
-    resto.save()
+        resto_save = RestoSave.objects.create(user_session_id=_rest_id(request),resto_pk=id)
+    resto_save.save()
     
     # print(len(main_banner),"$"*10)
-    if len(main_banner) >= 2:
-        fist_banner = main_banner[0]
-        footer_banner = main_banner[1]
-    elif len(main_banner) >=1:
-        fist_banner = main_banner[0]
-        footer_banner = main_banner[0]
+    # if len(main_banner) >= 2:
+    #     fist_banner = main_banner[0]
+    #     footer_banner = main_banner[1]
+    # elif len(main_banner) >=1:
+    #     fist_banner = main_banner[0]
+    #     footer_banner = main_banner[0]
     context = {
         "categories":categories,
-        "first":fist_banner,
-        "footer_banner":footer_banner,
+        "footer_banner":main_banner,
+        "resto_banner":resto_banner,
+        "all_products":all_products,
     }
     return render(request, 'menucard/home.html',context)
 
