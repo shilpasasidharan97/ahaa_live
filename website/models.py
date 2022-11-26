@@ -173,6 +173,11 @@ class ProductPageBanner(models.Model):
     image = models.FileField(upload_to='Product-banner', null=True, blank=True)
 
 
+class RestoBanner(models.Model):
+    resto = models.ForeignKey(Restaurant,on_delete=models.CASCADE, null=True, blank=True)
+    image = models.FileField(upload_to='Resturant-banner', null=True, blank=True)
+
+
 class RestoSave(models.Model):
     user_session_id = models.CharField(max_length=200,null=True)
     resto_pk = models.IntegerField(null=True)

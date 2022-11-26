@@ -24,6 +24,8 @@ urlpatterns = [
     path('productactive/<int:id>', views.productavailable, name="productactive"),
     path('deleteproduct/<int:id>', views.deleteProduct, name='deleteproduct'),
 
+    path('banner',views.banner,name='banner'),
+
     path('profile',views.profile,name='profile'),
     path('settings',views.settings,name='settings'),
 ]

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from website.models import Category, Product, RestaurantQrcode, Restaurant, SubCategory, User
+from website.models import Category, Product, RestaurantQrcode, Restaurant, RestoBanner, SubCategory, User
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
 from aahalive.decorators import auth_restaurant
@@ -168,7 +168,6 @@ def deleteProduct(request,id):
 
 
 # product show modal 
-
 def productshow(request,id):
     product = Product.objects.get(id=id)
     data = {
@@ -179,6 +178,19 @@ def productshow(request,id):
         "image":product.image.url,
     }
     return JsonResponse(data)
+
+
+def banner(request):
+    all_banner = RestoBanner.objects.filter(resto=request.user.restaurant).all()
+    if request.method == 'POST':
+        resto_banner = request.FILES['home-image']
+        new_banner =  RestoBanner(image=resto_banner, resto=request.user.restaurant)
+        new_banner.save()
+    context = {
+        "is_banner":True,
+        "all_banner":all_banner,
+    }
+    return render(request, 'web/banner.html',context)
 
 
 
