@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 <!-- Header Start -->
-<header class="pb-md-4 pb-3">
+<header class="pb-md-4 header-top">
     <div class="header-top">
         <div class="container-fluid-lg">
             <div class="row">
@@ -57,7 +57,7 @@
                             </span>
                         </button>
 
-                        <a href="{% url 'menucard:home' resto.resto_pk %}" class="web-logo nav-logo">
+                        <a href="" class="web-logo nav-logo">
                             <img src="{% static 'menucard/images/logo/aaha_logo.svg' %}" class="img-fluid blur-up lazyload" alt="">
 
                         </a>
@@ -122,42 +122,15 @@
             </div>
         </div>
     </div>
+
+    <div class="header-top" style="padding: .5px;">
+        <div class="container-fluid-lg">
+            <div class="row">
+            </div>
+        </div>
+    </div>
 </header>
 <!-- Header End -->
-
-
-<!-- mobile fix menu start -->
-<div class="mobile-menu d-md-none d-block mobile-cart">
-    <ul>
-        <li class="active">
-            <a href="{% url 'menucard:home' resto.resto_pk %}">
-                <span class="material-symbols-outlined"  style="color: #fff;">
-                    home
-                    </span>
-                <span>Home</span>
-            </a>
-        </li>
-
-        <li class="mobile-category">
-            <a>
-                <span class="material-symbols-outlined">
-                    restaurant_menu
-                    </span>
-                <span>Category</span>
-            </a>
-        </li>
-        <li>
-            <a href="{% url 'menucard:cart' %}">
-                <span class="material-symbols-outlined">
-                    shopping_cart
-                    </span>
-                <span>Cart</span>
-            </a>
-        </li>
-    </ul>
-</div>
-<!-- mobile fix menu end -->
-
 <header class="pb-md-4 pb-3">
     <div class="container-fluid-lg">
         <div class="row">
@@ -217,3 +190,38 @@
         </div>
     </div>
 </header>
+
+
+<!-- mobile fix menu start -->
+<div class="mobile-menu d-md-none d-block mobile-cart">
+    <ul>
+        <li class="active">
+            <a href="https://aahamenu.geany.website/menucard/menucard/{{resto.resto_pk}}">
+                <span class="material-symbols-outlined"  style="color: #fff;">
+                    home
+                    </span>
+                <span>Home</span>
+            </a>
+        </li>
+
+        <li class="mobile-category">
+            <a>
+                <span class="material-symbols-outlined">
+                    restaurant_menu
+                    </span>
+                <span>Category</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'menucard:cart' %}">
+                <span class="material-symbols-outlined">
+                    shopping_cart
+                    </span>
+                <span>Cart</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- mobile fix menu end -->
+
+

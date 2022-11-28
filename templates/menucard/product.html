@@ -2,15 +2,27 @@
 {% block content %}
 {% load static %}
 
+<style>
+    .bb{
+        height: 283px;
+    }
+    @media screen and (max-width:450px) {
+        .bb{
+            width: 100%;
+            height: 200px;
+        }
+    }
+</style>
+
 
 <!-- Home Section Start -->
-<section class="home-section pt-2">
+<section class="home-section">
     <div class="container-fluid-lg">
         <div class="row g-4">
-            <div class="col-xl-12 col-lg-12 col-12">
+            <div class="col-xl-12 col-lg-12 col-12 mt-0">
                 <a href="">
                     <div class="home-contain h-100">
-                        <img src="{{fist_banner.image.url}}" class="" alt="" width="100%">
+                        <img src="{{fist_banner.image.url}}" class="bb" alt="" width="100%">
                     </div>
                 </a>
             </div>

@@ -15,6 +15,7 @@ def _rest_id(request):
 
 
 def home(request,id):
+    # resto = RestoSave.objects.get(user_session_id=request.session.session_key)
     rest= Restaurant.objects.get(id=id)
     categories = Category.objects.filter(restaurent=rest)
     main_banner = FrontBanner.objects.all().last()
@@ -40,6 +41,7 @@ def home(request,id):
         "footer_banner":main_banner,
         "resto_banner":resto_banner,
         "all_products":all_products,
+        # "resto":resto
     }
     return render(request, 'menucard/home.html',context)
 

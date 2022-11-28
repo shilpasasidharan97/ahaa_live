@@ -36,6 +36,8 @@ def main_context(request):
         cart_items = CartItems.objects.filter(cart__cart_id = request.session.session_key).count()
         try:
             resto = RestoSave.objects.get(user_session_id=request.session.session_key)
+            rest= resto.resto_pk
+            print(rest,'12'*20)
             # categories = Category.objects.filter(restaurent__id=resto.resto_pk)
             all_products = Product.objects.select_related('subcategory').filter(subcategory__Category__restaurent=resto.resto_pk).values('subcategory__Category__name','subcategory__Category__icon','subcategory__Category__id').distinct()
 
