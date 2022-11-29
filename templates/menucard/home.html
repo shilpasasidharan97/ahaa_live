@@ -1,20 +1,26 @@
 {% extends 'menucard/partials/base.html' %}
 {% block content %}
 {% load static %}
-<!-- <style>
+<style>
     .bb{
         height: 283px;
     }
-</style> -->
+    @media screen and (max-width:450px) {
+        .bb{
+            width: 100%;
+            height: 200px;
+        }
+    }
+</style>
 
 <!-- Home Section Start -->
-<section class="home-section pt-2">
+<section class="home-section pt-4">
     <div class="container-fluid-lg">
         <div class="row g-4">
-            <div class="col-xl-12 col-lg-12 col-12">
+            <div class="col-xl-12 col-lg-12 col-12" style="margin: 0px;">
                 <a href="">
                     <div class="home-contain h-100">
-                        <img src="{{first.image.url}}" class="bb" alt="" width="100%">
+                        <img src="{{resto_banner.image.url}}" class="bb" alt="" width="100%">
                     </div>
                 </a>
             </div>
@@ -35,25 +41,28 @@
             <p>Top Categories Of The Week</p>
         </div>
         <div class="row mt-1">
-            {% for cat in categories %}
+            {% comment %} {% for cat in categories %} {% endcomment %}
+            {% for cat in all_products %}
             <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
                 <div>
-                    <a href="{% url 'menucard:product' cat.id %}" class="category-box wow fadeInUp">
+                    <a href="{% url 'menucard:product' cat.subcategory__Category__id %}" class="category-box wow fadeInUp">
                         <div>
-                            <img src="{{cat.icon.url}}" class="blur-up lazyload" alt="">
-                            <h5>{{cat.name}}</h5>
+                            <img src="/media/{{cat.subcategory__Category__icon}}" class="blur-up lazyload" alt="">
+                            <h5>{{cat.subcategory__Category__name|capfirst}}</h5>
                         </div>
+
                     </a>
                 </div>
             </div>
             {% endfor %}
+            {% comment %} {% endfor %} {% endcomment %}
         </div>
     </div>
 </section>
 
 
 <!-- Footer Banner -->
-<section class="home-section pt-2 pb-5 mb-5">
+<section class="home-section pt-2 pb-3">
     <div class="container-fluid-lg">
         <div class="row g-4">
             <div class="col-xl-12 col-lg-12 col-12">

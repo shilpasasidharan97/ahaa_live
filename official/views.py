@@ -3,17 +3,17 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from website.models import FrontBanner, ProductPageBanner, Restaurant
+from website.models import FrontBanner, ProductPageBanner, Restaurant, Video
 from aahalive.decorators import auth_official
 # Create your views here.
 
 
+# LOGIN
 def loginPage(request):
     if request.method == 'POST':
         phone = request.POST['phone']
         password = request.POST['password']
         user = authenticate(request,phone=phone, password=password)
-        # print(user)
         if user is not None:
             if user.restaurant:
                 login(request, user)
@@ -28,24 +28,27 @@ def loginPage(request):
     return render(request, 'official/login.html')
 
 
+# HOME PAGE
 @auth_official
 @login_required(login_url='/official/login-page')
 def home(request): 
     resto_count = Restaurant.objects.all().count() 
     all_resto = Restaurant.objects.all()[:5] 
+    banner = ProductPageBanner.objects.all()[:2]
     context = {
         "is_home":True,
         "resto_count":resto_count,
         "all_resto":all_resto,
+        "banner":banner,
     }
     return render(request, 'official/home.html',context)
 
 
+# RESTURANT LIST
 @auth_official
 @login_required(login_url='/official/login-page')
 def resturantList(request):
     all_resturants = Restaurant.objects.all().order_by('restaurant_name')
-    print(all_resturants)
     context = {
         "is_resto":True,
         "all_resturants":all_resturants,
@@ -53,6 +56,7 @@ def resturantList(request):
     return render(request, 'official/resturant_list.html',context)
 
 
+# RESTURANT DETAILS
 @auth_official
 @login_required(login_url='/official/login-page')
 def resturantDetails(request,id):
@@ -69,6 +73,7 @@ def resturantDetails(request,id):
     return JsonResponse(data)
 
 
+# USER CREATION
 @auth_official
 @login_required(login_url='/official/login-page')
 def creatUsers(request):
@@ -94,6 +99,8 @@ def creatUsers(request):
     }
     return render(request, 'official/create_user.html',context)
 
+
+# BANNER SECTION
 @auth_official
 @login_required(login_url='/official/login-page')
 def bannerPage(request):
@@ -112,6 +119,7 @@ def bannerPage(request):
     return render(request, 'official/banneradding.html',context)
 
 
+# PRODUCT BANNER
 @auth_official
 @login_required(login_url='/official/login-page')
 def productBanner(request):
@@ -122,6 +130,21 @@ def productBanner(request):
     return redirect('official:banneradding')
 
 
+# VIDEO
+def videoAdding(request):
+    all_video = Video.objects.all()
+    if request.method == 'POST':
+        video = request.FILES['video']
+        new_video = Video(video=video) 
+        new_video.save()
+    context = {
+        'is_video':True,
+        "all_video":all_video
+    }
+    return render(request, 'official/video.html', context)
+
+
+# LOGOUT
 def logout_resto(request):
     logout(request)
     return redirect('official:loginPage')

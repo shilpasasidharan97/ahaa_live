@@ -2,15 +2,27 @@
 {% block content %}
 {% load static %}
 
+<style>
+    .bb{
+        height: 283px;
+    }
+    @media screen and (max-width:450px) {
+        .bb{
+            width: 100%;
+            height: 200px;
+        }
+    }
+</style>
+
 
 <!-- Home Section Start -->
-<section class="home-section pt-2">
+<section class="home-section">
     <div class="container-fluid-lg">
         <div class="row g-4">
-            <div class="col-xl-12 col-lg-12 col-12">
+            <div class="col-xl-12 col-lg-12 col-12 mt-0">
                 <a href="">
                     <div class="home-contain h-100">
-                        <img src="{{fist_banner.image.url}}" class="" alt="" width="100%">
+                        <img src="{{fist_banner.image.url}}" class="bb" alt="" width="100%">
                     </div>
                 </a>
             </div>
@@ -43,7 +55,7 @@
 
                     <div class="row g-sm-4 g-3 product-list-section mt-3">
                         {% for product in products %}
-                        <div class="col-lg-2 col-md-3 co-sm-6 col-6  grid-item {{product.subcategory.name|slugify}}"
+                        <div class="col-lg-3 col-md-3 co-sm-6 col-6  grid-item {{product.subcategory.name|slugify}}"
                             data-category="{{product.subcategory.name|slugify}}">
                             <div class="product-box-3 h-100 wow fadeInUp">
                                 <div class="product-header">
@@ -56,7 +68,7 @@
                                 </div>
                                 <div class="product-footer">
                                     <div class="product-detail mt-3">
-                                        <h5 class="name">{{product.name}}</h5>
+                                        <h5 class="name">{{product.name|capfirst}}</h5>
                                         <a data-bs-toggle="modal" data-bs-target="#view">
                                             <span class="span-name">{{product.ingrediants}}</span>
                                         </a>

@@ -21,6 +21,9 @@
                 <li {% if is_banner %} class="active" {% endif %}>
                     <a href="{% url 'official:banneradding' %}"><i class="fa fa-signs-post"></i> <span>Banner Adding</span></a>
                 </li>
+                <li {% if is_video %} class="active" {% endif %}>
+                    <a href="{% url 'official:video' %}"> <i class="fa fa-play"></i> <span>Upload Video</span></a>
+                </li>
                 <li {% if is_settings %} class="active" {% endif %}>
                     <a href=""><i class="fa fa-gear"></i> <span>Settings</span></a>
                 </li>

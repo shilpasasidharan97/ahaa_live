@@ -11,5 +11,6 @@ urlpatterns = [
     path('resturant_details/<int:id>',views.resturantDetails, name='resturant_details'),
     path('create_user',views.creatUsers, name='create_user'), 
     path('banneradding',views.bannerPage, name='banneradding'),
-    path('product-banner', views.productBanner, name='productbanner') 
+    path('product-banner', views.productBanner, name='productbanner'),
+    path('video', views.videoAdding, name='video') 
 ]

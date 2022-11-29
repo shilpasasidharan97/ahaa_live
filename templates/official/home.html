@@ -110,7 +110,9 @@
     </div>
     <div class="col-lg-6">
         <div class="col-lg-12 banner">
-            <img src="{% static 'menucard/images/veg-2/banner/1.jpg' %}" alt="" class="banner">
+            {% for b in banner %}
+            <img src="{{b.image.url}}" alt="" class="banner" style="padding: 5px;">
+            {% endfor %}
         </div>
     </div>
 </div>

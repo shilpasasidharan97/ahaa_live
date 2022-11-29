@@ -173,9 +173,29 @@ class ProductPageBanner(models.Model):
     image = models.FileField(upload_to='Product-banner', null=True, blank=True)
 
 
+class RestoBanner(models.Model):
+    resto = models.ForeignKey(Restaurant,on_delete=models.CASCADE, null=True, blank=True)
+    image = models.FileField(upload_to='Resturant-banner', null=True, blank=True)
+
+
 class RestoSave(models.Model):
     user_session_id = models.CharField(max_length=200,null=True)
     resto_pk = models.IntegerField(null=True)
 
     def __str__(self):
         return str(self.user_session_id)
+
+
+class Video(models.Model):
+    video = models.FileField(upload_to='video', null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = ("Video")
+
+
+class SocialMediaLink(models.Model):
+    resturant = models.ForeignKey(Restaurant,on_delete=models.CASCADE,null=True)
+    facebook = models.CharField(max_length=2000,null=True, blank=True)
+    instagram = models.CharField(max_length=2000,null=True, blank=True)
+    whatsapp = models.CharField(max_length=2000,null=True, blank=True)
+    location = models.CharField(max_length=2000,null=True, blank=True)
