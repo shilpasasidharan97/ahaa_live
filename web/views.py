@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
-from website.models import Category, Product, RestaurantQrcode, Restaurant, RestoBanner, SubCategory, User
+from website.models import Category, Product, RestaurantQrcode, Restaurant, RestoBanner, SocialMediaLink, SubCategory, User
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
 from aahalive.decorators import auth_restaurant
@@ -180,6 +180,8 @@ def productshow(request,id):
     return JsonResponse(data)
 
 
+@auth_restaurant
+@login_required(login_url='/official/login-page')
 def banner(request):
     all_banner = RestoBanner.objects.filter(resto=request.user.restaurant).all()
     if request.method == 'POST':
@@ -229,3 +231,23 @@ def settings(request):
         "resto_data":resto_data,
     }
     return render(request, 'web/settings.html', context)
+
+
+# SOCIAL MEDIA LINKS
+def socialMedialinks(request):
+    all_links = SocialMediaLink.objects.get(resturant=request.user.restaurant)
+    # print(all_links.facebook)
+    if request.method == 'POST':
+        facebook = request.POST['facebook']
+        instagram = request.POST['instagram']
+        whatsapp = request.POST['whatsapp']
+        location = request.POST['location']
+
+        links = SocialMediaLink(facebook=facebook, instagram=instagram, whatsapp=whatsapp, location=location,resturant=request.user.restaurant)
+        links.save()
+    context = {
+        "is_links":True,
+        "all_links":all_links,
+    }
+
+    return render(request, 'web/social_media.html', context)

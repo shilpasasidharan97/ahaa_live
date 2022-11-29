@@ -184,3 +184,18 @@ class RestoSave(models.Model):
 
     def __str__(self):
         return str(self.user_session_id)
+
+
+class Video(models.Model):
+    video = models.FileField(upload_to='video', null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = ("Video")
+
+
+class SocialMediaLink(models.Model):
+    resturant = models.ForeignKey(Restaurant,on_delete=models.CASCADE,null=True)
+    facebook = models.CharField(max_length=2000,null=True, blank=True)
+    instagram = models.CharField(max_length=2000,null=True, blank=True)
+    whatsapp = models.CharField(max_length=2000,null=True, blank=True)
+    location = models.CharField(max_length=2000,null=True, blank=True)

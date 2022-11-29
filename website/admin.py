@@ -56,6 +56,9 @@ admin.site.register(ProductPageBanner)
 admin.site.register(RestoSave)
 
 
+admin.site.register(Video)
+
+
 
 
 

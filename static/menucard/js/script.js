@@ -254,20 +254,20 @@ $(".bg-img").each(function () {
 /*=====================
    12. search box function Js
    ==========================*/
-$(".search-box").on("click", function () {
-    $(this).closest(".rightside-box").find(".search-full").addClass("open");
-});
-$(window).on("load resize", function () {
-    // open searchbox
-    $(".search-type").on("click", function () {
-        $(this).parents(".search-full").addClass("show");
-    });
+// $(".search-box").on("click", function () {
+//     $(this).closest(".rightside-box").find(".search-full").addClass("open");
+// });
+// $(window).on("load resize", function () {
+//     // open searchbox
+//     $(".search-type").on("click", function () {
+//         $(this).parents(".search-full").addClass("show");
+//     });
 
-    // close seach
-    $(".close-search").on("click", function () {
-        $(this).closest(".rightside-box").find(".search-full").removeClass("open");
-    });
-});
+//     // close seach
+//     $(".close-search").on("click", function () {
+//         $(this).closest(".rightside-box").find(".search-full").removeClass("open");
+//     });
+// });
 
 /*=====================
    13. Wishlist Js

@@ -19,6 +19,9 @@
                 <li {% if is_profile %} class="active" {% endif %}>
                     <a href="{% url 'web:profile' %}"><i class="fa fa-user"></i> <span>Profile </span></a>
                 </li>
+                <li {% if is_links %} class="active" {% endif %}>
+                    <a href="{% url 'web:socialmedia' %}"><i class="fa fa-user"></i> <span>Social Media Links </span></a>
+                </li>
                 <li {% if is_settings %} class="active" {% endif %}>
                     <a href="{% url 'web:settings' %}"><i class="fa fa-gear"></i> <span>Settings</span></a>
                 </li>
