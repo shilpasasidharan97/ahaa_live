@@ -251,3 +251,13 @@ def socialMedialinks(request):
     }
 
     return render(request, 'web/social_media.html', context)
+
+
+def tableOff(request,id):
+    Restaurant.objects.filter(id=id).update(is_table=False)
+    return redirect("web:home")
+
+
+def tableOn(request,id):
+    Restaurant.objects.filter(id=id).update(is_table=True)
+    return redirect("web:home")
