@@ -58,6 +58,8 @@ admin.site.register(RestoSave)
 
 admin.site.register(Video)
 
+admin.site.register(SocialMediaLink)
+
 
 
 

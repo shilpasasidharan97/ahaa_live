@@ -20,7 +20,6 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- Cart Section Start -->
     <section class="cart-section section-b-space">
         <div class="container-fluid-lg">
             <div class="row g-sm-5 g-3">
@@ -102,7 +101,7 @@
                         <form  method="POST">
                             {% csrf_token %}
                             <div class="summery-contain">
-
+                                {% if resturants_obj.is_table != False %}
                                 <div class="coupon-cart">
                                     <h6 class="text-content mb-2"> Table Number</h6>
                                     <div class="mb-3 coupon-box input-group">
@@ -112,6 +111,7 @@
                                         <span id="message" style="color: red;"></span>
                                     </div>
                                 </div>
+                                {% endif %}
 
                                 
 
@@ -134,7 +134,7 @@
                                     <h4 class="price theme-color">₹132.58</h4>
                                 </li>
                             </ul> -->
-
+                            {% if resturants_obj.is_table != False %}
                             <div class="button-group cart-button">
                                 <ul>
                                     <li>
@@ -144,6 +144,7 @@
                                     </li>
                                 </ul>
                             </div>
+                            {% endif %}
 
                         </form>
                     </div>
