@@ -165,7 +165,7 @@
 <div class="mobile-menu d-md-none d-block mobile-cart">
     <ul>
         <li class="active">
-            <a href="https://aahamenu.geany.website/menucard/menucard/{{resto.resto_pk}}">
+            <a href="{% url 'menucard:menuhome' resturants_obj.id %}">
                 <span class="material-symbols-outlined"  style="color: #fff;">
                     home
                     </span>
