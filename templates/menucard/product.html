@@ -80,7 +80,7 @@
                                                 <h6 class="table-title text-content ">Qty</h6>
                                             </div>
                                            <div class="col-lg-10 col-md-10 col-sm-7 col-7">
-                                            <select class="form-group select mb-2 " onchange="ChangeQuantity({{product.id}})" name="" id="itmquantity{{product.id}}">
+                                            <select class="form-group select mb-2 form-control sel" onchange="ChangeQuantity({{product.id}})" name="" id="itmquantity{{product.id}}">
                                                 <option value="1" >1</option>
                                                 <option value="2" >2</option>
                                                 <option value="3" >3</option>
@@ -91,6 +91,12 @@
                                                 <option value="8" >8</option>
                                                 <option value="9" >9</option>
                                                 <option value="10" >10</option>
+                                                <option value="8" >11</option>
+                                                <option value="9" >12</option>
+                                                <option value="10" >13</option>
+                                                <option value="8" >14</option>
+                                                <option value="9" >15</option>
+                                                <option value="10" >16</option>
                                             </select>
                                            </div>
                                         </div>
@@ -238,6 +244,10 @@
         font-size: 3em;
         text-align: center;
         margin-bottom: 30px;
+    }
+    .sel{
+        height: 30px;
+        width: 60px;
     }
 </style>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
