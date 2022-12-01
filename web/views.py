@@ -243,8 +243,9 @@ def socialMedialinks(request):
         whatsapp = request.POST['whatsapp']
         location = request.POST['location']
 
-        links = SocialMediaLink(facebook=facebook, instagram=instagram, whatsapp=whatsapp, location=location,resturant=request.user.restaurant)
-        links.save()
+        SocialMediaLink.objects.filter(resturant=request.user.restaurant).update(facebook=facebook, instagram=instagram, whatsapp=whatsapp, location=location)
+        return redirect("web:socialmedia")
+
     context = {
         "is_links":True,
         "all_links":all_links,

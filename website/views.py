@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Restaurant, DefaultCats, Category, RestaurantQrcode
+from .models import Restaurant, DefaultCats, Category, RestaurantQrcode, SocialMediaLink
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate, login
 
@@ -32,6 +32,8 @@ def registration(request):
                 # url = "https://aahamenu.geany.website/menucard/menucard/"+str(new_resto.id)
                 url = "http://127.0.0.1:8000/menucard/menucard"+str(new_resto.id)
                 RestaurantQrcode.objects.create(restaurant=new_resto,resto_url=url)
+                links = SocialMediaLink(resturant=new_resto)
+                links.save()
                 for i in default_cats:
                     category_obj = Category(restaurent=new_resto,name=i.no,icon=i.image)
                     category_obj.save()
