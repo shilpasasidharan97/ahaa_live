@@ -75,9 +75,28 @@
                                         <h5 class="price"><span class="theme-color">₹{{product.price}}</span>
                                             <!-- <del>₹15.15</del> -->
                                         </h5>
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-2 col-sm-5 col-5">
+                                                <h6 class="table-title text-content ">Qty</h6>
+                                            </div>
+                                           <div class="col-lg-10 col-md-10 col-sm-7 col-7">
+                                            <select class="form-group select mb-2 " onchange="ChangeQuantity({{product.id}})" name="" id="itmquantity{{product.id}}">
+                                                <option value="1" >1</option>
+                                                <option value="2" >2</option>
+                                                <option value="3" >3</option>
+                                                <option value="4" >4</option>
+                                                <option value="5" >5</option>
+                                                <option value="6" >6</option>
+                                                <option value="7" >7</option>
+                                                <option value="8" >8</option>
+                                                <option value="9" >9</option>
+                                                <option value="10" >10</option>
+                                            </select>
+                                           </div>
+                                        </div>
                                         <div class="add-to-cart-box text-center bg-white">
-                                            <a href="{% url 'menucard:addtocart' product.id %}"
-                                                class="btn btn-sm text-center mt-3">Add to list</a>
+                                            <a href="/menucard/addtocart/{{product.id}}/1"
+                                                class="btn btn-sm text-center mt-0" id="addtocarturl{{product.id}}">Add to list</a>
                                         </div>
                                     </div>
                                 </div>
@@ -90,7 +109,6 @@
 
         </div>
 </section>
-
 
 <!-- footer -->
 <section class="pb-3 pt-3">
@@ -226,6 +244,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
 <script>
+    function ChangeQuantity(id){
+            var productqty = $("#itmquantity"+id).val()
+            $("#addtocarturl"+id).attr('href',"/menucard/addtocart/" + id + "/" + productqty);  
+        }
+
+
     var $grid = $('.grid').isotope({
         // options
         itemSelector: '.grid-item',
@@ -267,4 +291,26 @@
 
 
 
-{% endblock %}
+{% endblock %}<div class="col-xl-3 col-sm-6 col-12">
+    <div class="card">
+        <div class="card-body">
+            <div class="dash-widget-header">
+                <!-- <span class="dash-widget-icon bg-2">
+                   <h4>Table</h4>
+                </span> -->
+                <div class="dash-count">
+                    <div class="dash-title">Table</div>
+                    {% if qr_code.restaurant.is_table == True %}
+                    <div class="dash-counts">
+                        <a href="{% url 'web:tableOff' qr_code.restaurant.id %}" class="btn-sm btn-danger">TurnOff</a>
+                    </div>
+                    {% else %}
+                    <div class="dash-counts">
+                        <a href="{% url 'web:tableOn' qr_code.restaurant.id %}" class="btn-sm btn-success">TurnOn</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

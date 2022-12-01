@@ -11,7 +11,6 @@ from django.template.defaultfilters import slugify
 from django.utils.text import slugify
 
 
-
 class UserManager(BaseUserManager):
     def create_user(self,phone,password=None,**extra_fields):
 
@@ -43,6 +42,7 @@ class Restaurant(models.Model):
     district = models.CharField(max_length=150,null=True)
     state = models.CharField(max_length=100,null=True)
     address = models.CharField(max_length=300,null=True)
+    is_table = models.BooleanField(default=True)
 
     class Meta:
         verbose_name_plural = ("Restaurant")
