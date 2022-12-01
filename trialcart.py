@@ -36,6 +36,7 @@ def home(request,id):
     
    
     links = SocialMediaLink.objects.get(resturant=rest)
+    cart_count = CartItems.objects.filter(cart__cart_id=request.session.session_key,product__subcategory__Category__restaurent=rest).count()
     context = {
         "categories":categories,
         "footer_banner":main_banner,
@@ -44,6 +45,7 @@ def home(request,id):
         # "resto":resto
         "resturants_obj":rest,
         "links":links,
+        "cart_items_count":cart_count,
     }
     return render(request, 'menucard/home.html',context)
 
@@ -58,6 +60,7 @@ def products(request,id):
     resturants_obj = Restaurant.objects.get(id=catag.restaurent.id)
     links = SocialMediaLink.objects.get(resturant=resturants_obj)
     all_products = Product.objects.select_related('subcategory').filter(subcategory__Category__restaurent=resturants_obj).values('subcategory__Category__name','subcategory__Category__icon','subcategory__Category__id').distinct()
+    cart_count = CartItems.objects.filter(cart__cart_id=request.session.session_key,product__subcategory__Category__restaurent=resturants_obj).count()
 
 
     if len(products) <= 10:
@@ -77,6 +80,7 @@ def products(request,id):
         "resturants_obj":resturants_obj,
         "links":links,
         "all_products":all_products,
+        "cart_items_count":cart_count,
     }
     return render(request, 'menucard/product.html',context)
 
@@ -207,14 +211,16 @@ def cart(request):
     # cart = Cart.objects.filter(cart_id=_cart_id(request))
     
     # categories = CartItems.objects.filter(cart_items__product__subcategory__Category=resto)
-    cart_items = CartItems.objects.filter(cart__cart_id=_cart_id(request))
-    sub_total = CartItems.objects.filter(cart__cart_id=_cart_id(request)).aggregate(Sum('total'))
     try :
+        print("try"*10)
         restosave_obj = RestoSave.objects.get(user_session_id=request.session.session_key)
         rest_pk = restosave_obj.resto_pk
         resturants_obj = Restaurant.objects.get(id=rest_pk)
         links = SocialMediaLink.objects.get(resturant=resturants_obj)
         all_products = Product.objects.select_related('subcategory').filter(subcategory__Category__restaurent=resturants_obj).values('subcategory__Category__name','subcategory__Category__icon','subcategory__Category__id').distinct()
+        cart_items = CartItems.objects.filter(cart__cart_id=request.session.session_key,product__subcategory__Category__restaurent=resturants_obj)
+        sub_total = CartItems.objects.filter(cart__cart_id=request.session.session_key,product__subcategory__Category__restaurent=resturants_obj).aggregate(Sum('total'))
+        cart_count = CartItems.objects.filter(cart__cart_id=request.session.session_key,product__subcategory__Category__restaurent=resturants_obj).count()
 
         context = {
             'cartitems':cart_items,
@@ -223,16 +229,23 @@ def cart(request):
             "resturants_obj":resturants_obj,
             "links":links,
             "all_products":all_products,
+            "cart_items_count":cart_count,
         }
         return render(request, 'menucard/cart.html', context)
     except:
+        print("exept111"*10)
         sessin_count = RestoSave.objects.filter(user_session_id=request.session.session_key).count()
         if sessin_count > 1 :
+            print("exeptiiiiffff"*10)
             restosave_obj = RestoSave.objects.filter(user_session_id=request.session.session_key).last()
             rest_pk = restosave_obj.resto_pk
             resturants_obj = Restaurant.objects.get(id=rest_pk)
             links = SocialMediaLink.objects.get(resturant=resturants_obj)
             all_products = Product.objects.select_related('subcategory').filter(subcategory__Category__restaurent=resturants_obj).values('subcategory__Category__name','subcategory__Category__icon','subcategory__Category__id').distinct()
+            cart_items = CartItems.objects.filter(cart__cart_id=request.session.session_key,product__subcategory__Category__restaurent=resturants_obj)
+            sub_total = CartItems.objects.filter(cart__cart_id=request.session.session_key,product__subcategory__Category__restaurent=resturants_obj).aggregate(Sum('total'))
+            cart_count = CartItems.objects.filter(cart__cart_id=request.session.session_key,product__subcategory__Category__restaurent=resturants_obj).count()
+
             context = {
                 'cartitems':cart_items,
                 "sub_total":sub_total,
@@ -240,10 +253,13 @@ def cart(request):
                 "resturants_obj":resturants_obj,
                 "links":links,
                 "all_products":all_products,
+                "cart_items_count":cart_count,
             }
             return render(request, 'menucard/cart.html', context)
         else:
+            print("exeptelse"*10)
             pass
+    
     context = {
         'cartitems':cart_items,
         "sub_total":sub_total,
@@ -251,7 +267,9 @@ def cart(request):
         "resturants_obj":resturants_obj,
         "links":links,
         "all_products":all_products,
+        "cart_items_count":cart_count,
     }
+    print("laastt"*10)
     return render(request, 'menucard/cart.html', context)
 
 
