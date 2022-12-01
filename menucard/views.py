@@ -102,16 +102,16 @@ def AddToCart(request,pid,qty):
 
     try:
         cart_item = CartItems.objects.get(product=product, cart=cart)
-        cart_item.quantity = cart_item.quantity+1
+        cart_item.quantity = cart_item.quantity+qty
         cart_item.save()
         total_price = float(cart_item.quantity) * float(product.price)
         cart_item.total = total_price
         cart_item.save()
         cart.save()
     except CartItems.DoesNotExist:
-        cart_item = CartItems.objects.create(product=product, quantity=1, cart=cart)
+        cart_item = CartItems.objects.create(product=product, quantity=qty, cart=cart)
         cart_item.save()
-        total_price = 1 * float(product.price)
+        total_price = int(qty) * float(product.price)
         cart_item.total = total_price
         cart_item.save()
         cart.save()
