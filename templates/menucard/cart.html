@@ -158,7 +158,7 @@
                         <form  method="POST">
                             {% csrf_token %}
                             <div class="summery-contain">
-                                {% if resturants_obj.is_table != False %}
+                                
                                 <div class="coupon-cart">
                                     <h6 class="text-content mb-2"> Table Number</h6>
                                     <div class="mb-3 coupon-box input-group">
@@ -168,11 +168,11 @@
                                         <span id="message" style="color: red;"></span>
                                     </div>
                                 </div>
-                                {% elif resturants_obj.is_table == False %}
+                                
                                 <div class="coupon-cart">
                                     
                                 </div>
-                                {% endif %}
+                                
                                 <ul class="summery-total">
                                     <li>
                                         <h4 class="list-total border-top-0">Total</h4>
@@ -192,7 +192,7 @@
                                     <h4 class="price theme-color">₹132.58</h4>
                                 </li>
                             </ul> -->
-                            {% if resturants_obj.is_table != False %}
+                          
                             
                             <div class="button-group cart-button">
                                 <ul>
@@ -203,11 +203,11 @@
                                     </li>
                                 </ul>
                             </div>
-                            {% elif resturants_obj.is_table == False %}
+                            
                             <div class="button-group cart-button">
                                 
                             </div>
-                            {% endif %}
+                            
                         </form>
                     </div>
                 </div>
