@@ -136,29 +136,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 col-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="dash-widget-header">
-                        <!-- <span class="dash-widget-icon bg-2">
-                           <h4>Table</h4>
-                        </span> -->
-                        <div class="dash-count">
-                            <div class="dash-title">Table</div>
-                            {% if qr_code.restaurant.is_table == True %}
-                            <div class="dash-counts">
-                                <a href="{% url 'web:tableOff' qr_code.restaurant.id %}" class="btn-sm btn-danger">TurnOff</a>
-                            </div>
-                            {% else %}
-                            <div class="dash-counts">
-                                <a href="{% url 'web:tableOn' qr_code.restaurant.id %}" class="btn-sm btn-success">TurnOn</a>
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     
 </div>

@@ -75,28 +75,9 @@
                                         <h5 class="price"><span class="theme-color">₹{{product.price}}</span>
                                             <!-- <del>₹15.15</del> -->
                                         </h5>
-                                        <div class="row">
-                                            <div class="col-lg-2 col-md-2 col-sm-5 col-5">
-                                                <h6 class="table-title text-content ">Qty</h6>
-                                            </div>
-                                           <div class="col-lg-10 col-md-10 col-sm-7 col-7">
-                                            <select class="form-group select mb-2 " onchange="ChangeQuantity({{product.id}})" name="" id="itmquantity{{product.id}}">
-                                                <option value="1" >1</option>
-                                                <option value="2" >2</option>
-                                                <option value="3" >3</option>
-                                                <option value="4" >4</option>
-                                                <option value="5" >5</option>
-                                                <option value="6" >6</option>
-                                                <option value="7" >7</option>
-                                                <option value="8" >8</option>
-                                                <option value="9" >9</option>
-                                                <option value="10" >10</option>
-                                            </select>
-                                           </div>
-                                        </div>
                                         <div class="add-to-cart-box text-center bg-white">
-                                            <a href="/menucard/addtocart/{{product.id}}/1"
-                                                class="btn btn-sm text-center mt-0" id="addtocarturl{{product.id}}">Add to list</a>
+                                            <a href="{% url 'menucard:addtocart' product.id %}"
+                                                class="btn btn-sm text-center mt-3">Add to list</a>
                                         </div>
                                     </div>
                                 </div>
@@ -180,6 +161,11 @@
 
 
 
+
+
+
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
     integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -240,13 +226,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
 <script>
-
-    function ChangeQuantity(id){
-        var productqty = $("#itmquantity"+id).val()
-        $("#addtocarturl"+id).attr('href',"/menucard/addtocart/" + id + "/" + productqty);  
-    }
-
-
     var $grid = $('.grid').isotope({
         // options
         itemSelector: '.grid-item',

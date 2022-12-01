@@ -30,10 +30,4 @@ urlpatterns = [
     path('settings',views.settings,name='settings'),
 
     path('socialmedia',views.socialMedialinks,name='socialmedia'),
-
-    # table
-
-    path('table-On/<int:id>',views.tableOn,name='tableOn'),
-    path('table-off/<int:id>',views.tableOff,name='tableOff'),
-
 ]
