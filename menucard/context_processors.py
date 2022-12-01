@@ -38,7 +38,8 @@ def main_context(request):
         try:
             resto = RestoSave.objects.get(user_session_id=request.session.session_key)
             rest= resto.resto_pk
-            resturants_obj = Restaurant.objects.filter(id=rest)
+            resturants_obj = Restaurant.objects.get(id=rest)
+            print(resturants_obj.is_table,"#"*20)
             # eeemail = resturants_obj.email
             # print(aaa,'12'*20)
             # categories = Category.objects.filter(restaurent__id=resto.resto_pk)

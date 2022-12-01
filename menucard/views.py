@@ -21,8 +21,7 @@ def home(request,id):
     main_banner = FrontBanner.objects.all().last()
     resto_banner = RestoBanner.objects.all().last()
     all_products = Product.objects.select_related('subcategory').filter(subcategory__Category__restaurent=rest).values('subcategory__Category__name','subcategory__Category__icon','subcategory__Category__id').distinct()
-    # print(all_products)
-    # print(resto_banner)
+
     try:
         resto_save = RestoSave.objects.get(user_session_id=_rest_id(request),resto_pk=id)
     except RestoSave.DoesNotExist:
@@ -58,7 +57,6 @@ def products(request,id):
         if len(product_banner) >= 2:
             fist_banner = product_banner[0]
             second_banner = product_banner[1]
-            print(fist_banner,'first if')
         elif len(product_banner) >= 1:
             fist_banner = product_banner[0]
             second_banner = product_banner[0]
@@ -92,7 +90,7 @@ def _cart_id(request):
     return cart
 
 
-def AddToCart(request,pid):
+def AddToCart(request,pid,qty):
     product = Product.objects.get(id=pid)
     resto = product.subcategory.Category.id
     try:
@@ -103,16 +101,16 @@ def AddToCart(request,pid):
 
     try:
         cart_item = CartItems.objects.get(product=product, cart=cart)
-        cart_item.quantity = cart_item.quantity+1
+        cart_item.quantity = cart_item.quantity+qty
         cart_item.save()
         total_price = float(cart_item.quantity) * float(product.price)
         cart_item.total = total_price
         cart_item.save()
         cart.save()
     except CartItems.DoesNotExist:
-        cart_item = CartItems.objects.create(product=product, quantity=1, cart=cart)
+        cart_item = CartItems.objects.create(product=product, quantity=qty, cart=cart)
         cart_item.save()
-        total_price = 1 * float(product.price)
+        total_price = int(qty) * float(product.price)
         cart_item.total = total_price
         cart_item.save()
         cart.save()
