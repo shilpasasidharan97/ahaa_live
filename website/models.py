@@ -11,7 +11,6 @@ from django.template.defaultfilters import slugify
 from django.utils.text import slugify
 
 
-
 class UserManager(BaseUserManager):
     def create_user(self,phone,password=None,**extra_fields):
 

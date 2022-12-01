@@ -91,8 +91,7 @@ def _cart_id(request):
         cart = request.session.create()
     return cart
 
-
-def AddToCart(request,pid):
+def AddToCart(request,pid,qty):
     product = Product.objects.get(id=pid)
     resto = product.subcategory.Category.id
     try:
