@@ -16597,13 +16597,13 @@ header .offcanvas-backdrop {
 
 .product-box-3 .product-header .product-image {
     text-align: center;
-    padding: 20px;
+    /* padding: 20px; */
     display: block
 }
 
 @media (max-width: 480px) {
     .product-box-3 .product-header .product-image {
-        padding: 8px
+        /* padding: 8px */
     }
 }
 
