@@ -68,11 +68,22 @@ def products(request,id):
         elif len(product_banner) >= 1:
             fist_banner = product_banner[0]
             second_banner = product_banner[0]
+        context = {
+            "subcategories":subcategories,
+            "products":products,
+            "fist_banner":fist_banner,
+            "second_banner":second_banner,
+            "prd":catagories,
+            "resturants_obj":resturants_obj,
+            "links":links,
+            "all_products":all_products,
+        }
+        return render(request, 'menucard/product.html',context)
     context = {
         "subcategories":subcategories,
         "products":products,
-        "fist_banner":fist_banner,
-        "second_banner":second_banner,
+        # "fist_banner":fist_banner,
+        # "second_banner":second_banner,
         "prd":catagories,
         "resturants_obj":resturants_obj,
         "links":links,
