@@ -199,11 +199,11 @@ def tableNumber(request):
             data.append(data1)
             i.delete()
             # grandtotal+=int(cart['quantity']) * int(cart['product_price'])   
-        for i in data:
-            messagestring +="%0aProduct-Name:"+str(i['name'])+"%0aQuantity:"+str(i['quantity'])+"%0aUnit-Price:"+str(i['price'])+"%0aTotal :"+str(i['sub_total'])+"%0a-----------------------------"
+        for j in data:
+            messagestring +="%0aProduct-Name:"+str(j['name'])+"%0aQuantity:"+str(j['quantity'])+"%0aUnit-Price:"+str(j['price'])+"%0aTotal :"+str(j['sub_total'])+"%0a-----------------------------"
             messagestring+="%0a-----------------------------"
         messagestring+="%0a-----------------------------\
-        Grand Total :"+str(sub_total)+"%0a-----------------------------"
+        Grand Total :"+str(sub_total['total__sum'])+"%0a-----------------------------"
         cart_obj.delete()
         # data = {
         #     "link":messagestring,
