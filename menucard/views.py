@@ -60,36 +60,39 @@ def products(request,id):
     all_products = Product.objects.select_related('subcategory').filter(subcategory__Category__restaurent=resturants_obj).values('subcategory__Category__name','subcategory__Category__icon','subcategory__Category__id').distinct()
 
 
-    if len(products) <= 10:
-        if len(product_banner) >= 2:
-            fist_banner = product_banner[0]
-            second_banner = product_banner[1]
-            print(fist_banner,'first if')
-        elif len(product_banner) >= 1:
-            fist_banner = product_banner[0]
-            second_banner = product_banner[0]
-        context = {
-            "subcategories":subcategories,
-            "products":products,
-            "fist_banner":fist_banner,
-            "second_banner":second_banner,
-            "prd":catagories,
-            "resturants_obj":resturants_obj,
-            "links":links,
-            "all_products":all_products,
-        }
-        return render(request, 'menucard/product.html',context)
+    # if len(products) <= 10:
+    if len(product_banner) >= 2:
+        fist_banner = product_banner[0]
+        second_banner = product_banner[1]
+        print(fist_banner,'first if')
+    elif len(product_banner) >= 1:
+        fist_banner = product_banner[0]
+        second_banner = product_banner[0]
     context = {
         "subcategories":subcategories,
         "products":products,
-        # "fist_banner":fist_banner,
-        # "second_banner":second_banner,
+        "fist_banner":fist_banner,
+        "second_banner":second_banner,
         "prd":catagories,
         "resturants_obj":resturants_obj,
         "links":links,
         "all_products":all_products,
     }
     return render(request, 'menucard/product.html',context)
+    # else :
+
+
+    # context = {
+    #     "subcategories":subcategories,
+    #     "products":products,
+    #     # "fist_banner":fist_banner,
+    #     # "second_banner":second_banner,
+    #     "prd":catagories,
+    #     "resturants_obj":resturants_obj,
+    #     "links":links,
+    #     "all_products":all_products,
+    # }
+    # return render(request, 'menucard/product.html',context)
 
 
 def productData(request,id):
