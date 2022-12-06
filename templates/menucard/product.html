@@ -12,6 +12,9 @@
             height: 200px;
         }
     }
+    .product-footer{
+        padding: 0px 15px 15px 15px;
+    }
 </style>
 
 
@@ -50,12 +53,12 @@
 
 
             <div class="col-lg-12">
-                <div class="rows grid data-isotope='{ " itemSelector": ".grid-item" , "masonry" : { "columnWidth" : 200
+                <div class="rows  data-isotope='{ " itemSelector": ".grid-item" , "masonry" : { "columnWidth" : 200
                     } }'">
 
                     <div class="row product-list-section">
                         {% for product in products %}
-                        <div class="col-lg-3 col-md-3 co-sm-6 col-6 col-3 mt-2 grid-item {{product.subcategory.name|slugify}}"
+                        <div class="col-lg-3 col-md-3 co-sm-6 col-6 col-6 mt-2 grid-item {{product.subcategory.name|slugify}}"
                             data-category="{{product.subcategory.name|slugify}}">
                             <div class="product-box-3 h-100 wow fadeInUp">
                                 <div class="product-header">
