@@ -12,6 +12,9 @@
             height: 200px;
         }
     }
+    .product-footer{
+        padding: 0px 15px 15px 15px;
+    }
 </style>
 
 
@@ -35,7 +38,7 @@
 <section class="">
     <div class="container-fluid-lg">
 
-        <div class="row">
+        <div class="row mt-2">
             <div class="col-md-12">
                 <div class="filters">
                     <ul class="">
@@ -53,9 +56,9 @@
                 <div class="rows grid data-isotope='{ " itemSelector": ".grid-item" , "masonry" : { "columnWidth" : 200
                     } }'">
 
-                    <div class="row g-sm-4 g-3 product-list-section mt-3">
+                    <div class="row product-list-section">
                         {% for product in products %}
-                        <div class="col-lg-3 col-md-3 co-sm-6 col-6  grid-item {{product.subcategory.name|slugify}}"
+                        <div class="col-lg-3 col-md-3 co-sm-6 col-6 col-6 mt-2 grid-item {{product.subcategory.name|slugify}}"
                             data-category="{{product.subcategory.name|slugify}}">
                             <div class="product-box-3 h-100 wow fadeInUp">
                                 <div class="product-header">
@@ -68,16 +71,16 @@
                                 </div>
                                 <div class="product-footer">
                                     <div class="product-detail mt-3">
-                                        <h5 class="name">{{product.name|capfirst}}</h5>
+                                        <h6 class="name">{{product.name|capfirst}}</h6>
                                         <a data-bs-toggle="modal" data-bs-target="#view">
                                             <span class="span-name">{{product.ingrediants}}</span>
                                         </a>
-                                        <h5 class="price"><span class="theme-color">₹{{product.price}}</span>
+                                        <h6 class="price"><span class="theme-color">₹{{product.price}}</span>
                                             <!-- <del>₹15.15</del> -->
-                                        </h5>
+                                        </h6>
                                         <div class="row">
                                             <div class="col-lg-2 col-md-2 col-sm-5 col-5">
-                                                <h6 class="table-title text-content ">Qty</h6>
+                                                <p class="table-title text-content ">Qty</p>
                                             </div>
                                            <div class="col-lg-10 col-md-10 col-sm-7 col-7">
                                             <select class="form-group select mb-2 form-control sel" onchange="ChangeQuantity({{product.id}})" name="" id="itmquantity{{product.id}}">
@@ -137,7 +140,7 @@
 <!-- Quick View Modal Box Start -->
 <div class="modal fade theme-modal view-modal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg modal-fullscreen-sm-down">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header p-0">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
@@ -148,8 +151,8 @@
                 <div class="row g-sm-4 g-2">
                     <div class="col-lg-6">
                         <div class="slider-image">
-                            <img src="{% static 'menucard/images/product/category/1.jpg' %}" id="pimage"
-                                class="img-fluid blur-up lazyload" alt="">
+                            <img src="" id="pimage"
+                                class="img-fluid blur-up lazyload" alt="" width="100%">
                         </div>
                     </div>
 
@@ -301,7 +304,9 @@
 
 
 
-{% endblock %}<div class="col-xl-3 col-sm-6 col-12">
+{% endblock %}
+
+{% comment %} <div class="col-xl-3 col-sm-6 col-12">
     <div class="card">
         <div class="card-body">
             <div class="dash-widget-header">
@@ -323,4 +328,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> {% endcomment %}
