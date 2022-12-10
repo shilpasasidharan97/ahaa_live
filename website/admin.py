@@ -1,10 +1,17 @@
+from .models import Cart
+from .models import CartItems
 from .models import Category
 from .models import DefaultCats
+from .models import FrontBanner
 from .models import Product
+from .models import ProductPageBanner
 from .models import Restaurant
 from .models import RestaurantQrcode
+from .models import RestoSave
+from .models import SocialMediaLink
 from .models import SubCategory
 from .models import User
+from .models import Video
 from django.contrib import admin
 
 
@@ -20,7 +27,7 @@ admin.site.register(User, UserAdmin)
 
 
 class RestaurantAdmin(admin.ModelAdmin):
-    list_display = ("restaurant_name", "creator_name", "email", "phone")
+    list_display = ("id", "restaurant_name", "creator_name", "email", "phone")
     search_fields = ("phone",)
 
 
@@ -31,7 +38,7 @@ admin.site.register(DefaultCats)
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("restaurent", "name")
+    list_display = ("id", "restaurent", "name")
     search_fields = ("name",)
 
 
@@ -42,7 +49,7 @@ admin.site.register(RestaurantQrcode)
 
 
 class SubCategoryAdmin(admin.ModelAdmin):
-    list_display = ("Category", "name")
+    list_display = ("id", "Category", "name")
     search_fields = ("name",)
 
 
@@ -56,7 +63,25 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 
-# class RestaurantQrcodeAdmin(admin.ModelAdmin):
-#     list_display = ('restaurent','image',)
-#     search_fields=('restaurent',)
-# admin.site.register(RestaurantQrcode,RestaurantQrcodeAdmin)
+admin.site.register(Cart)
+
+
+class CartItemsAdmin(admin.ModelAdmin):
+    list_display = ("id", "product", "quantity", "total")
+    search_fields = ("product", "quantity", "total")
+
+
+admin.site.register(CartItems, CartItemsAdmin)
+
+
+admin.site.register(FrontBanner)
+
+
+admin.site.register(ProductPageBanner)
+
+admin.site.register(RestoSave)
+
+
+admin.site.register(Video)
+
+admin.site.register(SocialMediaLink)

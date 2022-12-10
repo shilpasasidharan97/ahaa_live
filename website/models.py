@@ -45,6 +45,10 @@ class Restaurant(models.Model):
     district = models.CharField(max_length=150, null=True)
     state = models.CharField(max_length=100, null=True)
     address = models.CharField(max_length=300, null=True)
+    is_table = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = "Restaurant"
 
     def __str__(self):
         return str(self.restaurant_name)
@@ -93,7 +97,7 @@ class RestaurantQrcode(models.Model):
 
     def save(self, *args, **kwargs):
         qrcode_img = qrcode.make(self.resto_url)
-        canvas = Image.new("RGB", (800, 800), "white")
+        canvas = Image.new("RGB", (380, 380), "white")
         #   draw=ImageDraw.Draw(canvas)
         canvas.paste(qrcode_img)
         buffer = BytesIO()
@@ -102,8 +106,8 @@ class RestaurantQrcode(models.Model):
         canvas.close()
         super().save(*args, **kwargs)
 
-    class Meta:
-        verbose_name_plural = "Restaurant Qrcode"
+        class Meta:
+            verbose_name_plural = "Restaurant Qrcode"
 
     def __str__(self):
         return str(self.restaurant)
@@ -132,6 +136,66 @@ class Product(models.Model):
     description = models.CharField(max_length=1000, null=True, blank=True)
     image = models.FileField(upload_to="products", null=True, blank=True)
     slug = models.SlugField(unique=True, null=True, blank=True)
+    is_available = models.BooleanField(default=True)
+
+    class Meta:
+        verbose_name_plural = "Products"
 
     def __str__(self):
         return str(self.name)
+
+
+class Cart(models.Model):
+    cart_id = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return str(self.cart_id)
+
+
+class CartItems(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+    quantity = models.IntegerField(default=1, null=True)
+    total = models.FloatField(null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = "Cart Items"
+
+    def __str__(self):
+        return str(self.cart)
+
+
+class FrontBanner(models.Model):
+    image = models.FileField(upload_to="front-banner", null=True, blank=True)
+
+
+class ProductPageBanner(models.Model):
+    image = models.FileField(upload_to="Product-banner", null=True, blank=True)
+
+
+class RestoBanner(models.Model):
+    resto = models.ForeignKey(Restaurant, on_delete=models.CASCADE, null=True, blank=True)
+    image = models.FileField(upload_to="Resturant-banner", null=True, blank=True)
+
+
+class RestoSave(models.Model):
+    user_session_id = models.CharField(max_length=200, null=True)
+    resto_pk = models.IntegerField(null=True)
+
+    def __str__(self):
+        return str(self.user_session_id)
+
+
+class Video(models.Model):
+    video = models.FileField(upload_to="video", null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = "Video"
+
+
+class SocialMediaLink(models.Model):
+    resturant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, null=True)
+    facebook = models.CharField(max_length=2000, null=True, blank=True)
+    instagram = models.CharField(max_length=2000, null=True, blank=True)
+    whatsapp = models.CharField(max_length=2000, null=True, blank=True)
+    location = models.CharField(max_length=2000, null=True, blank=True)

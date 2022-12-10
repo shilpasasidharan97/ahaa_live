@@ -1,15 +1,19 @@
-from .models import FrontBanner
-from .models import JsonResponse
-from .models import ProductPageBanner
-from .models import Restaurant
-from .models import Video
-from menucard.decorators import auth_official
-from django.contrib.auth.decorators import login_required
+from aahalive.decorators import auth_official
+from website.models import FrontBanner
+from website.models import ProductPageBanner
+from website.models import Restaurant
+from website.models import Video
+
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
+
+
+# Create your views here.
 
 
 # LOGIN
@@ -18,17 +22,28 @@ def loginPage(request):
         phone = request.POST["phone"]
         password = request.POST["password"]
         user = authenticate(request, phone=phone, password=password)
-        print(user)
         if user is not None:
-            login(request, user)
-            return redirect("web:home")
+            if user.restaurant:
+                login(request, user)
+                return redirect("web:home")
+            elif user.is_superuser:
+                login(request, user)
+                return redirect("official:home")
+            else:
+                return redirect("official:loginPage")
         else:
             return redirect("official:loginPage")
     return render(request, "official/login.html")
 
 
+# HOME PAGE
+@auth_official
+@login_required(login_url="/official/login-page")
 def home(request):
-    context = {"is_home": True}
+    resto_count = Restaurant.objects.all().count()
+    all_resto = Restaurant.objects.all()[:5]
+    banner = ProductPageBanner.objects.all()[:2]
+    context = {"is_home": True, "resto_count": resto_count, "all_resto": all_resto, "banner": banner}
     return render(request, "official/home.html", context)
 
 
@@ -36,7 +51,8 @@ def home(request):
 @auth_official
 @login_required(login_url="/official/login-page")
 def resturantList(request):
-    context = {"is_resto": True}
+    all_resturants = Restaurant.objects.all().order_by("restaurant_name")
+    context = {"is_resto": True, "all_resturants": all_resturants}
     return render(request, "official/resturant_list.html", context)
 
 
@@ -61,6 +77,23 @@ def resturantDetails(request, id):
 @auth_official
 @login_required(login_url="/official/login-page")
 def creatUsers(request):
+    if request.method == "POST":
+        cname = request.POST["cname"]
+        email = request.POST["email"]
+        district = request.POST["district"]
+        rname = request.POST["rname"]
+        phone = request.POST["phone"]
+        state = request.POST["state"]
+        address = request.POST["address"]
+        password = request.POST["password"]
+
+        resto_exist = Restaurant.objects.filter(phone=phone).exists()
+        if not resto_exist:
+            new_resto = Restaurant(creator_name=cname, restaurant_name=rname, email=email, phone=phone, password=password, district=district, state=state, address=address)
+            new_resto.save()
+            return render(request, "official/create_user.html", {"status": 1})
+        else:
+            return render(request, "official/create_user.html", {"status": 0})
     context = {"is_users": True}
     return render(request, "official/create_user.html", context)
 
