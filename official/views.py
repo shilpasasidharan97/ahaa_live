@@ -4,7 +4,7 @@ from .models import ProductPageBanner
 from .models import Restaurant
 from .models import Video
 from menucard.decorators import auth_official
-from .models import login_required
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
 from django.contrib.auth import logout
