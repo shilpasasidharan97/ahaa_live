@@ -1,4 +1,6 @@
-from website.models import Category, Product, Restaurant, RestoSave, SocialMediaLink, User,CartItems, Video
+from website.models import CartItems
+from website.models import Video
+
 
 # def main_context(request):
 #     if request.session.exists(request.session.session_key):
@@ -11,7 +13,6 @@ from website.models import Category, Product, Restaurant, RestoSave, SocialMedia
 #         return {
 #             "domain": request.META["HTTP_HOST"],
 #         }
-
 
 
 # def main_context(request):
@@ -27,8 +28,6 @@ from website.models import Category, Product, Restaurant, RestoSave, SocialMedia
 #         return {
 #             "domain": request.META["HTTP_HOST"],
 #         }
-
-
 
 
 # def main_context(request):
@@ -73,7 +72,7 @@ from website.models import Category, Product, Restaurant, RestoSave, SocialMedia
 
 def main_context(request):
     if request.session.exists(request.session.session_key):
-        cart_items = CartItems.objects.filter(cart__cart_id = request.session.session_key).count()
+        cart_items = CartItems.objects.filter(cart__cart_id=request.session.session_key).count()
         video = Video.objects.all().last()
         # resto = RestoSave.objects.get(user_session_id=request.session.session_key)
         # rest= resto.resto_pk
@@ -86,15 +85,13 @@ def main_context(request):
         # links = SocialMediaLink.objects.get(resturant__id=rest)
         return {
             "domain": request.META["HTTP_HOST"],
-            "cart_items_count":cart_items,
+            "cart_items_count": cart_items,
             # "resto":resto,
             # "all_products":all_products,
-            "video":video,
+            "video": video,
             # "links":links,
             # "resturants_obj":resturants_obj,
             # "eeemail":eeemail,
         }
     else:
-        return {
-            "domain": request.META["HTTP_HOST"],
-        }
+        return {"domain": request.META["HTTP_HOST"]}

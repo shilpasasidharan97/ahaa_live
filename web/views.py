@@ -3,12 +3,15 @@ from website.models import Product
 from website.models import RestaurantQrcode
 from website.models import SubCategory
 
+from .models import RestoBanner
+from .models import auth_restaurant
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
+
 @auth_restaurant
-@login_required(login_url='/official/login-page')
+@login_required(login_url="/official/login-page")
 def home(request):
     user = request.user
     print(user, "%" * 20)
@@ -18,7 +21,7 @@ def home(request):
 
 
 @auth_restaurant
-@login_required(login_url='/official/login-page')
+@login_required(login_url="/official/login-page")
 def category(request):
     categories = Category.objects.filter(restaurent=request.user.restaurant)
     print(categories)
@@ -73,44 +76,34 @@ def product(request, id):
     return render(request, "web/product.html", context)
 
 
-# product show modal 
-def productshow(request,id):
+# product show modal
+def productshow(request, id):
     product = Product.objects.get(id=id)
-    data = {
-        "name":product.name,
-        "price":product.price,
-        "ingrediants":product.ingrediants,
-        "description":product.description,
-        "image":product.image.url,
-    }
+    data = {"name": product.name, "price": product.price, "ingrediants": product.ingrediants, "description": product.description, "image": product.image.url}
     return JsonResponse(data)
 
 
 @auth_restaurant
-@login_required(login_url='/official/login-page')
+@login_required(login_url="/official/login-page")
 def banner(request):
     all_banner = RestoBanner.objects.filter(resto=request.user.restaurant).all()
-    if request.method == 'POST':
-        resto_banner = request.FILES['home-image']
-        new_banner =  RestoBanner(image=resto_banner, resto=request.user.restaurant)
+    if request.method == "POST":
+        resto_banner = request.FILES["home-image"]
+        new_banner = RestoBanner(image=resto_banner, resto=request.user.restaurant)
         new_banner.save()
-    context = {
-        "is_banner":True,
-        "all_banner":all_banner,
-    }
-    return render(request, 'web/banner.html',context)
-
+    context = {"is_banner": True, "all_banner": all_banner}
+    return render(request, "web/banner.html", context)
 
 
 @auth_restaurant
-@login_required(login_url='/official/login-page')
+@login_required(login_url="/official/login-page")
 def profile(request):
     context = {"is_profile": True}
     return render(request, "web/profile.html", context)
 
 
 @auth_restaurant
-@login_required(login_url='/official/login-page')
+@login_required(login_url="/official/login-page")
 def settings(request):
     context = {"is_settings": True}
     return render(request, "web/settings.html", context)

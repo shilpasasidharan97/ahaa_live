@@ -12,10 +12,11 @@ from django.contrib import admin
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id','email','phone')
-    search_fields=('phone',)
-admin.site.register(User,UserAdmin)
+    list_display = ("id", "email", "phone")
+    search_fields = ("phone",)
 
+
+admin.site.register(User, UserAdmin)
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -24,7 +25,6 @@ class RestaurantAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Restaurant, RestaurantAdmin)
-
 
 
 admin.site.register(DefaultCats)
