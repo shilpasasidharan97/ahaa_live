@@ -4,7 +4,7 @@ from website.models import RestaurantQrcode
 from website.models import SubCategory
 
 from .models import RestoBanner
-from .models import auth_restaurant
+from menucard.decorators import auth_restaurant
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render

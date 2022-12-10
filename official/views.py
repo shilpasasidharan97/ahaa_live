@@ -3,7 +3,7 @@ from .models import JsonResponse
 from .models import ProductPageBanner
 from .models import Restaurant
 from .models import Video
-from .models import auth_official
+from menucard.decorators import auth_official
 from .models import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login
