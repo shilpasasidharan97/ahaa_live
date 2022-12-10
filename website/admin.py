@@ -10,11 +10,12 @@ from django.contrib import admin
 
 # Register your models here.
 
-admin.site.register(User)
 
-admin.site.register(DefaultCats)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('id','email','phone')
+    search_fields=('phone',)
+admin.site.register(User,UserAdmin)
 
-admin.site.register(RestaurantQrcode)
 
 
 class RestaurantAdmin(admin.ModelAdmin):
@@ -25,12 +26,19 @@ class RestaurantAdmin(admin.ModelAdmin):
 admin.site.register(Restaurant, RestaurantAdmin)
 
 
+
+admin.site.register(DefaultCats)
+
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("restaurent", "name")
     search_fields = ("name",)
 
 
 admin.site.register(Category, CategoryAdmin)
+
+
+admin.site.register(RestaurantQrcode)
 
 
 class SubCategoryAdmin(admin.ModelAdmin):

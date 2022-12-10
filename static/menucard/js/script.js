@@ -164,20 +164,20 @@ $(document).ready(function () {
 /*=====================
   06. quantity js
    ==========================*/
-$('.qty-box .quantity-right-plus').on('click', function () {
-    var $qty = $(this).parents(".qty-box").find(".input-number");
-    var currentVal = parseInt($qty.val(), 10);
-    if (!isNaN(currentVal)) {
-        $qty.val(currentVal + 0);
-    }
-});
-$('.qty-box .quantity-left-minus').on('click', function () {
-    var $qty = $(this).parents(".qty-box").find(".input-number");
-    var currentVal = parseInt($qty.val(), 10);
-    if (!isNaN(currentVal) && currentVal > 0) {
-        $qty.val(currentVal - 0);
-    }
-});
+// $('.qty-box .quantity-right-plus').on('click', function () {
+//     var $qty = $(this).parents(".qty-box").find(".input-number");
+//     var currentVal = parseInt($qty.val(), 10);
+//     if (!isNaN(currentVal)) {
+//         $qty.val(currentVal + 0);
+//     }
+// });
+// $('.qty-box .quantity-left-minus').on('click', function () {
+//     var $qty = $(this).parents(".qty-box").find(".input-number");
+//     var currentVal = parseInt($qty.val(), 10);
+//     if (!isNaN(currentVal) && currentVal > 0) {
+//         $qty.val(currentVal - 0);
+//     }
+// });
 
 /*=====================
   07. Tap to Top js
@@ -254,20 +254,20 @@ $(".bg-img").each(function () {
 /*=====================
    12. search box function Js
    ==========================*/
-$(".search-box").on("click", function () {
-    $(this).closest(".rightside-box").find(".search-full").addClass("open");
-});
-$(window).on("load resize", function () {
-    // open searchbox
-    $(".search-type").on("click", function () {
-        $(this).parents(".search-full").addClass("show");
-    });
+// $(".search-box").on("click", function () {
+//     $(this).closest(".rightside-box").find(".search-full").addClass("open");
+// });
+// $(window).on("load resize", function () {
+//     // open searchbox
+//     $(".search-type").on("click", function () {
+//         $(this).parents(".search-full").addClass("show");
+//     });
 
-    // close seach
-    $(".close-search").on("click", function () {
-        $(this).closest(".rightside-box").find(".search-full").removeClass("open");
-    });
-});
+//     // close seach
+//     $(".close-search").on("click", function () {
+//         $(this).closest(".rightside-box").find(".search-full").removeClass("open");
+//     });
+// });
 
 /*=====================
    13. Wishlist Js

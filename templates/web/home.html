@@ -4,17 +4,24 @@
 
 
 <div class="row">
+    <div class="col-lg-12 mt-2">
+        <h5>Welcome {{user.restaurant|capfirst}} ...!</h5>
+    </div>
+</div>
+
+
+<div class="row mt-3">
     <div class="col-xl-3 col-sm-6 col-12">
         <div class="card">
             <div class="card-body">
                 <div class="dash-widget-header">
                     <span class="dash-widget-icon bg-1">
-                        <i class="fas fa-dollar-sign"></i>
+                        <i class="fa fa-bowl-food"></i>
                     </span>
                     <div class="dash-count">
                         <div class="dash-title">Category</div>
                         <div class="dash-counts">
-                            <p>1,642</p>
+                            <p>{{category_count}}</p>
                         </div>
                     </div>
                 </div>
@@ -26,12 +33,12 @@
             <div class="card-body">
                 <div class="dash-widget-header">
                     <span class="dash-widget-icon bg-2">
-                        <i class="fas fa-users"></i>
+                        <i class="fa fa-bread-slice"></i>
                     </span>
                     <div class="dash-count">
                         <div class="dash-title">Products</div>
                         <div class="dash-counts">
-                            <p>3,642</p>
+                            <p>{{product_count}}</p>
                         </div>
                     </div>
                 </div>
@@ -48,7 +55,7 @@
                     <div class="dash-count">
                         <div class="dash-title">Hot Deals</div>
                         <div class="dash-counts">
-                            <p>1,041</p>
+                            <p>None</p>
                         </div>
                     </div>
                 </div>
@@ -56,6 +63,29 @@
         </div>
     </div>
     <div class="col-xl-3 col-sm-6 col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="dash-widget-header">
+                    <!-- <span class="dash-widget-icon bg-2">
+                       <h4>Table</h4>
+                    </span> -->
+                    <div class="dash-count">
+                        <div class="dash-title">Table</div>
+                        {% if qr_code.restaurant.is_table == True %}
+                        <div class="dash-counts">
+                            <a href="{% url 'web:tableOff' qr_code.restaurant.id %}" class="btn-sm btn-danger">TurnOff</a>
+                        </div>
+                        {% else %}
+                        <div class="dash-counts">
+                            <a href="{% url 'web:tableOn' qr_code.restaurant.id %}" class="btn-sm btn-success">TurnOn</a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-xl-3 col-sm-6 col-12">
         <div class="card">
             <div class="card-body">
                 <div class="dash-widget-header">
@@ -71,7 +101,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <div class="row">
@@ -83,7 +113,7 @@
                         <h5 class="card-title">Product List</h5>
                     </div>
                     <div class="col-auto">
-                        <a href="" class="btn-right btn btn-sm btn-outline-primary">
+                        <a href="{% url 'web:category' %}" class="btn-right btn btn-sm btn-outline-primary">
                             View All
                         </a>
                     </div>
@@ -95,68 +125,25 @@
                         <thead class="thead-light">
                             <tr>
                                 <th>Product</th>
+                                <th>Category</th>
                                 <th>Amount</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for product in all_product %}
                             <tr>
                                 <td>
                                     <h2 class="table-avatar">
                                         <a href=""><img
                                                 class="avatar avatar-sm me-2 avatar-img rounded-circle"
-                                                src="{% static 'web/img/profiles/avatar-04.jpg' %}"
-                                                alt="User Image">shakes</a>
+                                                src="{{product.image.url}}"
+                                                alt="User Image">{{product.name}}</a>
                                     </h2>
                                 </td>
+                                <td>{{product.subcategory.Category.name}}</td>
                                 <td>₹118</td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href=""><img
-                                                class="avatar avatar-sm me-2 avatar-img rounded-circle"
-                                                src="{% static 'web/img/profiles/avatar-06.jpg' %}"
-                                                alt="User Image">ice cream</a>
-                                    </h2>
-                                </td>
-                                <td>₹222</td>
-                                
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href=""><img
-                                                class="avatar avatar-sm me-2 avatar-img rounded-circle"
-                                                src="{% static 'web/img/profiles/avatar-08.jpg' %}"
-                                                alt="User Image">apple juice</a>
-                                    </h2>
-                                </td>
-                                <td>₹347</td>
-                                
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href=""><img
-                                                class="avatar avatar-sm me-2 avatar-img rounded-circle"
-                                                src="{% static 'web/img/profiles/avatar-10.jpg' %}"
-                                                alt="User Image">pinapple juice</a>
-                                    </h2>
-                                </td>
-                                <td>₹826</td>
-                                
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href=""><img
-                                                class="avatar avatar-sm me-2 avatar-img rounded-circle"
-                                                src="{% static 'web/img/profiles/avatar-11.jpg' %}"
-                                                alt="User Image">Buuter Shake</a>
-                                    </h2>
-                                </td>
-                                <td>₹519</td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -164,19 +151,24 @@
         </div>
     </div>
 
-    <div class="col-md-6 col-sm-6">
+    <div class="col-md-6 col-sm-6 text-center">
         <div class="card">
             <div class="card-body">
                 <h3>QRCODE FOR MENU CARD</h3>
                 <span>..... Scan here to get your menucard details .....</span>
-                <div class="col-lg-2"></div>
-                <div class="col-lg-8">
-                    <img src="{{qr_code.image.url}}" alt="">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-12">
+                            <img src="{{qr_code.image.url}}" alt="" width="200px">
+                        </div>
+                    </div>
+                    <a href="{{qr_code.image.url}}" download class="btn badge-pill bg-primary-light m-t-10" ><i class="fa fa-download"></i> Download From Here</a>
                 </div>
-                <div class="col-lg-2"></div>
             </div>
         </div>
+        
     </div>
+    
     
 </div>
 

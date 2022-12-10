@@ -14,7 +14,7 @@
         </div>
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-xl-3 col-md-4">
 
         <div class="widget settings-menu">
@@ -37,25 +37,26 @@
             </ul>
         </div>
 
-    </div>
+    </div>-->
 
     <!-- basic information -->
-    <div class="col-xl-9 col-md-8">
+    <div class="col-xl-12 col-md-12">
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">Basic information</h5>
             </div>
             <div class="card-body">
 
-                <form>
-                    <div class="row form-group">
+                <form method="POST" >
+                    {% csrf_token %}
+                    <!-- <div class="row form-group">
                         <label for="name" class="col-sm-3 col-form-label input-label">Name</label>
                         <div class="col-sm-9">
                             <div class="d-flex align-items-center">
                                 <label class="avatar avatar-xxl profile-cover-avatar m-0"
                                     for="edit_img">
                                     <img id="avatarImg" class="avatar-img"
-                                        src="{% static 'web/img/profiles/avatar-02.jpg' %}" alt="Profile Image">
+                                        src="{% static 'web/img/profiles/avatar-02.jpg' %}" alt="Profile Image" value="{{resto_data.}}">
                                     <input type="file" id="edit_img">
                                     <span class="avatar-edit">
                                         <i data-feather="edit-2"
@@ -64,37 +65,37 @@
                                 </label>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row form-group">
                         <label for="name" class="col-sm-3 col-form-label input-label">Name</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name"
-                                value="Charles Hafner">
+                            <input type="text" class="form-control" name="name" placeholder="Your Name"
+                                value="{{resto_data.restaurant_name}}">
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="email" class="col-sm-3 col-form-label input-label">Email</label>
                         <div class="col-sm-9">
-                            <input type="email" class="form-control" id="email" placeholder="Email"
-                                value="charleshafner@example.com">
+                            <input type="email" class="form-control" name="email" placeholder="Email"
+                                value="{{resto_data.email}}">
                         </div>
                     </div>
                     <div class="row form-group">
                         <label for="phone" class="col-sm-3 col-form-label input-label">Phone <span
                                 class="text-muted"></span></label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="phone"
-                                placeholder="+x(xxx)xxx-xx-xx" value="+1 (304) 499-13-66">
+                            <input type="text" class="form-control" name="phone"
+                                placeholder="+x(xxx)xxx-xx-xx" value="{{resto_data.phone}}">
                         </div>
                     </div>
 
                     <div class="row form-group">
                         <label for="location"
-                            class="col-sm-3 col-form-label input-label">Place</label>
+                            class="col-sm-3 col-form-label input-label">District</label>
                         <div class="col-sm-9">
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="location"
-                                    placeholder="Country" value="United States">
+                                <input type="text" class="form-control" name="location"
+                                    placeholder="Country" value="{{resto_data.district}}">
                             </div>
                         </div>
                     </div>
@@ -104,8 +105,18 @@
                             class="col-sm-3 col-form-label input-label">State</label>
                         <div class="col-sm-9">
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="state"
-                                    placeholder="Country" value="United States">
+                                <input type="text" class="form-control" name="state"
+                                    placeholder="Country" value="{{resto_data.state}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label for="location"
+                            class="col-sm-3 col-form-label input-label">Password</label>
+                        <div class="col-sm-9">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="password"
+                                    placeholder="Country" value="{{resto_data.password}}">
                             </div>
                         </div>
                     </div>
@@ -114,7 +125,7 @@
                         <label for="addressline2" class="col-sm-3 col-form-label input-label">Address
                             line 2 <span class="text-muted">(Optional)</span></label>
                         <div class="col-sm-9">
-                            <textarea name="address" id="addressline2" cols="10" rows="10" class="form-control"></textarea>
+                            <textarea name="address" value="{{resto_data.address}}" id="addressline2" cols="10" rows="10" class="form-control">{{resto_data.address}}</textarea>
                         </div>
                     </div>
                     <div class="text-end">
@@ -127,6 +138,6 @@
     </div>
 
     <!-- change password -->
-</div>
+</div> -->
 
 {% endblock %}

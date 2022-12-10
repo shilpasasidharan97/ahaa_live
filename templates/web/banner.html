@@ -1,0 +1,88 @@
+{% extends 'web/partials/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="page-header">
+    <div class="row align-items-center">
+        <div class="col">
+            <h3 class="page-title">Banner Adding</h3>
+            <ul class="breadcrumb">
+                <li class=""><a href="{% url 'web:home' %}">Dashboard / </a>
+                </li>
+                <li class="breadcrumb-item active">Banner</li>
+            </ul>
+        </div>
+        <div class="col-auto">
+            <a href="" class="btn btn-primary me-1" data-bs-toggle="modal" data-bs-target="#front-page">
+                <i class="fas fa-plus"></i> Home Banner
+            </a>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-12">
+    <div class="card bg-white">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body">
+            <div class="col-lg-3">
+                <div class="card invoices-grid-card w-100">
+                    <div class="card-middle text-center">
+                        <h2 class="card-middle-avatar text-center">
+                            {% for b in all_banner %}
+                            <a href="">
+                                <img class="avatar text-center avatar-sm images me-2 avatar-img " src="{{b.image.url}}"
+                                    alt="User Image">
+                            </a>
+                            {% endfor %}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Front Page -->
+<div class="modal custom-modal fade invoices-preview" id="front-page" role="dialog" name="fbanner">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="card invoice-info-card">
+                            <div class="card-header">
+                                <h5 class="card-title">Add Banner</h5>
+                            </div>
+                            <div class="card-body pb-0">
+                                <form action="#" method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-4">File Input</label>
+                                        <div class="col-md-8">
+                                            <span>Size : 1135 x 300 px</span>
+                                            <input class="form-control" type="file" name="home-image">
+                                        </div>
+                                    </div>
+                                    <div class="text-end mt-4">
+                                        <button type="submit" class="btn btn-primary">Add Banner</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

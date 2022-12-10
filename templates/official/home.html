@@ -11,6 +11,8 @@
 </style>
 
 
+
+
 <div class="row">
     <div class="col-lg-6">
         <div class="row">
@@ -32,8 +34,6 @@
                             <div class="progress-bar bg-5" role="progressbar" style="width: 75%"
                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="text-muted mt-3 mb-0"><span class="text-danger me-1"><i
-                                    class="fas fa-arrow-down me-1"></i>1.15%</span> since last week</p>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                             <div class="dash-count">
                                 <div class="dash-title">Customers</div>
                                 <div class="dash-counts">
-                                    <p>3,642</p>
+                                    <p>{{resto_count}}</p>
                                 </div>
                             </div>
                         </div>
@@ -55,8 +55,6 @@
                             <div class="progress-bar bg-6" role="progressbar" style="width: 65%"
                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="text-muted mt-3 mb-0"><span class="text-success me-1"><i
-                                    class="fas fa-arrow-up me-1"></i>2.37%</span> since last week</p>
                     </div>
                 </div>
             </div>
@@ -85,75 +83,25 @@
                                         <th>Name</th>
                                         <th>Phone</th>
                                         <th>Registered Date</th>
-                                        <th>Status</th>
+                                        <th>Email</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {% for resto in all_resto %}
                                     <tr>
                                         <td>
                                             <h2 class="table-avatar">
                                                 <a href=""><img
                                                         class="avatar avatar-sm me-2 avatar-img rounded-circle"
-                                                        src="{% static 'web/img/profiles/avatar-04.jpg' %}"
-                                                        alt="User Image">Barbara Moore</a>
+                                                        src="{% static 'web/img/building.png' %}"
+                                                        alt="User Image">{{resto.restaurant_name}}</a>
                                             </h2>
                                         </td>
-                                        <td>9876543211</td>
+                                        <td>{{resto.phone}}</td>
                                         <td>23 Nov 2020</td>
-                                        <td><span class="badge bg-success-light">Active</span></td>
+                                        <td>{{resto.email}}</td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <h2 class="table-avatar">
-                                                <a href=""><img
-                                                        class="avatar avatar-sm me-2 avatar-img rounded-circle"
-                                                        src="{% static 'web/img/profiles/avatar-06.jpg' %}"
-                                                        alt="User Image">Karlene Chaidez</a>
-                                            </h2>
-                                        </td>
-                                        <td>987632541789</td>
-                                        <td>18 Nov 2020</td>
-                                        <td><span class="badge bg-info-light">Active</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h2 class="table-avatar">
-                                                <a href=""><img
-                                                        class="avatar avatar-sm me-2 avatar-img rounded-circle"
-                                                        src="{% static 'web/img/profiles/avatar-08.jpg' %}"
-                                                        alt="User Image">Russell Copeland</a>
-                                            </h2>
-                                        </td>
-                                        <td>9632587415</td>
-                                        <td>10 Nov 2020</td>
-                                        <td><span class="badge bg-warning-light">Active</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h2 class="table-avatar">
-                                                <a href=""><img
-                                                        class="avatar avatar-sm me-2 avatar-img rounded-circle"
-                                                        src="{% static 'web/img/profiles/avatar-08.jpg' %}"
-                                                        alt="User Image">Russell Copeland</a>
-                                            </h2>
-                                        </td>
-                                        <td>9632587415</td>
-                                        <td>10 Nov 2020</td>
-                                        <td><span class="badge bg-warning-light">Active</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <h2 class="table-avatar">
-                                                <a href=""><img
-                                                        class="avatar avatar-sm me-2 avatar-img rounded-circle"
-                                                        src="{% static 'web/img/profiles/avatar-08.jpg' %}"
-                                                        alt="User Image">Russell Copeland</a>
-                                            </h2>
-                                        </td>
-                                        <td>9632587415</td>
-                                        <td>10 Nov 2020</td>
-                                        <td><span class="badge bg-warning-light">Active</span></td>
-                                    </tr>
+                                    {% endfor %}
                                 </tbody>
                             </table>
                         </div>
@@ -164,7 +112,9 @@
     </div>
     <div class="col-lg-6">
         <div class="col-lg-12 banner">
-            <img src="{% static 'menucard/images/veg-2/banner/1.jpg' %}" alt="" class="banner">
+            {% for b in banner %}
+            <img src="{{b.image.url}}" alt="" class="banner" style="padding: 5px;">
+            {% endfor %}
         </div>
     </div>
 </div>

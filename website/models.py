@@ -60,9 +60,13 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = "phone"
 
 
+
 class DefaultCats(models.Model):
     no = models.CharField(max_length=15, null=True)
     image = models.FileField(upload_to="defaultcatagory", null=True)
+
+    class Meta:
+        verbose_name_plural = ("Default Categories")
 
     def __str__(self):
         return str(self.no)
@@ -72,6 +76,12 @@ class Category(models.Model):
     restaurent = models.ForeignKey(Restaurant, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=30, null=True)
     icon = models.FileField(upload_to="catagory", null=True)
+
+    class Meta:
+        verbose_name_plural = ("Categories")
+
+    def get_subcatgory(self):
+        return SubCategory.objects.filter(Category=self,is_active=True)
 
     def __str__(self):
         return str(self.name)
@@ -93,6 +103,9 @@ class RestaurantQrcode(models.Model):
         canvas.close()
         super().save(*args, **kwargs)
 
+      class Meta:
+        verbose_name_plural = ("Restaurant Qrcode")
+
     def __str__(self):
         return str(self.restaurant)
 
@@ -101,6 +114,13 @@ class SubCategory(models.Model):
     Category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=30, null=True)
     is_active = models.BooleanField(default=True, blank=True)
+
+    def get_product(self):
+        return Product.objects.filter(subcategory=self,is_available=True)
+
+
+    class Meta:
+        verbose_name_plural = ("SubCategory")
 
     def __str__(self):
         return str(self.name)
