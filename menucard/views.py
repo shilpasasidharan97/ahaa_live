@@ -259,22 +259,11 @@ def cart(request):
             .values("subcategory__Category__name", "subcategory__Category__icon", "subcategory__Category__id")
             .distinct()
         )
-
-        context = {
-            "cartitems": cart_items,
-            "sub_total": sub_total,
-            # "link":messagestring
-            "resturants_obj": resturants_obj,
-            "links": links,
-            "all_products": all_products,
-        }
-        return render(request, "menucard/cart.html", context)
     except:
-        sessin_count = RestoSave.objects.filter(user_session_id=request.session.session_key).count()
-        if sessin_count > 1:
-            restosave_obj = RestoSave.objects.filter(user_session_id=request.session.session_key).last()
-            rest_pk = restosave_obj.resto_pk
-            resturants_obj = Restaurant.objects.get(id=rest_pk)
+        sessions = RestoSave.objects.filter(user_session_id=request.session.session_key)
+        if sessions:
+            restosave_obj = sessions.last()
+            resturants_obj = Restaurant.objects.get(id=restosave_obj.resto_pk)
             links = SocialMediaLink.objects.get(resturant=resturants_obj)
             all_products = (
                 Product.objects.select_related("subcategory")
@@ -282,17 +271,6 @@ def cart(request):
                 .values("subcategory__Category__name", "subcategory__Category__icon", "subcategory__Category__id")
                 .distinct()
             )
-            context = {
-                "cartitems": cart_items,
-                "sub_total": sub_total,
-                # "link":messagestring
-                "resturants_obj": resturants_obj,
-                "links": links,
-                "all_products": all_products,
-            }
-            return render(request, "menucard/cart.html", context)
-        else:
-            pass
     context = {
         "cartitems": cart_items,
         "sub_total": sub_total,
