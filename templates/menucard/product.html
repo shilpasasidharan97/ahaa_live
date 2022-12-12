@@ -15,6 +15,18 @@
     .product-footer{
         padding: 0px 15px 15px 15px;
     }
+    .bg{
+        background-color: #b1cdea;
+    }
+    .price-box{
+        border: 1px var(--bs-white) solid;
+        width: 100px;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 0px 1px 4px -1px;
+        color: black;
+        font-weight: 600;
+    }
 </style>
 
 
@@ -103,7 +115,7 @@
                                             </select>
                                            </div>
                                         </div>
-                                        <div class="add-to-cart-box text-center bg-white">
+                                        <div class="add-to-cart-box text-center bg">
                                             <a href="/menucard/addtocart/{{product.id}}/1"
                                                 class="btn btn-sm text-center mt-0" id="addtocarturl{{product.id}}">Add to list</a>
                                         </div>
@@ -158,19 +170,19 @@
 
                     <div class="col-lg-6">
                         <div class="right-sidebar-modal">
-                            <h4 class="title-name" id="pname">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
-                            <h4 class="price">₹ <span id="pprice"></span></h4>
+                            <h4 class="title-name" id="pname" style="color: #2475c2;"></h4>
+                            <h4 class="price price-box">₹<span id="pprice"></span></h4>
 
-                            <div class="product-detail">
+                            <!-- <div class="product-detail">
                                 <h4>Product Details :</h4>
                                 <p id="pdescription">Candy canes sugar plum tart cotton candy chupa chups sugar plum
                                     chocolate I love.
                                     Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
                                     Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear claw. Bonbon
                                     muffin I love carrot cake sugar plum dessert bonbon.</p>
-                            </div>
+                            </div> -->
                             <div class="product-detail">
-                                <h4>Product Ingrediants :</h4>
+                                <h4 style="font-size: 18px;">Product Ingrediants :</h4>
                                 <p id="pingrediants">Candy canes sugar plum tart cotton candy chupa chups sugar plum
                                     chocolate I love.
                                     Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
@@ -179,6 +191,9 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="row mt-4">
+                    <img src="{{modal_banner.image.url}}" alt="" id="banner">
                 </div>
             </div>
         </div>
@@ -294,7 +309,6 @@
                 $('#pprice').html(responce.price)
                 $('#pdescription').html(responce.ingrediants)
                 $('#pingrediants').html(responce.description)
-
             }
 
         })

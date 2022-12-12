@@ -69,11 +69,15 @@ def products(request, id):
     catag = Category.objects.get(id=id)
     subcategories = SubCategory.objects.filter(is_active=True, Category=id)
     products = Product.objects.filter(subcategory__Category__id=id, is_available=True)
-    product_banner = ProductPageBanner.objects.all().order_by("-image")
+    product_banner = ProductPageBanner.objects.all().order_by("-id")
+    # product_banner = ProductPageBanner.objects.all()[:]
+    print(product_banner)
     # prd = Product.objects.filter(subcategory__Category__restaurent=sub.Category.restaurent)
     catagories = Category.objects.filter(restaurent=catag.restaurent)
     resturants_obj = Restaurant.objects.get(id=catag.restaurent.id)
     links = SocialMediaLink.objects.get(resturant=resturants_obj)
+
+    modal_banner = ProductPageBanner.objects.all().last()
     all_products = (
         Product.objects.select_related("subcategory")
         .filter(subcategory__Category__restaurent=resturants_obj)
@@ -98,6 +102,7 @@ def products(request, id):
         "resturants_obj": resturants_obj,
         "links": links,
         "all_products": all_products,
+        "modal_banner":modal_banner
     }
     return render(request, "menucard/product.html", context)
     # else :
