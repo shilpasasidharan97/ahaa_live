@@ -1,5 +1,4 @@
 from .models import Category
-from .models import DefaultCats
 from .models import Restaurant
 from .models import RestaurantQrcode
 from .models import SocialMediaLink
@@ -37,7 +36,7 @@ def registration(request):
                 User = get_user_model()
                 User.objects.create_user(phone=phone_number, password=password, restaurant=new_resto)
                 user = authenticate(request, phone=phone_number, password=password)
-                default_cats = DefaultCats.objects.all()
+                default_cats = Category.objects.filter(is_default=True)
                 # url = "https://aahamenu.geany.website/menucard/menucard/"+str(new_resto.id)
                 url = "http://127.0.0.1:8000/menucard/menucard" + str(new_resto.id)
                 RestaurantQrcode.objects.create(restaurant=new_resto, resto_url=url)
