@@ -28,13 +28,13 @@ class RestaurantAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("id", "name")
+    list_display = ( "name", "id",)
     search_fields = ("name",)
 
 
 @admin.register(SubCategory)
 class SubCategoryAdmin(admin.ModelAdmin):
-    list_display = ("id", "category", "name")
+    list_display = ("__str__", "name", "parent", "id", "category")
     search_fields = ("name",)
     autocomplete_fields = ("category","parent")
 

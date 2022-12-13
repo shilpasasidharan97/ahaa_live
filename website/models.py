@@ -111,10 +111,19 @@ class SubCategory(models.Model):
     def get_product(self):
         return Product.objects.filter(subcategory=self, is_available=True)
 
+    def get_children(self):
+        return SubCategory.objects.filter(parent=self, is_active=True)
+
     class Meta:
         verbose_name_plural = "SubCategory"
 
     def __str__(self):
+        if self.parent:
+            if self.parent.parent:
+                if self.parent.parent.parent:
+                    return f"{self.parent.parent.parent} - {self.parent.parent} - {self.parent} - {self.name}"
+                return f"{self.parent.parent} - {self.parent} - {self.name}"
+            return f"{self.parent} - {self.name}"
         return str(self.name)
 
 
