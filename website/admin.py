@@ -28,7 +28,7 @@ class RestaurantAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ("id", "restaurent", "name")
+    list_display = ("id", "name")
     search_fields = ("name",)
 
 
