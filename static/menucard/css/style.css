@@ -5668,11 +5668,11 @@ span {
 }
 
 .category-box {
-    background-image: url(../images/vegetable/shape.png);
+    /* background-image: url(../images/vegetable/shape.png); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: var(--theme-color);
+    background-color: #fff;
     margin: 0px auto;
     display: block;
     width: 90%;
@@ -5684,7 +5684,7 @@ span {
     position: relative;
     padding: calc(15px + (35 - 15) * ((100vw - 320px) / (1920 - 320))) 8px;
     z-index: 0;
-    border: 1px solid #8080803b;
+    border: 1px solid #3879c7;
 }
 
 .category-box.category-bg {
@@ -5698,7 +5698,7 @@ span {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: white;
+    background-color: var(--theme-color);
     border: 1px solid #8080803b;
     opacity: 0;
     z-index: -1;
@@ -5721,7 +5721,7 @@ span {
 } */
 
 .category-box:hover h5 {
-    color: black
+    color: #ffff
 }
 
 /* .category-box-2::after {
@@ -5740,9 +5740,9 @@ span {
 }
 
 .category-box h5 {
-    color: #fff;
+    color: #297ec7;
     margin-top: 12px;
-    font-weight: 500;
+    font-weight: 600;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     display: -webkit-box;
@@ -8577,7 +8577,7 @@ header .header-nav .header-nav-left .category-dropdown .category-title {
 }
 
 header .header-nav .header-nav-left .category-dropdown .category-title h5 {
-    color: var(--theme-color);
+    color: #ffff;
     font-weight: 600
 }
 
@@ -8621,7 +8621,8 @@ header .header-nav .header-nav-left .category-dropdown .category-list li a img {
     width: 23px;
     height: 23px;
     -o-object-fit: contain;
-    object-fit: contain
+    object-fit: contain;
+    filter:invert(1%) opacity(.5) drop-shadow(0 0 0 #297dc7 ) saturate(4)
 }
 
 header .header-nav .header-nav-left .category-dropdown .category-list li a h6 {
@@ -8646,7 +8647,8 @@ header .header-nav .header-nav-left .category-dropdown .category-list li a h6:be
 }
 
 header .header-nav .header-nav-left .category-dropdown .category-list li a .according-menu {
-    margin-left: auto
+    margin-left: auto;
+    color:var(--theme-color1)
 }
 
 [dir="rtl"] header .header-nav .header-nav-left .category-dropdown .category-list li a .according-menu {
@@ -25696,4 +25698,7 @@ header .offcanvas-backdrop {
         position: relative;
         font-size: 18px;
     }
+}
+.category-title{
+    background-color: var(--theme-color);
 }

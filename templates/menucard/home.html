@@ -11,6 +11,15 @@
             height: 200px;
         }
     }
+    .category-box img .image-color:hover{
+        filter:invert(1%) opacity(.5) drop-shadow(0 0 0 #ffff ) saturate(4);
+    }
+    .category-box .image-color{
+        filter: invert(1%) opacity(.5) drop-shadow(0 0 0 #297dc7 ) saturate(4);
+    }
+    a:hover {
+        text-decoration: none;
+    }
 </style>
 
 <!-- Home Section Start -->
@@ -45,9 +54,9 @@
             {% for cat in all_products %}
             <div class="col-lg-2 col-sm-6 col-md-4 col-6 mt-3">
                 <div>
-                    <a href="{% url 'menucard:product' cat.subcategory__Category__id %}" class="category-box wow fadeInUp">
+                    <a href="{% url 'menucard:product' cat.subcategory__Category__id %}" class="category-box wow fadeInUp" >
                         <div>
-                            <img src="/media/{{cat.subcategory__Category__icon}}" class="blur-up lazyload" alt="">
+                            <img src="/media/{{cat.subcategory__Category__icon}}" class="blur-up lazyload image-color" alt="" style="">
                             <h5 style="font-size: 18px;">{{cat.subcategory__Category__name|capfirst}}</h5>
                         </div>
 

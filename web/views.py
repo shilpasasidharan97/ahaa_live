@@ -125,8 +125,7 @@ def product(request, id):
         product_ingrediants = request.POST["p_ingrediants"]
         product_description = request.POST["p_descriptions"]
         product_image = request.FILES["p_image"]
-        new_product = Product(
-            name=product_name, price=product_price, ingrediants=product_ingrediants, description=product_description, image=product_image, subcategory=subCategory
+        new_product = Product(name=product_name, price=product_price, ingrediants=product_ingrediants, description=product_description, image=product_image, subcategory=subCategory
         )
         new_product.save()
     context = {"is_product": True, "products": products, "id": subCategory.Category.id}
