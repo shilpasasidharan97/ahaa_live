@@ -36,16 +36,6 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(unique=True, null=True)
-    phone = models.CharField(max_length=20, unique=True)
-    restaurant = models.ForeignKey("Restaurant", on_delete=models.CASCADE, null=True)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    objects = UserManager()
-    USERNAME_FIELD = "phone"
-
-
 class Restaurant(models.Model):
     creator_name = models.CharField(max_length=150, null=True)
     restaurant_name = models.CharField(max_length=150, null=True)
@@ -64,10 +54,31 @@ class Restaurant(models.Model):
         return str(self.restaurant_name)
 
 
+class User(AbstractBaseUser, PermissionsMixin):
+    email = models.EmailField(unique=True, null=True)
+    phone = models.CharField(max_length=20, unique=True)
+    restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, null=True)
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    objects = UserManager()
+    USERNAME_FIELD = "phone"
+
+
+class DefaultCats(models.Model):
+    no = models.CharField(max_length=15, null=True)
+    image = models.FileField(upload_to="defaultcatagory", null=True)
+
+    class Meta:
+        verbose_name_plural = "Default Categories"
+
+    def __str__(self):
+        return str(self.no)
+
+
 class Category(models.Model):
+    restaurent = models.ForeignKey(Restaurant, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=30, null=True)
     icon = models.FileField(upload_to="catagory", null=True)
-    is_default = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = "Categories"
@@ -103,27 +114,17 @@ class RestaurantQrcode(models.Model):
 
 
 class SubCategory(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
-    parent = models.ForeignKey("self", on_delete=models.CASCADE, null=True, blank=True)
+    Category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=30, null=True)
     is_active = models.BooleanField(default=True, blank=True)
 
     def get_product(self):
         return Product.objects.filter(subcategory=self, is_available=True)
 
-    def get_children(self):
-        return SubCategory.objects.filter(parent=self, is_active=True)
-
     class Meta:
         verbose_name_plural = "SubCategory"
 
     def __str__(self):
-        if self.parent:
-            if self.parent.parent:
-                if self.parent.parent.parent:
-                    return f"{self.parent.parent.parent} - {self.parent.parent} - {self.parent} - {self.name}"
-                return f"{self.parent.parent} - {self.parent} - {self.name}"
-            return f"{self.parent} - {self.name}"
         return str(self.name)
 
 
