@@ -141,8 +141,22 @@ class Product(models.Model):
     class Meta:
         verbose_name_plural = "Products"
 
+    def get_portions(self):
+        return ProductPortions.objects.filter(product=self, is_available=True)
+
     def __str__(self):
         return str(self.name)
+
+
+class ProductPortions(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+    size = models.CharField(max_length=30, null=True)
+    price = models.FloatField(default=0)
+    is_available = models.BooleanField(default=True)
+
+
+    def __str__(self):
+        return str(self.product)
 
 
 class Cart(models.Model):
@@ -155,6 +169,8 @@ class Cart(models.Model):
 class CartItems(models.Model):
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+    size = models.CharField(max_length=20,null=True)
+    size_price = models.FloatField(default=0)
     quantity = models.IntegerField(default=1, null=True)
     total = models.FloatField(null=True, blank=True)
 

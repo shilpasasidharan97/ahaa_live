@@ -1,4 +1,4 @@
-from website.models import Cart
+from website.models import Cart, ProductPortions
 from website.models import CartItems
 from website.models import Category
 from website.models import FrontBanner
@@ -140,7 +140,16 @@ def _cart_id(request):
 
 
 def AddToCart(request, pid, qty):
+    portion = request.GET['portion']
+    print(portion,"#"*20)
     product = Product.objects.get(id=pid)
+    if portion != "full":
+        item_portion = ProductPortions.objects.get(id=portion)
+        size = item_portion.size
+        size_price = item_portion.price
+    else :
+        size = "full"
+        size_price = product.price
     resto = product.subcategory.Category.id
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
@@ -149,17 +158,17 @@ def AddToCart(request, pid, qty):
     cart.save()
 
     try:
-        cart_item = CartItems.objects.get(product=product, cart=cart)
+        cart_item = CartItems.objects.get(product=product, cart=cart,size=size,size_price=size_price)
         cart_item.quantity = cart_item.quantity + qty
         cart_item.save()
-        total_price = float(cart_item.quantity) * float(product.price)
+        total_price = float(cart_item.quantity) * float(size_price)
         cart_item.total = total_price
         cart_item.save()
         cart.save()
     except CartItems.DoesNotExist:
-        cart_item = CartItems.objects.create(product=product, quantity=qty, cart=cart)
+        cart_item = CartItems.objects.create(product=product, quantity=qty, cart=cart,size=size,size_price=size_price)
         cart_item.save()
-        total_price = int(qty) * float(product.price)
+        total_price = int(qty) * float(size_price)
         cart_item.total = total_price
         cart_item.save()
         cart.save()
@@ -171,7 +180,7 @@ def addQuantity(request):
     id = request.GET["id"]
     cart_obj = CartItems.objects.get(id=id)
     new_quantity = int(quantity) + 1
-    product_total = float(new_quantity) * float(cart_obj.product.price)
+    product_total = float(new_quantity) * float(cart_obj.size_price)
     cart_obj.total = product_total
     cart_obj.save()
     CartItems.objects.filter(id=id).update(quantity=new_quantity, total=product_total)

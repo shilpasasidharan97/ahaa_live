@@ -6,7 +6,7 @@ from website.models import RestaurantQrcode
 from website.models import RestoBanner
 from website.models import SocialMediaLink
 from website.models import SubCategory
-from website.models import User
+from website.models import User, ProductPortions
 
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
@@ -125,9 +125,24 @@ def product(request, id):
         product_ingrediants = request.POST["p_ingrediants"]
         product_description = request.POST["p_descriptions"]
         product_image = request.FILES["p_image"]
+        portion = request.POST['portion']
         new_product = Product(name=product_name, price=product_price, ingrediants=product_ingrediants, description=product_description, image=product_image, subcategory=subCategory
         )
         new_product.save()
+        if portion == "available":
+            if request.POST['quaterprice'] != "" :
+                quater_price =  request.POST['quaterprice']
+            else :
+                quater_price = new_product.price
+            if request.POST['halfprice'] != "" :
+                half_price =  request.POST['halfprice']
+            else :
+                half_price =  new_product.price
+            
+            qportion = ProductPortions(product=new_product,size="Quater",price=quater_price)
+            qportion.save()
+            hproduct = ProductPortions(product=new_product,size="Half",price=half_price)
+            hproduct.save()
     context = {"is_product": True, "products": products, "id": subCategory.Category.id}
     return render(request, "web/product.html", context)
 

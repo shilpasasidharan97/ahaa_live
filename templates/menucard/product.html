@@ -91,10 +91,10 @@
                                             <!-- <del>₹15.15</del> -->
                                         </h6>
                                         <div class="row">
-                                            <div class="col-lg-2 col-md-2 col-sm-5 col-5">
+                                            <div class="col-lg-5 col-md-5 col-sm-5 col-5">
                                                 <p class="table-title text-content ">Qty</p>
                                             </div>
-                                           <div class="col-lg-10 col-md-10 col-sm-7 col-7">
+                                           <div class="col-lg-7 col-md-7 col-sm-7 col-7">
                                             <select class="form-group select mb-2 form-control sel" onchange="ChangeQuantity({{product.id}})" name="" id="itmquantity{{product.id}}">
                                                 <option value="1" >1</option>
                                                 <option value="2" >2</option>
@@ -115,8 +115,23 @@
                                             </select>
                                            </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-lg-5 col-md-5 col-sm-5 col-5">
+                                                <p class="table-title text-content ">Portions</p>
+                                            </div>
+                                            <div class="col-lg-7 col-md-7 col-sm-7 col-7">
+                                                <select class="form-group select mb-2 form-control sel"  onchange="ChangePortions({{product.id}})" id="portion{{product.id}}">
+                                                <option value="full" selected>Full</option>
+                                                {% for p in product.get_portions %}
+                                                <option value="{{p.id}}" >{{p.size}}--({{p.price}})</option>
+                                                {% endfor %}
+                                                
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
                                         <div class="add-to-cart-box text-center bg">
-                                            <a href="/menucard/addtocart/{{product.id}}/1"
+                                            <a href="/menucard/addtocart/{{product.id}}/1?portion=full"
                                                 class="btn btn-sm text-center mt-0" id="addtocarturl{{product.id}}">Add to list</a>
                                         </div>
                                     </div>
@@ -127,7 +142,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
 </section>
 
@@ -274,8 +288,16 @@
 <script>
     function ChangeQuantity(id){
             var productqty = $("#itmquantity"+id).val()
-            $("#addtocarturl"+id).attr('href',"/menucard/addtocart/" + id + "/" + productqty);  
+            var portion = $("#portion"+id).val()
+            $("#addtocarturl"+id).attr('href',"/menucard/addtocart/" + id + "/" + productqty + "?portion=" + portion);  
         }
+
+    function ChangePortions(id) {
+        var productqty = $("#itmquantity"+id).val()
+        var portion = $("#portion"+id).val()
+        $("#addtocarturl"+id).attr('href',"/menucard/addtocart/" + id + "/" + productqty + "?portion=" + portion);
+    
+    }
 
 
     var $grid = $('.grid').isotope({

@@ -1,4 +1,4 @@
-from .models import Cart
+from .models import Cart, ProductPortions
 from .models import CartItems
 from .models import Category
 from .models import DefaultCats
@@ -85,3 +85,5 @@ admin.site.register(RestoSave)
 admin.site.register(Video)
 
 admin.site.register(SocialMediaLink)
+
+admin.site.register(ProductPortions)
