@@ -39,8 +39,7 @@ def home(request, id):
         .values("subcategory__Category__name", "subcategory__Category__icon", "subcategory__Category__id")
         .distinct()
     )
-    # print(all_products)
-    # print(resto_banner)
+
     # try:
     #     resto_save = RestoSave.objects.get(user_session_id=_rest_id(request),resto_pk=id)
     # except RestoSave.DoesNotExist:
@@ -71,7 +70,6 @@ def products(request, id):
     products = Product.objects.filter(subcategory__Category__id=id, is_available=True)
     product_banner = ProductPageBanner.objects.all().order_by("-id")
     # product_banner = ProductPageBanner.objects.all()[:]
-    print(product_banner)
     # prd = Product.objects.filter(subcategory__Category__restaurent=sub.Category.restaurent)
     catagories = Category.objects.filter(restaurent=catag.restaurent)
     resturants_obj = Restaurant.objects.get(id=catag.restaurent.id)
@@ -89,7 +87,6 @@ def products(request, id):
     if len(product_banner) >= 2:
         fist_banner = product_banner[0]
         second_banner = product_banner[1]
-        print(fist_banner, "first if")
     elif len(product_banner) >= 1:
         fist_banner = product_banner[0]
         second_banner = product_banner[0]
@@ -141,7 +138,6 @@ def _cart_id(request):
 
 def AddToCart(request, pid, qty):
     portion = request.GET['portion']
-    print(portion,"#"*20)
     product = Product.objects.get(id=pid)
     if portion != "full":
         item_portion = ProductPortions.objects.get(id=portion)
@@ -210,17 +206,16 @@ def tableNumber(request):
     tresto_number = CartItems.objects.filter(cart=cart_obj).last()
     phonenumber = tresto_number.product.subcategory.Category.restaurent.phone
     sub_total = CartItems.objects.filter(cart__cart_id=_cart_id(request)).aggregate(Sum("total"))
-    # print(phonenumber,"|%"*20)
     data = []
     try:
         messagestring = "https://wa.me/+91" + phonenumber + "?text=Table Number :" + table_name + "%0a------Order Details------"
-        print(messagestring)
         for i in cart_items:
             data1 = {
                 # 'id':i['id'],
+                "portion":i.size,
                 "name": i.product.name,
                 "quantity": i.quantity,
-                "price": i.product.price,
+                "price": i.size_price,
                 "sub_total": i.total,
             }
             data.append(data1)
@@ -230,6 +225,8 @@ def tableNumber(request):
             messagestring += (
                 "%0aProduct-Name:"
                 + str(j["name"])
+                + "%0aPortion:"
+                + str(j["portion"])
                 + "%0aQuantity:"
                 + str(j["quantity"])
                 + "%0aUnit-Price:"
