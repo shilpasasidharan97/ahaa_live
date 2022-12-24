@@ -85,7 +85,7 @@
                                     <div class="product-detail mt-3">
                                         <h6 class="name">{{product.name|capfirst}}</h6>
                                         <a data-bs-toggle="modal" data-bs-target="#view">
-                                            <span class="span-name">{{product.ingrediants}}</span>
+                                            <!-- <span class="span-name">{{product.ingrediants}}</span> -->
                                         </a>
                                         <h6 class="price"><span class="theme-color">₹{{product.price}}</span>
                                             <!-- <del>₹15.15</del> -->
@@ -196,12 +196,12 @@
                                     muffin I love carrot cake sugar plum dessert bonbon.</p>
                             </div> -->
                             <div class="product-detail">
+                                <h4 style="font-size: 18px;">Product Description :</h4>
+                                <p id="pdescription"></p>
+                            </div>
+                            <div class="product-detail">
                                 <h4 style="font-size: 18px;">Product Ingrediants :</h4>
-                                <p id="pingrediants">Candy canes sugar plum tart cotton candy chupa chups sugar plum
-                                    chocolate I love.
-                                    Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
-                                    Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear claw. Bonbon
-                                    muffin I love carrot cake sugar plum dessert bonbon.</p>
+                                <p id="pingrediants">.</p>
                             </div>
                         </div>
                     </div>
@@ -329,8 +329,9 @@
                 $('#pimage').attr('src', responce.image)
                 $('#pname').html(responce.name)
                 $('#pprice').html(responce.price)
-                $('#pdescription').html(responce.ingrediants)
-                $('#pingrediants').html(responce.description)
+                $('#pdescription').html(responce.description)
+                $('#pingrediants').html(responce.ingrediants)
+                // $('#pingrediants').html(responce.description)
             }
 
         })
