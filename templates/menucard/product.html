@@ -115,6 +115,7 @@
                                             </select>
                                            </div>
                                         </div>
+                                        {% if product.get_portions %}
                                         <div class="row">
                                             <div class="col-lg-5 col-md-5 col-sm-5 col-5">
                                                 <p class="table-title text-content ">Portions</p>
@@ -125,11 +126,10 @@
                                                 {% for p in product.get_portions %}
                                                 <option value="{{p.id}}" >{{p.size}}--({{p.price}})</option>
                                                 {% endfor %}
-                                                
                                                 </select>
                                             </div>
                                         </div>
-                                        
+                                        {% endif %}
                                         <div class="add-to-cart-box text-center bg">
                                             <a href="/menucard/addtocart/{{product.id}}/1?portion=full"
                                                 class="btn btn-sm text-center mt-0" id="addtocarturl{{product.id}}">Add to list</a>
@@ -288,7 +288,13 @@
 <script>
     function ChangeQuantity(id){
             var productqty = $("#itmquantity"+id).val()
-            var portion = $("#portion"+id).val()
+            var portionf = $("#portion"+id).val()
+            if (typeof portionf === "undefined"){
+                var portion = "full"
+            }
+            else {
+                var portion = portionf
+            }
             $("#addtocarturl"+id).attr('href',"/menucard/addtocart/" + id + "/" + productqty + "?portion=" + portion);  
         }
 
