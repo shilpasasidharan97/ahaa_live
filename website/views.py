@@ -39,7 +39,7 @@ def registration(request):
                 user = authenticate(request, phone=phone_number, password=password)
                 default_cats = DefaultCats.objects.all()
                 # url = "https://aahamenu.geany.website/menucard/menucard/"+str(new_resto.id)
-                url = "http://127.0.0.1:8000/menucard/menucard" + str(new_resto.id)
+                url = "http://127.0.0.1:8000/menucard/menucard/" + str(new_resto.id)
                 RestaurantQrcode.objects.create(restaurant=new_resto, resto_url=url)
                 links = SocialMediaLink(resturant=new_resto)
                 links.save()
